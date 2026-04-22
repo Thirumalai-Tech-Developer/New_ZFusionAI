@@ -1,0 +1,120 @@
+import { Mail, Phone, MapPin, Zap } from "lucide-react";
+
+const cols = [
+  {
+    title: "Company",
+    links: ["About", "Why ZFusionAI", "Industries", "How We Work", "Careers"],
+  },
+  {
+    title: "Services",
+    links: [
+      "AI Development",
+      "Website Development",
+      "Mobile Apps",
+      "Automation",
+      "Cloud Services",
+      "Support",
+    ],
+  },
+  {
+    title: "Quick Links",
+    links: ["Home", "Services", "Process", "Testimonials", "FAQ", "Contact"],
+  },
+];
+
+export default function Footer() {
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+  return (
+    <footer className="relative border-t border-white/10 bg-background pt-20 pb-10">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-10 mb-16">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-4">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-black shadow-[0_0_20px_rgba(255,122,0,0.5)]">
+                <Zap className="h-5 w-5" />
+              </div>
+              <span className="text-xl font-bold text-white tracking-tight">
+                ZFusionAI
+              </span>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+              Custom AI, websites, apps and automation for businesses in Dubai,
+              UAE. We build the systems your business actually needs to scale.
+            </p>
+
+            <div className="mt-6 space-y-2 text-sm">
+              <a
+                href="mailto:support@zfusionai.info"
+                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Mail className="h-4 w-4" /> support@zfusionai.info
+              </a>
+              <a
+                href="tel:+971542026653"
+                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Phone className="h-4 w-4" /> +971 54 202 66 53
+              </a>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="h-4 w-4" /> Dubai, UAE
+              </div>
+            </div>
+          </div>
+
+          {cols.map((col) => (
+            <div key={col.title} className="md:col-span-2">
+              <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+                {col.title}
+              </h4>
+              <ul className="space-y-2.5">
+                {col.links.map((link) => (
+                  <li key={link}>
+                    <button
+                      onClick={() =>
+                        scrollTo(link.toLowerCase().replace(/\s+/g, ""))
+                      }
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors text-left"
+                    >
+                      {link}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div className="col-span-2 md:col-span-2">
+            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+              Service Areas
+            </h4>
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
+              <li>Dubai</li>
+              <li>Abu Dhabi</li>
+              <li>Sharjah</li>
+              <li>Ajman</li>
+              <li>Ras Al Khaimah</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+          <div>© 2026 ZFusionAI. All rights reserved.</div>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-primary transition-colors">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-primary transition-colors">
+              Terms
+            </a>
+            <a href="#" className="hover:text-primary transition-colors">
+              Cookies
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

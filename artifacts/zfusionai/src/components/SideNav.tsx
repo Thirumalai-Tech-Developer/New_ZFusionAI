@@ -1,0 +1,63 @@
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+const sections = [
+  { id: "hero", label: "HOME" },
+  { id: "services", label: "SERVICES" },
+  { id: "process", label: "HOW WE WORK" },
+  { id: "contact", label: "CONTACT" },
+];
+
+export default function SideNav() {
+  const [activeSection, setActiveSection] = useState("hero");
+
+  useEffect(() => {
+    const observers = sections.map(({ id }) => {
+      const element = document.getElementById(id);
+      if (!element) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(id);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      observer.observe(element);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((obs) => obs?.disconnect());
+    };
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 z-50 flex-col gap-4">
+      {sections.map(({ id, label }) => (
+        <button
+          key={id}
+          onClick={() => scrollTo(id)}
+          className="group relative flex items-center justify-end"
+        >
+          <span className="absolute right-8 text-xs font-bold tracking-widest text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 transition-all duration-300 pointer-events-none whitespace-nowrap">
+            {label}
+          </span>
+          <div 
+            className={`w-1.5 h-8 rounded-full transition-all duration-300 ${
+              activeSection === id ? "bg-primary shadow-[0_0_10px_rgba(255,122,0,0.5)] h-12" : "bg-white/20 group-hover:bg-white/50"
+            }`}
+          />
+        </button>
+      ))}
+    </div>
+  );
+}

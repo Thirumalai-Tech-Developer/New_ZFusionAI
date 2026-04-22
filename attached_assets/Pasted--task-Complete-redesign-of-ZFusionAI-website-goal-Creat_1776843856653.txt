@@ -1,0 +1,267 @@
+{
+  "task": "Complete redesign of ZFusionAI website",
+  "goal": "Create a premium modern B2B business website with a Dark + Orange theme focused on conversions, trust, and lead generation for Dubai/UAE clients.",
+  "brand_identity": {
+    "company": "ZFusionAI",
+    "positioning": "AI, Web, App and Automation Solutions for Businesses",
+    "audience": [
+      "Startups",
+      "SMEs",
+      "Enterprises",
+      "Corporate Clients",
+      "Dubai / UAE Businesses"
+    ],
+    "tone": [
+      "Premium",
+      "Modern",
+      "Bold",
+      "Trustworthy",
+      "Technical",
+      "Growth-focused"
+    ]
+  },
+
+  "design_system": {
+    "theme": "Dark + Orange",
+    "style": "Luxury SaaS / Enterprise Agency",
+    "colors": {
+      "background_primary": "#0B0B0B",
+      "background_secondary": "#141414",
+      "card_background": "#1B1B1B",
+      "border": "#2A2A2A",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#B5B5B5",
+      "accent_primary": "#FF7A00",
+      "accent_secondary": "#FF9D3D",
+      "accent_hover": "#FFA94D",
+      "success": "#22C55E"
+    },
+    "typography": {
+      "heading_font": "Inter / Sora / Poppins",
+      "body_font": "Inter / DM Sans",
+      "heading_weight": "700-800",
+      "body_weight": "400-500"
+    },
+    "ui_style": {
+      "radius": "16px",
+      "button_radius": "12px",
+      "shadow": "soft orange glow",
+      "spacing": "clean generous spacing",
+      "animations": "smooth fade, slide-up, hover scale"
+    }
+  },
+
+  "layout": {
+    "max_width": "1400px",
+    "container_padding": "24px",
+    "section_spacing": "100px desktop / 70px mobile",
+    "grid_system": "12-column responsive"
+  },
+
+  "navbar": {
+    "style": "sticky glass dark navbar",
+    "background": "rgba(10,10,10,0.75)",
+    "blur": true,
+    "items": [
+      "Home",
+      "Services",
+      "Solutions",
+      "About",
+      "Contact"
+    ],
+    "right_cta": {
+      "text": "Get Proposal",
+      "color": "orange"
+    },
+    "logo_style": "minimal glowing orange icon + white text"
+  },
+
+  "hero_section": {
+    "layout": "2 column",
+    "left": {
+      "headline": "AI & Software Solutions Built for Business Growth",
+      "subheadline": "We build websites, apps, AI systems and automation platforms for Dubai businesses that want faster growth and better efficiency.",
+      "cta_primary": "Book Free Call",
+      "cta_secondary": "View Services",
+      "trust_points": [
+        "B2B Focused",
+        "Fast Delivery",
+        "Scalable Systems",
+        "Dubai Ready"
+      ]
+    },
+    "right": {
+      "visual": "3D dashboard mockup with orange glowing charts, AI nodes, business analytics screens"
+    },
+    "background_effects": [
+      "orange radial glow",
+      "grid lines",
+      "floating particles"
+    ]
+  },
+
+  "sections": [
+    {
+      "name": "Trusted By Businesses",
+      "type": "logo_strip",
+      "content": "client logos monochrome"
+    },
+    {
+      "name": "Our Services",
+      "type": "cards",
+      "cards": [
+        "AI Development",
+        "Website Development",
+        "Mobile Apps",
+        "Automation Systems",
+        "Cloud Deployment",
+        "Maintenance & Support"
+      ],
+      "card_style": "dark cards with orange top border hover glow"
+    },
+    {
+      "name": "Why Choose ZFusionAI",
+      "type": "icon_features",
+      "items": [
+        "Business-first Solutions",
+        "Modern UI/UX",
+        "SEO Optimized",
+        "Secure & Scalable",
+        "Direct Communication",
+        "Long-term Support"
+      ]
+    },
+    {
+      "name": "Industries We Serve",
+      "type": "grid",
+      "items": [
+        "Real Estate",
+        "Healthcare",
+        "Retail",
+        "Construction",
+        "Finance",
+        "Hospitality",
+        "Logistics",
+        "Corporate Services"
+      ]
+    },
+    {
+      "name": "Case Studies / Results",
+      "type": "stats_cards",
+      "items": [
+        "40% Workflow Time Saved",
+        "3x More Leads",
+        "99.9% Uptime",
+        "Custom Systems Delivered"
+      ]
+    },
+    {
+      "name": "How We Work",
+      "type": "timeline",
+      "steps": [
+        "Discovery Call",
+        "Strategy & Proposal",
+        "Design & Development",
+        "Testing",
+        "Launch",
+        "Support & Scale"
+      ]
+    },
+    {
+      "name": "Testimonials",
+      "type": "slider_dark_cards"
+    },
+    {
+      "name": "FAQ",
+      "type": "accordion"
+    },
+    {
+      "name": "Final CTA",
+      "type": "banner",
+      "headline": "Ready to Build Something Powerful?",
+      "button": "Start Your Project"
+    }
+  ],
+
+  "contact_section": {
+    "layout": "2 column",
+    "left": {
+      "title": "Let’s Talk Business",
+      "details": [
+        "Dubai, UAE",
+        "+971 54 202 66 53",
+        "support@zfusionai.info"
+      ]
+    },
+    "right": {
+      "form_fields": [
+        "Name",
+        "Company",
+        "Email",
+        "Phone",
+        "Service Needed",
+        "Budget",
+        "Message"
+      ],
+      "button": "Send Inquiry"
+    }
+  },
+
+  "footer": {
+    "style": "clean dark footer",
+    "columns": [
+      "Company",
+      "Services",
+      "Quick Links",
+      "Contact"
+    ],
+    "bottom_text": "© 2026 ZFusionAI. All rights reserved."
+  },
+
+  "seo_strategy": {
+    "keywords": [
+      "AI company Dubai",
+      "web development Dubai",
+      "software company UAE",
+      "app development Dubai",
+      "automation company Dubai",
+      "business website Dubai"
+    ],
+    "conversion_elements": [
+      "multiple CTA buttons",
+      "lead forms",
+      "trust badges",
+      "results stats",
+      "client testimonials"
+    ]
+  },
+
+  "animations": {
+    "on_scroll": [
+      "fade up",
+      "slide left/right",
+      "counter animation",
+      "stagger card reveal"
+    ],
+    "hover": [
+      "button glow",
+      "card lift",
+      "icon rotate"
+    ]
+  },
+
+  "tech_stack_recommended": {
+    "frontend": "React + Tailwind CSS + Framer Motion",
+    "backend": "Node.js / Laravel / Django",
+    "cms_optional": "Sanity / Strapi",
+    "hosting": "Vercel / AWS / DigitalOcean"
+  },
+
+  "important_notes": [
+    "Do not use generic template look.",
+    "Must feel premium and expensive.",
+    "Need fast loading speed.",
+    "Mobile first responsive design.",
+    "High trust B2B conversion layout."
+  ]
+}

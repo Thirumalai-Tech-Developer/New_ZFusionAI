@@ -1,0 +1,271 @@
+{
+  "hero": {
+    "title": "AI Software Development Company in Dubai, UAE for Businesses",
+    "subtitle": "Custom AI, web, mobile and automation solutions built for companies that want growth, efficiency and digital transformation.",
+    "description": [
+      "ZFusionAI is a Dubai-focused technology company delivering business-first software solutions for startups, SMEs and enterprises.",
+      "We work directly with companies, brands and organizations on B2B projects only.",
+      "Our mission is to help businesses reduce manual work, improve customer experience, increase revenue opportunities and scale with modern technology.",
+      "From AI-powered platforms to custom websites, internal systems and mobile applications, we build reliable solutions tailored to real business needs."
+    ],
+    "cta": [
+      "Request Proposal",
+      "Talk to Our Team",
+      "Explore Services"
+    ],
+    "seo_keywords": [
+      "AI company Dubai",
+      "software company Dubai UAE",
+      "web development Dubai",
+      "business automation Dubai",
+      "custom app development UAE",
+      "B2B technology solutions Dubai"
+    ]
+  },
+
+  "home": {
+    "intro": {
+      "title": "Trusted Technology Partner for Businesses in Dubai",
+      "content": [
+        "ZFusionAI helps businesses modernize operations with custom software, AI systems and scalable digital platforms.",
+        "We are not a training institute or consulting academy. We are a delivery-focused technology company serving business clients.",
+        "Every project is designed around measurable business goals such as lead generation, workflow automation, customer retention and operational efficiency."
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Businesses Choose ZFusionAI",
+      "points": [
+        "B2B focused delivery model for startups, SMEs and enterprises",
+        "Custom-built solutions instead of generic templates",
+        "Strong focus on ROI, automation and growth outcomes",
+        "Modern UI/UX with responsive performance",
+        "Scalable architecture for future expansion",
+        "Transparent communication and milestone-based execution",
+        "Secure coding practices and performance optimization",
+        "Long-term technical support and maintenance"
+      ]
+    },
+
+    "business_benefits": {
+      "title": "Business Results We Help Create",
+      "points": [
+        "Generate more leads through conversion-focused websites",
+        "Reduce repetitive tasks with automation systems",
+        "Improve internal productivity with dashboards and tools",
+        "Launch new digital products faster",
+        "Increase customer engagement through apps and portals",
+        "Use AI insights for smarter decisions"
+      ]
+    }
+  },
+
+  "services": {
+    "title": "Professional B2B Services in Dubai, UAE",
+
+    "ai_development": {
+      "title": "AI Development Services",
+      "description": [
+        "We build custom artificial intelligence systems for companies that want smarter operations and better decisions.",
+        "Our AI solutions are practical, business-ready and integrated into your workflow."
+      ],
+      "features": [
+        "AI chatbots for customer support",
+        "Document processing automation",
+        "Predictive analytics dashboards",
+        "Recommendation engines",
+        "Computer vision solutions",
+        "Custom machine learning models",
+        "Natural language processing tools"
+      ]
+    },
+
+    "web_development": {
+      "title": "Website Development in Dubai",
+      "description": [
+        "High-performance websites built for business growth, branding and lead generation.",
+        "We create modern websites optimized for speed, mobile devices and search engines."
+      ],
+      "features": [
+        "Corporate websites",
+        "Business landing pages",
+        "Custom portals",
+        "SEO-friendly architecture",
+        "Booking systems",
+        "CMS solutions",
+        "E-commerce websites"
+      ]
+    },
+
+    "mobile_apps": {
+      "title": "Mobile App Development",
+      "description": [
+        "Business mobile apps for Android and iOS to engage customers and streamline operations."
+      ],
+      "features": [
+        "Customer apps",
+        "Delivery apps",
+        "Booking apps",
+        "Internal staff apps",
+        "Cross-platform development",
+        "App maintenance"
+      ]
+    },
+
+    "automation": {
+      "title": "Business Automation Solutions",
+      "description": [
+        "Automate repetitive tasks, reporting and workflows to save time and reduce cost."
+      ],
+      "features": [
+        "CRM workflow automation",
+        "Invoice automation",
+        "Lead management systems",
+        "Email automation",
+        "API integrations",
+        "Internal approval systems"
+      ]
+    },
+
+    "cloud_devops": {
+      "title": "Cloud & Deployment Services",
+      "description": [
+        "Reliable hosting, deployment pipelines and scalable infrastructure for growing businesses."
+      ],
+      "features": [
+        "Cloud migration",
+        "Server setup",
+        "CI/CD pipelines",
+        "Monitoring systems",
+        "Security hardening",
+        "Performance scaling"
+      ]
+    },
+
+    "maintenance": {
+      "title": "Support & Maintenance",
+      "description": [
+        "Ongoing support to keep systems secure, fast and updated."
+      ],
+      "features": [
+        "Bug fixes",
+        "Feature upgrades",
+        "Security patches",
+        "Performance optimization",
+        "Technical support"
+      ]
+    }
+  },
+
+  "industries": {
+    "title": "Industries We Serve",
+    "list": [
+      "Real Estate",
+      "Healthcare",
+      "Retail & E-commerce",
+      "Construction",
+      "Logistics",
+      "Hospitality",
+      "Finance",
+      "Education Companies",
+      "Travel & Tourism",
+      "Professional Services",
+      "Manufacturing",
+      "Automotive"
+    ]
+  },
+
+  "about": {
+    "title": "About ZFusionAI",
+    "description": [
+      "ZFusionAI is a business technology company serving clients in Dubai, UAE and beyond.",
+      "We specialize in building custom software that solves real operational and growth challenges.",
+      "Our approach combines business understanding, modern engineering and long-term reliability.",
+      "We partner with companies that need execution, not empty promises."
+    ],
+
+    "mission": "Help businesses grow faster through practical technology solutions.",
+    "vision": "Become a trusted B2B innovation partner for businesses across Dubai, UAE and global markets.",
+
+    "core_values": [
+      "Execution",
+      "Transparency",
+      "Quality",
+      "Innovation",
+      "Security",
+      "Long-term Partnerships"
+    ]
+  },
+
+  "seo_sections": {
+    "website_development_dubai": {
+      "title": "Best Website Development Company in Dubai",
+      "content": [
+        "If your business needs a modern website in Dubai, ZFusionAI builds fast, responsive and SEO-ready websites designed to convert visitors into customers.",
+        "We develop business websites that improve trust, visibility and sales opportunities."
+      ]
+    },
+
+    "ai_company_dubai": {
+      "title": "AI Company in Dubai for Modern Businesses",
+      "content": [
+        "We help Dubai businesses adopt AI with practical use cases such as chatbots, automation, analytics and customer engagement systems.",
+        "Our AI solutions are tailored for ROI and real business value."
+      ]
+    },
+
+    "software_company_uae": {
+      "title": "Custom Software Company in UAE",
+      "content": [
+        "Need a custom CRM, ERP, dashboard or internal platform? ZFusionAI develops scalable software solutions for UAE businesses."
+      ]
+    }
+  },
+
+  "contact": {
+    "title": "Contact ZFusionAI Dubai",
+    "description": [
+      "Ready to build your next business solution?",
+      "Speak with our team for websites, AI systems, apps or automation projects."
+    ],
+    "email": "support@zfusionai.info",
+    "phone": "+971 54 202 66 53",
+    "address": "Dubai, UAE",
+    "service_area": [
+      "Dubai",
+      "Abu Dhabi",
+      "Sharjah",
+      "Ajman",
+      "Ras Al Khaimah",
+      "All UAE"
+    ],
+    "business_hours": {
+      "monday_to_friday": "9:00 AM - 6:00 PM",
+      "saturday": "By Appointment",
+      "sunday": "Closed"
+    }
+  },
+
+  "footer": {
+    "tagline": "Custom AI, websites, apps and automation for businesses in Dubai, UAE.",
+    "quick_links": [
+      "Home",
+      "Services",
+      "About Us",
+      "Contact"
+    ],
+    "service_links": [
+      "AI Development",
+      "Website Development",
+      "Mobile Apps",
+      "Automation",
+      "Cloud Services"
+    ],
+    "contact": {
+      "email": "support@zfusionai.info",
+      "phone": "+971 54 202 66 53",
+      "address": "Dubai, UAE"
+    },
+    "copyright": "© 2026 ZFusionAI. All rights reserved."
+  }
+}

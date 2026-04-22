@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "ZFusionAI"
+version = "1.0.0"
+id = "artifacts/zfusionai"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18293
+
+[services.development]
+run = "pnpm --filter @workspace/zfusionai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/zfusionai", "run", "build" ]
+publicDir = "artifacts/zfusionai/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18293"
+BASE_PATH = "/"
