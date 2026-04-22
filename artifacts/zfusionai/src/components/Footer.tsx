@@ -1,45 +1,52 @@
 import { Mail, Phone, MapPin, Zap } from "lucide-react";
+import { Link } from "wouter";
 
 const cols = [
   {
     title: "Company",
-    links: ["About", "Why ZFusionAI", "Industries", "How We Work", "Careers"],
+    links: [
+      { name: "About", href: "/about" },
+      { name: "Why ZFusionAI", href: "/about" },
+      { name: "Industries", href: "/industries" },
+    ],
   },
   {
     title: "Services",
     links: [
-      "AI Development",
-      "Website Development",
-      "Mobile Apps",
-      "Automation",
-      "Cloud Services",
-      "Support",
+      { name: "AI Development", href: "/services#ai-development" },
+      { name: "Website Development", href: "/services#web-development" },
+      { name: "Mobile Apps", href: "/services#mobile-apps" },
+      { name: "Automation", href: "/services#business-automation" },
+      { name: "Cloud Services", href: "/services#cloud-deployment" },
     ],
   },
   {
     title: "Quick Links",
-    links: ["Home", "Services", "Process", "Testimonials", "FAQ", "Contact"],
+    links: [
+      { name: "Home", href: "/" },
+      { name: "Services", href: "/services" },
+      { name: "Contact", href: "/contact" },
+    ],
   },
 ];
 
 export default function Footer() {
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
   return (
     <footer className="relative border-t border-white/10 bg-background pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 mb-16">
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
-            <div className="flex items-center gap-2 mb-5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-black shadow-[0_0_20px_rgba(255,122,0,0.5)]">
-                <Zap className="h-5 w-5" />
+            <Link href="/">
+              <div className="flex items-center gap-2 mb-5 cursor-pointer inline-flex">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-black shadow-[0_0_20px_rgba(255,122,0,0.5)]">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <span className="text-xl font-bold text-white tracking-tight">
+                  ZFusionAI
+                </span>
               </div>
-              <span className="text-xl font-bold text-white tracking-tight">
-                ZFusionAI
-              </span>
-            </div>
+            </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
               Custom AI, websites, apps and automation for businesses in Dubai,
               UAE. We build the systems your business actually needs to scale.
@@ -71,15 +78,12 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <button
-                      onClick={() =>
-                        scrollTo(link.toLowerCase().replace(/\s+/g, ""))
-                      }
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors text-left"
-                    >
-                      {link}
-                    </button>
+                  <li key={link.name}>
+                    <Link href={link.href}>
+                      <span className="text-sm text-muted-foreground hover:text-primary transition-colors text-left cursor-pointer inline-block">
+                        {link.name}
+                      </span>
+                    </Link>
                   </li>
                 ))}
               </ul>

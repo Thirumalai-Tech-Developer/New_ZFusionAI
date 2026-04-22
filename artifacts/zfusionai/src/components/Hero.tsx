@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronRight, Zap } from "lucide-react";
 
@@ -17,10 +18,6 @@ export default function Hero() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -78,23 +75,25 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button
-              size="lg"
-              onClick={() => scrollTo("contact")}
-              className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg shadow-[0_0_30px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] transition-all duration-300 group"
-            >
-              Book Free Call
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollTo("services")}
-              className="w-full sm:w-auto rounded-full px-8 py-6 text-lg border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-sm group"
-            >
-              View Services
-              <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="/contact" className="w-full sm:w-auto inline-flex">
+              <Button
+                size="lg"
+                className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg shadow-[0_0_30px_rgba(255,122,0,0.4)] hover:shadow-[0_0_40px_rgba(255,122,0,0.6)] transition-all duration-300 group"
+              >
+                Book Free Call
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="/services" className="w-full sm:w-auto inline-flex">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full rounded-full px-8 py-6 text-lg border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-sm group"
+              >
+                View Services
+                <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </motion.div>
 
           <motion.div

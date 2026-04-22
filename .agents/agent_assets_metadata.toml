@@ -1,0 +1,122 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "cEkWUv73l8q0fmvrTOt3M"
+uri = "file://artifacts/zfusionai/public/images/services-hero.png"
+type = "image"
+title = "Services hero abstract tech visual"
+
+[[generated]]
+id = "GeDJ0eZEvK2dDM3cdptZe"
+uri = "file://artifacts/zfusionai/public/images/service-ai.png"
+type = "image"
+title = "AI service visualization"
+
+[[generated]]
+id = "y4gnbeg5MSlweZYViKtPt"
+uri = "file://artifacts/zfusionai/public/images/service-web.png"
+type = "image"
+title = "Web dev dashboard abstract"
+
+[[generated]]
+id = "uQE8PaSq41Vm96MnVdM9S"
+uri = "file://artifacts/zfusionai/public/images/service-mobile.png"
+type = "image"
+title = "Mobile app abstract visual"
+
+[[generated]]
+id = "NX00I_C4iBCaVGsp-Agg4"
+uri = "file://artifacts/zfusionai/public/images/service-automation.png"
+type = "image"
+title = "Automation flowchart abstract"
+
+[[generated]]
+id = "GWxWwZQg5YN5Bh62gkJB7"
+uri = "file://artifacts/zfusionai/public/images/service-cloud.png"
+type = "image"
+title = "Cloud infrastructure abstract"
+
+[[generated]]
+id = "GRWlyQtmHdO22dpW0R8YB"
+uri = "file://artifacts/zfusionai/public/images/industries-hero.png"
+type = "image"
+title = "Industries hero skyline"
+
+[[generated]]
+id = "frmbJ-MIGzMeIi7Tqrnvo"
+uri = "file://artifacts/zfusionai/public/images/about-hero.png"
+type = "image"
+title = "About hero Dubai skyline"
+
+[[generated]]
+id = "fgxBca81EmvqUaQ9OP1Ay"
+uri = "file://artifacts/zfusionai/public/images/contact-hero.png"
+type = "image"
+title = "Contact hero network visual"
+
+[[generated]]
+id = "9JyB2dmQ_0XguwvGT0-NW"
+uri = "file://artifacts/zfusionai/public/images/industry-real-estate.png"
+type = "image"
+title = "Real estate industry visual"
+
+[[generated]]
+id = "n9iIh-crI6ZMaELeW8I0U"
+uri = "file://artifacts/zfusionai/public/images/industry-healthcare.png"
+type = "image"
+title = "Healthcare industry network"
+
+[[generated]]
+id = "qia1iYf3dSgj6pKZOiY2c"
+uri = "file://artifacts/zfusionai/public/images/industry-retail.png"
+type = "image"
+title = "Retail industry network"
+
+[[generated]]
+id = "4pR-sISiR1ePfMP7XjppN"
+uri = "file://artifacts/zfusionai/public/images/industry-construction.png"
+type = "image"
+title = "Construction structure"
+
+[[generated]]
+id = "QpXuSSWSQZ2lLqX4lXBA2"
+uri = "file://artifacts/zfusionai/public/images/industry-logistics.png"
+type = "image"
+title = "Logistics network"
+
+[[generated]]
+id = "hommeuzTK31-6KAFcVSy8"
+uri = "file://artifacts/zfusionai/public/images/industry-hospitality.png"
+type = "image"
+title = "Hospitality concepts"
+
+[[generated]]
+id = "Gk1MTXCa4pI4ybhx70SHx"
+uri = "file://artifacts/zfusionai/public/images/industry-finance.png"
+type = "image"
+title = "Finance data pillars"
+
+[[generated]]
+id = "UXlg31NUegldZg9MJ3XK4"
+uri = "file://artifacts/zfusionai/public/images/industry-education.png"
+type = "image"
+title = "Education knowledge nodes"
+
+[[generated]]
+id = "eubT6YqKb22hpwS7D3qBy"
+uri = "file://artifacts/zfusionai/public/images/industry-travel.png"
+type = "image"
+title = "Travel flight paths"
+
+[[generated]]
+id = "AghH4OqgnHM3B0ufC0RAv"
+uri = "file://artifacts/zfusionai/public/images/industry-professional.png"
+type = "image"
+title = "Professional Services"
+
+[[generated]]
+id = "J9KrSkI3YXWYW7XoeeiPV"
+uri = "file://artifacts/zfusionai/public/images/industry-automotive.png"
+type = "image"
+title = "Automotive designs"

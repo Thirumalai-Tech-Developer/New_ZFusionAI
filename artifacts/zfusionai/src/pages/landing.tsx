@@ -9,13 +9,14 @@ import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
-import Contact from "@/components/Contact";
+import ContactPreview from "@/components/ContactPreview";
 import Footer from "@/components/Footer";
 import BackgroundEffects from "@/components/BackgroundEffects";
 import SideNav from "@/components/SideNav";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "wouter";
 
 export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
@@ -49,7 +50,7 @@ export default function Landing() {
         <Testimonials />
         <FAQ />
         <FinalCTA />
-        <Contact />
+        <ContactPreview />
       </main>
 
       <Footer />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,20 +18,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "Services", href: "#services" },
-    { name: "Solutions", href: "#industries" },
-    { name: "About", href: "#why-choose" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Industries", href: "/industries" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
-
-  const scrollTo = (id: string) => {
-    setIsMobileMenuOpen(false);
-    const element = document.getElementById(id.replace("#", ""));
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <>
@@ -57,30 +50,35 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollTo(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-white transition-colors"
-              >
-                {link.name}
-              </button>
+              <Link key={link.name} href={link.href}>
+                <span
+                  className={`text-sm font-medium cursor-pointer transition-colors ${
+                    location === link.href
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </span>
+              </Link>
             ))}
           </nav>
 
           {/* CTA */}
           <div className="hidden md:flex">
-            <Button
-              onClick={() => scrollTo("#contact")}
-              className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all duration-300 group"
-            >
-              Get Proposal
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="/contact" className="inline-flex">
+              <Button
+                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all duration-300 group"
+              >
+                Get Proposal
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 cursor-pointer"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -99,21 +97,26 @@ export default function Navbar() {
           >
             <nav className="flex flex-col gap-6 items-center">
               {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollTo(link.href)}
-                  className="text-2xl font-bold text-muted-foreground hover:text-white transition-colors"
-                >
-                  {link.name}
-                </button>
+                <Link key={link.name} href={link.href}>
+                  <span
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-2xl font-bold cursor-pointer transition-colors ${
+                      location === link.href ? "text-primary" : "text-muted-foreground hover:text-white"
+                    }`}
+                  >
+                    {link.name}
+                  </span>
+                </Link>
               ))}
-              <Button
-                onClick={() => scrollTo("#contact")}
-                size="lg"
-                className="mt-4 w-full rounded-full bg-primary text-primary-foreground shadow-[0_0_20px_rgba(255,122,0,0.3)]"
-              >
-                Get Proposal
-              </Button>
+              <Link href="/contact" className="w-full inline-flex justify-center mt-4">
+                <Button
+                  size="lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full rounded-full bg-primary text-primary-foreground shadow-[0_0_20px_rgba(255,122,0,0.3)]"
+                >
+                  Get Proposal
+                </Button>
+              </Link>
             </nav>
           </motion.div>
         )}

@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function FinalCTA() {
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
   return (
     <section className="relative py-24 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
@@ -51,14 +49,15 @@ export default function FinalCTA() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                size="lg"
-                onClick={() => scrollTo("contact")}
-                className="w-full sm:w-auto rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg shadow-[0_0_40px_rgba(255,122,0,0.5)] hover:shadow-[0_0_60px_rgba(255,122,0,0.7)] transition-all duration-300 group"
-              >
-                Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/contact" className="w-full sm:w-auto inline-flex">
+                <Button
+                  size="lg"
+                  className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg shadow-[0_0_40px_rgba(255,122,0,0.5)] hover:shadow-[0_0_60px_rgba(255,122,0,0.7)] transition-all duration-300 group"
+                >
+                  Start Your Project
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
               <a
                 href="tel:+971542026653"
                 className="text-muted-foreground hover:text-white transition-colors"
