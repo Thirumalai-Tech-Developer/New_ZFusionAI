@@ -64,7 +64,7 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={scrollToServices}
-            className="fixed bottom-8 left-8 z-50 flex items-center gap-2 rounded-full bg-card/80 backdrop-blur-md border border-white/10 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-card hover:border-primary/50 transition-all group"
+            className="hidden md:flex fixed bottom-8 left-8 z-50 items-center gap-2 rounded-full bg-card/80 backdrop-blur-md border border-white/10 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-card hover:border-primary/50 transition-all group"
           >
             <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
               <ArrowDown className="h-4 w-4" />

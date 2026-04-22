@@ -140,22 +140,24 @@ export default function ServicesPage() {
       </section>
 
       {/* Anchor Nav */}
-      <div className="sticky top-[72px] z-40 bg-background/90 backdrop-blur-md border-b border-white/10 hidden md:block">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="flex gap-8 overflow-x-auto py-4 hide-scrollbar">
+      <div className="sticky top-[64px] md:top-[72px] z-40 bg-background/90 backdrop-blur-md border-b border-white/10">
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+          <div className="flex gap-6 md:gap-8 overflow-x-auto py-3 md:py-4 hide-scrollbar px-6 md:px-12">
             {servicesDetails.map((s) => (
-              <button 
+              <button
                 key={s.id}
                 onClick={() => {
                   const el = document.getElementById(s.id);
                   if (el) {
-                    const y = el.getBoundingClientRect().top + window.scrollY - 150;
+                    const y = el.getBoundingClientRect().top + window.scrollY - 130;
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
                 }}
-                className="text-sm font-medium text-muted-foreground hover:text-white whitespace-nowrap transition-colors flex items-center gap-2"
+                className="text-xs md:text-sm font-medium text-muted-foreground hover:text-white whitespace-nowrap transition-colors flex items-center gap-2 shrink-0"
               >
-                <span className="text-primary/70">{s.icon}</span>
+                <span className="text-primary/70 shrink-0">{s.icon}</span>
                 {s.title}
               </button>
             ))}

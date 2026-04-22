@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
@@ -35,11 +35,23 @@ const testimonials = [
 
 export default function Testimonials() {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const t = testimonials[index];
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
   const prev = () =>
     setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+
+  useEffect(() => {
+    if (paused) return;
+    intervalRef.current = setInterval(() => {
+      setIndex((i) => (i + 1) % testimonials.length);
+    }, 6000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [paused]);
 
   return (
     <section id="testimonials" className="relative py-24 md:py-32">
@@ -59,8 +71,12 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="relative rounded-3xl border border-white/10 bg-card/40 backdrop-blur-sm p-8 md:p-14 overflow-hidden">
+        <div
+          className="relative max-w-4xl mx-auto"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div className="relative rounded-3xl border border-white/10 bg-card/40 backdrop-blur-sm p-6 sm:p-8 md:p-14 overflow-hidden">
             <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-primary/10 blur-3xl" />
             <Quote className="h-10 w-10 text-primary/50 mb-6" />
 
