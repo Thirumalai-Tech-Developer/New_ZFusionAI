@@ -16,38 +16,28 @@ export default function TrustedBy() {
         <p className="text-center text-sm font-medium text-muted-foreground mb-8">
           TRUSTED BY INNOVATIVE COMPANIES ACROSS THE UAE
         </p>
-        
-        <div className="relative flex overflow-x-hidden">
-          <div className="animate-marquee flex whitespace-nowrap items-center min-w-full">
-            {logos.map((logo, i) => (
-              <div 
-                key={`logo-1-${i}`} 
-                className="mx-12 text-muted-foreground/40 hover:text-white/60 transition-colors duration-300 grayscale flex-shrink-0"
-              >
-                {logo.icon}
-              </div>
-            ))}
-          </div>
-          <div className="animate-marquee flex whitespace-nowrap items-center min-w-full absolute top-0">
-            {logos.map((logo, i) => (
-              <div 
-                key={`logo-2-${i}`} 
-                className="mx-12 text-muted-foreground/40 hover:text-white/60 transition-colors duration-300 grayscale flex-shrink-0"
-              >
-                {logo.icon}
-              </div>
-            ))}
-          </div>
+      </div>
+
+      <div className="relative w-full overflow-hidden">
+        <div className="flex w-max animate-marquee">
+          {[...logos, ...logos].map((logo, i) => (
+            <div
+              key={`logo-${i}`}
+              className="mx-12 text-muted-foreground/40 hover:text-white/60 transition-colors duration-300 grayscale flex-shrink-0"
+            >
+              {logo.icon}
+            </div>
+          ))}
         </div>
       </div>
-      
+
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes marquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-100%); }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 40s linear infinite;
         }
       `}} />
     </section>

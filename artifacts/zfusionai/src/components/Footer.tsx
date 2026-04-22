@@ -24,8 +24,10 @@ const cols = [
     title: "Quick Links",
     links: [
       { name: "Home", href: "/" },
-      { name: "Services", href: "/services" },
+      { name: "Pricing", href: "/#pricing" },
       { name: "Contact", href: "/contact" },
+      { name: "Terms", href: "/terms" },
+      { name: "Privacy", href: "/privacy" },
     ],
   },
 ];
@@ -107,15 +109,16 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div>© 2026 ZFusionAI. All rights reserved.</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-primary transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
-              Terms
-            </a>
-            <a href="#" className="hover:text-primary transition-colors">
-              Cookies
-            </a>
+            <Link href="/privacy">
+              <span className="hover:text-primary transition-colors cursor-pointer">
+                Privacy
+              </span>
+            </Link>
+            <Link href="/terms">
+              <span className="hover:text-primary transition-colors cursor-pointer">
+                Terms
+              </span>
+            </Link>
           </div>
         </div>
       </div>

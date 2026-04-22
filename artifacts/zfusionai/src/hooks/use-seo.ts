@@ -14,3 +14,7 @@ export function useSEO(title: string, description: string) {
     }
   }, [title, description]);
 }
+
+export function useSeo({ title, description }: { title: string; description: string }) {
+  useSEO(title, description);
+}

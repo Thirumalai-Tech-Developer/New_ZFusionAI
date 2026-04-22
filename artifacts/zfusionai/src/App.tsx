@@ -9,6 +9,9 @@ import ServicesPage from "@/pages/services";
 import IndustriesPage from "@/pages/industries";
 import AboutPage from "@/pages/about";
 import ContactPage from "@/pages/contact";
+import TermsPage from "@/pages/terms";
+import PrivacyPage from "@/pages/privacy";
+import FloatingActions from "@/components/FloatingActions";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +23,8 @@ function Router() {
       <Route path="/industries" component={IndustriesPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/terms" component={TermsPage} />
+      <Route path="/privacy" component={PrivacyPage} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -31,6 +36,7 @@ function App() {
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <Router />
+          <FloatingActions />
         </WouterRouter>
         <Toaster />
         <SonnerToaster theme="dark" position="bottom-right" richColors />

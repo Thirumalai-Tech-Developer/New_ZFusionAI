@@ -8,6 +8,7 @@ import Stats from "@/components/Stats";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import Pricing from "@/components/Pricing";
 import FinalCTA from "@/components/FinalCTA";
 import ContactPreview from "@/components/ContactPreview";
 import Footer from "@/components/Footer";
@@ -48,6 +49,7 @@ export default function Landing() {
         <Stats />
         <Process />
         <Testimonials />
+        <Pricing />
         <FAQ />
         <FinalCTA />
         <ContactPreview />
