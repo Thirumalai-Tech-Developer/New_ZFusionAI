@@ -57,7 +57,7 @@ const sections = [
   },
   {
     title: "14. Contact",
-    body: `Questions about these Terms can be sent to support@zfusionai.info or +971 54 202 66 53.`,
+    body: `Questions about these Terms can be sent to support@zfusionai.info or +971 55 471 2353.`,
   },
 ];
 

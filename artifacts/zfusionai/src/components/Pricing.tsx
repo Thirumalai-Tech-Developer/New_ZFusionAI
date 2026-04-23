@@ -94,7 +94,7 @@ export default function Pricing() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {tiers.map((tier, idx) => {
             const Icon = tier.icon;
             return (
@@ -137,7 +137,7 @@ export default function Pricing() {
                       {tier.currency}
                     </span>
                   )}
-                  <span className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight break-words">
                     {tier.price}
                   </span>
                   <span className="text-sm text-muted-foreground">{tier.suffix}</span>

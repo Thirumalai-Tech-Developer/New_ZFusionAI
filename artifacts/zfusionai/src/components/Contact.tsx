@@ -126,10 +126,10 @@ export default function Contact() {
                 <div>
                   <div className="text-sm text-muted-foreground">Phone</div>
                   <a
-                    href="tel:+971542026653"
+                    href="tel:+971554712353"
                     className="text-white font-medium hover:text-primary transition-colors"
                   >
-                    +971 54 202 66 53
+                    +971 55 471 2353
                   </a>
                 </div>
               </div>

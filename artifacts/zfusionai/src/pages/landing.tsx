@@ -67,7 +67,7 @@ export default function Landing() {
             "AI, web, mobile and automation development company in Dubai, UAE.",
           contactPoint: {
             "@type": "ContactPoint",
-            telephone: "+971 54 202 66 53",
+            telephone: "+971 55 471 2353",
             contactType: "customer support",
             email: "support@zfusionai.info",
             areaServed: "AE",

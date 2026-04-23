@@ -21,7 +21,7 @@ const localBusinessSchema = {
   description:
     "AI, web, mobile and automation development company in Dubai, UAE.",
   url: SITE_URL,
-  telephone: "+971 54 202 66 53",
+  telephone: "+971 55 471 2353",
   email: "support@zfusionai.info",
   image: DEFAULT_OG_IMAGE,
   logo: DEFAULT_OG_IMAGE,

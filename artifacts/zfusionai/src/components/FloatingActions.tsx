@@ -1,7 +1,7 @@
 import { Phone, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-const PHONE = "+971542026653";
+const PHONE = "+971554712353";
 const WHATSAPP_URL = `https://wa.me/971542026653?text=${encodeURIComponent(
   "Hi ZFusionAI, I'd like to discuss a project."
 )}`;
@@ -41,7 +41,7 @@ export default function FloatingActions() {
         <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-20" />
         <Phone className="h-5 w-5 relative z-10" fill="currentColor" />
         <span className="absolute right-full mr-3 whitespace-nowrap rounded-md bg-card/95 backdrop-blur px-3 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
-          +971 54 202 66 53
+          +971 55 471 2353
         </span>
       </motion.a>
     </div>

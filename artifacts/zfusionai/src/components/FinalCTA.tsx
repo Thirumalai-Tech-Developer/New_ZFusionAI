@@ -59,10 +59,10 @@ export default function FinalCTA() {
                 </Button>
               </Link>
               <a
-                href="tel:+971542026653"
+                href="tel:+971554712353"
                 className="text-muted-foreground hover:text-white transition-colors"
               >
-                or call <span className="text-white font-medium">+971 54 202 66 53</span>
+                or call <span className="text-white font-medium">+971 55 471 2353</span>
               </a>
             </div>
           </div>

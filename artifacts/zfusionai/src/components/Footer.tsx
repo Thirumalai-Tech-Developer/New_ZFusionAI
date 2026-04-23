@@ -90,10 +90,10 @@ export default function Footer() {
                 <Mail className="h-4 w-4" /> support@zfusionai.info
               </a>
               <a
-                href="tel:+971542026653"
+                href="tel:+971554712353"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               >
-                <Phone className="h-4 w-4" /> +971 54 202 66 53
+                <Phone className="h-4 w-4" /> +971 55 471 2353
               </a>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" /> Dubai, UAE

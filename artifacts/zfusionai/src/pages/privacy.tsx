@@ -49,7 +49,7 @@ const sections = [
   },
   {
     title: "12. Contact",
-    body: `For privacy-related questions, contact support@zfusionai.info or +971 54 202 66 53.`,
+    body: `For privacy-related questions, contact support@zfusionai.info or +971 55 471 2353.`,
   },
 ];
 
