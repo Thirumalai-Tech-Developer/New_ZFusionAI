@@ -81,11 +81,20 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href}>
-                      <span className="text-sm text-muted-foreground hover:text-primary transition-colors text-left cursor-pointer inline-block">
+                    {link.href.includes("#") ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors text-left cursor-pointer inline-block"
+                      >
                         {link.name}
-                      </span>
-                    </Link>
+                      </a>
+                    ) : (
+                      <Link href={link.href}>
+                        <span className="text-sm text-muted-foreground hover:text-primary transition-colors text-left cursor-pointer inline-block">
+                          {link.name}
+                        </span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -106,20 +115,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div>© 2026 ZFusionAI. All rights reserved.</div>
+        <div className="pt-8 border-t border-white/10 flex flex-col items-center justify-center gap-3 text-sm text-muted-foreground text-center">
           <div className="flex gap-6">
             <Link href="/privacy">
               <span className="hover:text-primary transition-colors cursor-pointer">
-                Privacy
+                Privacy Policy
               </span>
             </Link>
             <Link href="/terms">
               <span className="hover:text-primary transition-colors cursor-pointer">
-                Terms
+                Terms & Conditions
               </span>
             </Link>
           </div>
+          <div>© 2026 ZFusionAI. All rights reserved.</div>
         </div>
       </div>
     </footer>

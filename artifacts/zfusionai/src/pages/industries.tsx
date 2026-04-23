@@ -88,7 +88,7 @@ const industriesData = [
   },
   {
     name: "Manufacturing",
-    image: "/images/industry-automotive.png", // fallback
+    image: "/images/industry-manufacturing.png",
     challenge: "Siloed machinery data and manual quality control processes lead to unexpected downtime and high defect rates.",
     solution: "IoT-connected dashboards, predictive maintenance AI, and computer vision for automated quality control.",
     useCases: ["Predictive Maintenance AI", "IoT Dashboards", "Computer Vision QA", "Supply Chain ERP"],

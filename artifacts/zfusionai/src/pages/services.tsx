@@ -95,7 +95,7 @@ const servicesDetails = [
     id: "support-maintenance",
     title: "Support & Maintenance",
     icon: <Headset className="h-6 w-6" />,
-    image: "/images/service-cloud.png", // reusing cloud for now since 10 image limit hit
+    image: "/images/service-support.png",
     description: "Long-term partnership ensuring your software remains secure, updated, and performing optimally. We act as your dedicated engineering team, providing proactive monitoring and rapid issue resolution.",
     features: [
       "24/7 System Monitoring",
@@ -139,30 +139,37 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Anchor Nav */}
-      <div className="sticky top-[64px] md:top-[72px] z-40 bg-background/90 backdrop-blur-md border-b border-white/10">
-        <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
-          <div className="flex gap-6 md:gap-8 overflow-x-auto py-3 md:py-4 hide-scrollbar px-6 md:px-12">
-            {servicesDetails.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => {
-                  const el = document.getElementById(s.id);
-                  if (el) {
-                    const y = el.getBoundingClientRect().top + window.scrollY - 130;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                  }
-                }}
-                className="text-xs md:text-sm font-medium text-muted-foreground hover:text-white whitespace-nowrap transition-colors flex items-center gap-2 shrink-0"
-              >
-                <span className="text-primary/70 shrink-0">{s.icon}</span>
-                {s.title}
-              </button>
-            ))}
-          </div>
+      {/* Anchor Nav — auto-marquee */}
+      <div className="sticky top-[64px] md:top-[72px] z-40 bg-background/90 backdrop-blur-md border-b border-white/10 overflow-hidden group">
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
+        <div className="flex w-max animate-services-marquee group-hover:[animation-play-state:paused] py-3 md:py-4">
+          {[...servicesDetails, ...servicesDetails].map((s, i) => (
+            <button
+              key={`${s.id}-${i}`}
+              onClick={() => {
+                const el = document.getElementById(s.id);
+                if (el) {
+                  const y = el.getBoundingClientRect().top + window.scrollY - 130;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }}
+              className="text-xs md:text-sm font-medium text-muted-foreground hover:text-white whitespace-nowrap transition-colors flex items-center gap-2 shrink-0 mx-4 md:mx-6"
+            >
+              <span className="text-primary/70 shrink-0">{s.icon}</span>
+              {s.title}
+            </button>
+          ))}
         </div>
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes services-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-services-marquee {
+            animation: services-marquee 30s linear infinite;
+          }
+        `}} />
       </div>
 
       {/* Service Sections */}
