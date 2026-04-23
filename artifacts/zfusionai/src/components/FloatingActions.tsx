@@ -2,7 +2,7 @@ import { Phone, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const PHONE = "+971554712353";
-const WHATSAPP_URL = `https://wa.me/971542026653?text=${encodeURIComponent(
+const WHATSAPP_URL = `https://wa.me/971554712353?text=${encodeURIComponent(
   "Hi ZFusionAI, I'd like to discuss a project."
 )}`;
 

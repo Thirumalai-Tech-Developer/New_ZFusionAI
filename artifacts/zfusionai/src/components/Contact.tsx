@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -17,11 +19,9 @@ import {
 
 const formSchema = z.object({
   name: z.string().min(2, "Please enter your name"),
-  company: z.string().min(1, "Company is required"),
   email: z.string().email("Please enter a valid email"),
   phone: z.string().min(6, "Please enter a valid phone"),
   service: z.string().min(1, "Please select a service"),
-  budget: z.string().min(1, "Please select a budget range"),
   message: z.string().min(10, "Tell us a little more (10+ characters)"),
 });
 
@@ -35,14 +35,6 @@ const services = [
   "Cloud & Deployment",
   "Support & Maintenance",
   "Other / Not Sure",
-];
-
-const budgets = [
-  "Under $5,000",
-  "$5,000 – $15,000",
-  "$15,000 – $50,000",
-  "$50,000 – $100,000",
-  "$100,000+",
 ];
 
 const serviceAreas = [
@@ -66,125 +58,140 @@ export default function Contact() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      company: "",
       email: "",
       phone: "",
       service: "",
-      budget: "",
       message: "",
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
-    await new Promise((r) => setTimeout(r, 800));
-    toast.success("Inquiry received", {
-      description: `Thanks ${data.name.split(" ")[0]} — our team will respond within one business day.`,
-    });
-    reset();
-  };
-
   const watchedService = watch("service");
-  const watchedBudget = watch("budget");
+
+  const onSubmit = async (data: FormValues) => {
+    try {
+      await emailjs.send(
+        'service_n0r67hf',
+        'template_3ug43fc',
+        {
+          logo: "https://zfusionai.info/logo.png",
+          from_name: data.name,
+          from_email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+          reply_to: data.email,
+        },
+        'ry0JB8inWV59UgCnE'
+      );
+
+      toast.success("Inquiry sent successfully", {
+        description: `Thanks ${data.name.split(" ")[0]} — we’ll contact you within one business day.`,
+      });
+
+      reset();
+    } catch (error) {
+      toast.error("Failed to send inquiry", {
+        description: "Please try again in a moment.",
+      });
+    }
+  };
 
   return (
     <section id="contact" className="relative py-24 md:py-32">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-12 gap-12">
-          {/* Left: Info */}
+          {/* Left Side */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-5"
           >
             <span className="inline-block text-sm uppercase tracking-[0.2em] text-primary mb-4">
               Contact
             </span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+
+            <h2 className="text-4xl md:text-6xl font-bold text-white">
               Let's talk business
             </h2>
+
             <p className="mt-6 text-lg text-muted-foreground max-w-md">
-              Tell us about your project. Whether it's a website, app, AI system,
-              or full automation platform — we'll respond within one business day.
+              Tell us about your project. Websites, apps, AI systems or
+              automation platforms — we’re ready.
             </p>
 
             <div className="mt-10 space-y-5">
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <div className="flex gap-4">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Office</div>
-                  <div className="text-white font-medium">Dubai, UAE</div>
+                  <p className="text-sm text-muted-foreground">Office</p>
+                  <p className="text-white font-medium">Dubai, UAE</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+
+              <div className="flex gap-4">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Phone</div>
+                  <p className="text-sm text-muted-foreground">Phone</p>
                   <a
                     href="tel:+971554712353"
-                    className="text-white font-medium hover:text-primary transition-colors"
+                    className="text-white font-medium hover:text-primary"
                   >
                     +971 55 471 2353
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+
+              <div className="flex gap-4">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Email</div>
+                  <p className="text-sm text-muted-foreground">Email</p>
                   <a
                     href="mailto:support@zfusionai.info"
-                    className="text-white font-medium hover:text-primary transition-colors"
+                    className="text-white font-medium hover:text-primary"
                   >
                     support@zfusionai.info
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+
+              <div className="flex gap-4">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Hours</div>
-                  <div className="text-white font-medium">
-                    Mon – Fri · 9:00 AM – 6:00 PM
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    Sat by appointment · Sun closed
-                  </div>
+                  <p className="text-sm text-muted-foreground">Hours</p>
+                  <p className="text-white font-medium">
+                    Mon - Fri · 9:00 AM - 6:00 PM
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 pt-8 border-t border-white/10">
-              <div className="text-sm text-muted-foreground mb-3">
-                Service areas
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {serviceAreas.map((area) => (
-                  <span
-                    key={area}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm border border-white/10 bg-white/5 text-white"
-                  >
-                    {area}
-                  </span>
-                ))}
-              </div>
+            <div className="mt-10 flex flex-wrap gap-2">
+              {serviceAreas.map((area) => (
+                <span
+                  key={area}
+                  className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm text-white"
+                >
+                  {area}
+                </span>
+              ))}
             </div>
           </motion.div>
 
-          {/* Right: Form */}
+          {/* Right Side Form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-7"
           >
@@ -195,159 +202,101 @@ export default function Contact() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-medium text-white mb-2">
-                    Name
-                  </label>
+                  Name
+                </label>
                   <Input
                     {...register("name")}
                     placeholder="Your full name"
-                    className="bg-background/60 border-white/10 text-white h-12"
+                    className="h-12 bg-background/60 border-white/10 text-white"
                   />
                   {errors.name && (
-                    <p className="text-xs text-red-400 mt-1.5">
+                    <p className="text-xs text-red-400 mt-1">
                       {errors.name.message}
                     </p>
                   )}
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Company
-                  </label>
-                  <Input
-                    {...register("company")}
-                    placeholder="Company name"
-                    className="bg-background/60 border-white/10 text-white h-12"
-                  />
-                  {errors.company && (
-                    <p className="text-xs text-red-400 mt-1.5">
-                      {errors.company.message}
-                    </p>
-                  )}
-                </div>
-              </div>
 
-              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-medium text-white mb-2">
-                    Email
-                  </label>
+                  Email
+                </label>
                   <Input
                     type="email"
                     {...register("email")}
-                    placeholder="you@company.com"
-                    className="bg-background/60 border-white/10 text-white h-12"
+                    placeholder="Your email"
+                    className="h-12 bg-background/60 border-white/10 text-white"
                   />
                   {errors.email && (
-                    <p className="text-xs text-red-400 mt-1.5">
+                    <p className="text-xs text-red-400 mt-1">
                       {errors.email.message}
                     </p>
                   )}
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Phone
-                  </label>
-                  <Input
-                    {...register("phone")}
-                    placeholder="+971 ..."
-                    className="bg-background/60 border-white/10 text-white h-12"
-                  />
-                  {errors.phone && (
-                    <p className="text-xs text-red-400 mt-1.5">
-                      {errors.phone.message}
-                    </p>
-                  )}
-                </div>
               </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Service needed
-                  </label>
-                  <Select
-                    value={watchedService}
-                    onValueChange={(v) =>
-                      setValue("service", v, { shouldValidate: true })
-                    }
-                  >
-                    <SelectTrigger className="bg-background/60 border-white/10 text-white h-12">
-                      <SelectValue placeholder="Select a service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {services.map((s) => (
-                        <SelectItem key={s} value={s}>
-                          {s}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {errors.service && (
-                    <p className="text-xs text-red-400 mt-1.5">
-                      {errors.service.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Budget
-                  </label>
-                  <Select
-                    value={watchedBudget}
-                    onValueChange={(v) =>
-                      setValue("budget", v, { shouldValidate: true })
-                    }
-                  >
-                    <SelectTrigger className="bg-background/60 border-white/10 text-white h-12">
-                      <SelectValue placeholder="Select a range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {budgets.map((b) => (
-                        <SelectItem key={b} value={b}>
-                          {b}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {errors.budget && (
-                    <p className="text-xs text-red-400 mt-1.5">
-                      {errors.budget.message}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Message
+              <label className="block text-sm font-medium text-white mb-2">
+                  Phone Number
                 </label>
-                <Textarea
-                  {...register("message")}
-                  placeholder="Tell us about your project, goals, and timeline..."
-                  rows={5}
-                  className="bg-background/60 border-white/10 text-white resize-none"
-                />
-                {errors.message && (
-                  <p className="text-xs text-red-400 mt-1.5">
-                    {errors.message.message}
-                  </p>
-                )}
-              </div>
+              <Input
+                {...register("phone")}
+                placeholder="Phone number"
+                className="h-12 bg-background/60 border-white/10 text-white"
+              />
+              <label className="block text-sm font-medium text-white mb-2">
+                  Services
+                </label>
+              <Select
+                value={watchedService}
+                onValueChange={(v) =>
+                  setValue("service", v, { shouldValidate: true })
+                }
+              >
+                <SelectTrigger className="h-12 bg-background/60 border-white/10 text-white">
+                  <SelectValue placeholder="Select a service" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  {services.map((item) => (
+                    <SelectItem key={item} value={item}>
+                      {item}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              {errors.service && (
+                <p className="text-xs text-red-400 -mt-3">
+                  {errors.service.message}
+                </p>
+              )}
+              <label className="block text-sm font-medium text-white mb-2">
+                  Message
+              </label>
+              <Textarea
+                {...register("message")}
+                rows={6}
+                placeholder="Tell us about your project..."
+                className="bg-background/60 border-white/10 text-white resize-none"
+              />
+
+              {errors.message && (
+                <p className="text-xs text-red-400 -mt-3">
+                  {errors.message.message}
+                </p>
+              )}
 
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                size="lg"
-                className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-base shadow-[0_0_30px_rgba(255,122,0,0.4)] hover:shadow-[0_0_50px_rgba(255,122,0,0.6)] transition-all duration-300 group disabled:opacity-60"
+                className="w-full h-14 rounded-full bg-primary hover:bg-primary/90"
               >
                 {isSubmitting ? "Sending..." : "Send Inquiry"}
                 {!isSubmitting && (
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 )}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
-                We respond within one business day. Mutual NDAs available on
-                request.
+                We respond within one business day.
               </p>
             </form>
           </motion.div>
