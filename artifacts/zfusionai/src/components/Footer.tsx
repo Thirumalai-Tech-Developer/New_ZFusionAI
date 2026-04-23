@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 const cols = [
   {
@@ -33,6 +33,27 @@ const cols = [
 ];
 
 export default function Footer() {
+  const [location, setLocation] = useLocation();
+
+  const handleHashLink = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    const [path, hash] = href.split("#");
+    const targetPath = path || "/";
+    const scrollToHash = () => {
+      const el = document.getElementById(hash);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+    if (location === targetPath) {
+      scrollToHash();
+    } else {
+      setLocation(targetPath);
+      setTimeout(scrollToHash, 250);
+    }
+  };
+
   return (
     <footer className="relative border-t border-white/10 bg-background pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12">
@@ -91,6 +112,7 @@ export default function Footer() {
                     {link.href.includes("#") ? (
                       <a
                         href={link.href}
+                        onClick={(e) => handleHashLink(e, link.href)}
                         className="text-sm text-muted-foreground hover:text-primary transition-colors text-left cursor-pointer inline-block"
                       >
                         {link.name}
