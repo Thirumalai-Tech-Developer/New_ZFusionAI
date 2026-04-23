@@ -47,7 +47,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-muted-foreground mb-8 backdrop-blur-sm"
           >
             <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-            B2B Focused Technology Partner
+            B2B & B2C Technology Partner
           </motion.div>
 
           <motion.h1

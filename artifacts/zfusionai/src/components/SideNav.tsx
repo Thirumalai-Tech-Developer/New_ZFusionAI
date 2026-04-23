@@ -24,7 +24,7 @@ export default function SideNav() {
             }
           });
         },
-        { threshold: 0.4 }
+        { rootMargin: "-40% 0px -45% 0px", threshold: 0 }
       );
 
       observer.observe(element);

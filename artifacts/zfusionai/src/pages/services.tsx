@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { useSEO } from "@/hooks/use-seo";
 import PageLayout from "@/components/PageLayout";
 import { Brain, Globe, Smartphone, Workflow, Cloud, Headset, CheckCircle2, ArrowRight } from "lucide-react";
@@ -112,6 +113,21 @@ const servicesDetails = [
 
 export default function ServicesPage() {
   useSEO("Services | ZFusionAI", "Custom AI, web, mobile, and automation solutions for modern businesses.");
+
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    const tryScroll = (attempt = 0) => {
+      const el = document.getElementById(hash);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 130;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      } else if (attempt < 10) {
+        setTimeout(() => tryScroll(attempt + 1), 100);
+      }
+    };
+    tryScroll();
+  }, []);
 
   return (
     <PageLayout>
