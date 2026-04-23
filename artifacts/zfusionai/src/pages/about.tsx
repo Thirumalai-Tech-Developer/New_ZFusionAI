@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useSEO } from "@/hooks/use-seo";
+import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
 import { CheckCircle2, Zap, Shield, Eye, Lightbulb, Link as LinkIcon, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
@@ -15,10 +15,21 @@ const values = [
 ];
 
 export default function AboutPage() {
-  useSEO("About Us | ZFusionAI", "Discover the engineering team behind Dubai's most scalable software and AI solutions.");
-
   return (
     <PageLayout>
+      <SeoHead
+        title="About ZFusionAI | AI & Software Team in Dubai"
+        description="Meet the ZFusionAI engineering team behind Dubai's most scalable AI, web and automation solutions for B2B and B2C businesses across the UAE."
+        keywords={[
+          "about ZFusionAI",
+          "AI team Dubai",
+          "software engineering UAE",
+          "Dubai tech company",
+          "AI consultants Dubai",
+        ]}
+        path="/about"
+        type="website"
+      />
       {/* Hero */}
       <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-40">

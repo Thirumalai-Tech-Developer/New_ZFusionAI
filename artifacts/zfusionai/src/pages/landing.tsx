@@ -1,3 +1,4 @@
+import SeoHead from "@/components/SeoHead";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustedBy from "@/components/TrustedBy";
@@ -36,6 +37,44 @@ export default function Landing() {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-hidden selection:bg-primary/30">
+      <SeoHead
+        title="AI & Web Development Company in Dubai, UAE | ZFusionAI"
+        description="ZFusionAI is a leading AI and web development company in Dubai, UAE providing custom websites, AI automation, mobile apps, SEO-ready business platforms and software solutions across all UAE."
+        keywords={[
+          "web development Dubai",
+          "AI company Dubai",
+          "website development UAE",
+          "software company Dubai",
+          "AI solutions UAE",
+          "mobile app development Dubai",
+          "custom website Dubai",
+          "SEO company Dubai",
+          "business website UAE",
+          "automation company Dubai",
+          "AI development Dubai",
+          "ERP software UAE",
+          "CRM development Dubai",
+          "ecommerce website Dubai",
+        ]}
+        path="/"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "ZFusionAI",
+          url: "https://zfusionai.info",
+          logo: "https://zfusionai.info/brand/logo.png",
+          description:
+            "AI, web, mobile and automation development company in Dubai, UAE.",
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+971 54 202 66 53",
+            contactType: "customer support",
+            email: "support@zfusionai.info",
+            areaServed: "AE",
+            availableLanguage: ["English", "Arabic"],
+          },
+        }}
+      />
       <BackgroundEffects />
       <Navbar />
       <SideNav />

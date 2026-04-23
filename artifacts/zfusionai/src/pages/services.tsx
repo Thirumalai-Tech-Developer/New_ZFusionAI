@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { useSEO } from "@/hooks/use-seo";
+import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
 import { Brain, Globe, Smartphone, Workflow, Cloud, Headset, CheckCircle2, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
@@ -112,8 +112,6 @@ const servicesDetails = [
 ];
 
 export default function ServicesPage() {
-  useSEO("Services | ZFusionAI", "Custom AI, web, mobile, and automation solutions for modern businesses.");
-
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
@@ -131,6 +129,35 @@ export default function ServicesPage() {
 
   return (
     <PageLayout>
+      <SeoHead
+        title="Web Development, AI Solutions & Software Services in UAE | ZFusionAI"
+        description="Professional website development, AI systems, mobile apps, CRM software and automation services for businesses in Dubai and all UAE."
+        keywords={[
+          "web design Dubai",
+          "AI development company UAE",
+          "React developer Dubai",
+          "Node.js development Dubai",
+          "Laravel development UAE",
+          "ecommerce website Dubai",
+          "ERP software UAE",
+          "CRM development Dubai",
+          "mobile app development Dubai",
+          "business automation UAE",
+          "cloud deployment Dubai",
+        ]}
+        path="/services"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "AI, Web, Mobile and Automation Development",
+          provider: {
+            "@type": "Organization",
+            name: "ZFusionAI",
+            url: "https://zfusionai.info",
+          },
+          areaServed: { "@type": "Country", name: "United Arab Emirates" },
+        }}
+      />
       {/* Hero */}
       <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-40">

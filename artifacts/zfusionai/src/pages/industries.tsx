@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useSEO } from "@/hooks/use-seo";
+import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
 import { ArrowRight, Activity, TrendingUp, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
@@ -120,10 +120,22 @@ const caseStudies = [
 ];
 
 export default function IndustriesPage() {
-  useSEO("Industries | ZFusionAI", "Tailored software and AI solutions across Real Estate, Healthcare, Retail, Logistics, and more in Dubai.");
-
   return (
     <PageLayout>
+      <SeoHead
+        title="Industries We Serve | AI & Software Solutions in UAE | ZFusionAI"
+        description="Custom AI, web and automation solutions for Real Estate, Healthcare, Retail, Logistics, Hospitality, Finance and Manufacturing across Dubai and the UAE."
+        keywords={[
+          "real estate software Dubai",
+          "healthcare AI UAE",
+          "retail automation Dubai",
+          "logistics software UAE",
+          "hospitality tech Dubai",
+          "finance software UAE",
+          "manufacturing automation Dubai",
+        ]}
+        path="/industries"
+      />
       {/* Hero */}
       <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-30">

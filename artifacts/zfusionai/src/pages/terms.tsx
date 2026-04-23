@@ -1,5 +1,5 @@
 import PageLayout from "@/components/PageLayout";
-import { useSeo } from "@/hooks/use-seo";
+import SeoHead from "@/components/SeoHead";
 import { motion } from "framer-motion";
 
 const sections = [
@@ -62,14 +62,13 @@ const sections = [
 ];
 
 export default function TermsPage() {
-  useSeo({
-    title: "Terms & Conditions | ZFusionAI",
-    description:
-      "Terms and conditions governing the use of ZFusionAI services and website.",
-  });
-
   return (
     <PageLayout>
+      <SeoHead
+        title="Terms & Conditions | ZFusionAI"
+        description="Terms and conditions governing the use of ZFusionAI services, website and software solutions."
+        path="/terms"
+      />
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative">

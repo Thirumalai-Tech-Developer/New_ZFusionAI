@@ -38,10 +38,35 @@ export default function Testimonials() {
   const [paused, setPaused] = useState(false);
   const t = testimonials[index];
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
   const prev = () =>
     setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchEndX.current = null;
+    touchStartX.current = e.targetTouches[0].clientX;
+    setPaused(true);
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+  const onTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) {
+      setPaused(false);
+      return;
+    }
+    const dx = touchStartX.current - touchEndX.current;
+    if (Math.abs(dx) > 50) {
+      if (dx > 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+    setTimeout(() => setPaused(false), 4000);
+  };
 
   useEffect(() => {
     if (paused) return;
@@ -72,9 +97,12 @@ export default function Testimonials() {
         </motion.div>
 
         <div
-          className="relative max-w-4xl mx-auto"
+          className="relative max-w-4xl mx-auto touch-pan-y select-none"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <div className="relative rounded-3xl border border-white/10 bg-card/40 backdrop-blur-sm p-6 sm:p-8 md:p-14 overflow-hidden">
             <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-primary/10 blur-3xl" />

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useSEO } from "@/hooks/use-seo";
+import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/Contact";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -25,9 +25,26 @@ const faqs = [
 ];
 
 export default function ContactPage() {
-  useSEO("Contact Us | ZFusionAI", "Get in touch with ZFusionAI for custom software and AI development in Dubai.");
-
   return (
+    <>
+    <SeoHead
+      title="Contact ZFusionAI Dubai UAE | Web & AI Development"
+      description="Contact ZFusionAI for website development, AI software, mobile apps and automation solutions in Dubai and across UAE."
+      keywords={[
+        "web developer near me UAE",
+        "AI company contact Dubai",
+        "website company Dubai phone number",
+        "software development UAE",
+        "hire developer Dubai",
+      ]}
+      path="/contact"
+      schema={{
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: "Contact ZFusionAI",
+        url: "https://zfusionai.info/contact",
+      }}
+    />
     <PageLayout>
       {/* Hero */}
       <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/5">
@@ -100,5 +117,6 @@ export default function ContactPage() {
         </div>
       </section>
     </PageLayout>
+    </>
   );
 }

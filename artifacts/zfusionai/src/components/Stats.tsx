@@ -62,9 +62,9 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-background p-8 md:p-10 hover:bg-card/60 transition-colors group"
+              className="bg-background p-8 md:p-10 hover:bg-card/60 transition-colors group min-w-0"
             >
-              <div className="text-5xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary to-orange-300 mb-4">
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary to-orange-300 mb-4 whitespace-nowrap">
                 <Counter to={stat.value} decimals={stat.decimals} />
                 {stat.suffix}
               </div>

@@ -1,0 +1,231 @@
+{
+  "seo": {
+    "site_name": "ZFusionAI",
+    "brand_type": "AI & Web Development Company in Dubai, UAE",
+    "primary_goal": "Rank for high-intent business keywords related to AI development, website development, software solutions and business automation in UAE.",
+    "target_locations": [
+      "Dubai, UAE",
+      "Abu Dhabi, UAE",
+      "Sharjah, UAE",
+      "Ajman, UAE",
+      "Ras Al Khaimah, UAE",
+      "Fujairah, UAE",
+      "Umm Al Quwain, UAE",
+      "All UAE"
+    ],
+    "business_info": {
+      "phone": "+971 55 471 2353",
+      "email": "support@zfusionai.info",
+      "address": "Dubai, UAE",
+      "service_area": "All UAE"
+    }
+  },
+
+  "meta": {
+    "homepage": {
+      "title": "AI & Web Development Company in Dubai, UAE | ZFusionAI",
+      "description": "ZFusionAI is a leading AI and web development company in Dubai, UAE providing custom websites, AI automation, mobile apps, SEO-ready business platforms and software solutions across all UAE.",
+      "keywords": [
+        "web development Dubai",
+        "AI company Dubai",
+        "website development UAE",
+        "software company Dubai",
+        "AI solutions UAE",
+        "mobile app development Dubai",
+        "custom website Dubai",
+        "SEO company Dubai",
+        "business website UAE",
+        "automation company Dubai"
+      ]
+    },
+
+    "services": {
+      "title": "Web Development, AI Solutions & Software Services in UAE",
+      "description": "Professional website development, AI systems, mobile apps, CRM software and automation services for businesses in Dubai and all UAE.",
+      "keywords": [
+        "web design Dubai",
+        "AI development company UAE",
+        "React developer Dubai",
+        "Node.js development Dubai",
+        "Laravel development UAE",
+        "ecommerce website Dubai",
+        "ERP software UAE",
+        "CRM development Dubai"
+      ]
+    },
+
+    "contact": {
+      "title": "Contact ZFusionAI Dubai UAE",
+      "description": "Contact ZFusionAI for website development, AI software, mobile apps and automation solutions in Dubai and across UAE.",
+      "keywords": [
+        "web developer near me UAE",
+        "AI company contact Dubai",
+        "website company Dubai phone number"
+      ]
+    }
+  },
+
+  "high_intent_keywords": {
+    "web_development": [
+      "web development Dubai",
+      "website development Dubai",
+      "web development company Dubai",
+      "best web development company Dubai",
+      "website design Dubai",
+      "corporate website Dubai",
+      "business website development UAE",
+      "responsive website Dubai",
+      "SEO website development Dubai",
+      "custom website UAE",
+      "ecommerce website Dubai",
+      "online store development UAE",
+      "landing page design Dubai",
+      "WordPress developer Dubai",
+      "React developer Dubai",
+      "frontend developer UAE",
+      "backend developer Dubai",
+      "full stack development UAE"
+    ],
+
+    "ai_keywords": [
+      "AI company Dubai",
+      "AI development Dubai",
+      "artificial intelligence UAE",
+      "machine learning company Dubai",
+      "AI chatbot Dubai",
+      "AI automation UAE",
+      "business AI solutions Dubai",
+      "custom AI software UAE",
+      "computer vision Dubai",
+      "AI data analytics UAE",
+      "generative AI Dubai",
+      "LLM integration UAE",
+      "AI consulting Dubai",
+      "AI for business UAE"
+    ],
+
+    "software_keywords": [
+      "software company Dubai",
+      "custom software development Dubai",
+      "ERP software UAE",
+      "CRM software Dubai",
+      "business automation software UAE",
+      "inventory software Dubai",
+      "billing software UAE",
+      "management software Dubai",
+      "dashboard development UAE",
+      "SaaS development Dubai"
+    ],
+
+    "mobile_keywords": [
+      "mobile app development Dubai",
+      "Android app development UAE",
+      "iOS app development Dubai",
+      "Flutter developer UAE",
+      "business app Dubai",
+      "delivery app UAE",
+      "booking app Dubai"
+    ],
+
+    "local_keywords": [
+      "web development near me Dubai",
+      "AI company near me UAE",
+      "website company Dubai UAE",
+      "software company near me Dubai",
+      "best website company UAE"
+    ]
+  },
+
+  "homepage_sections": {
+    "hero": {
+      "title": "Leading AI & Web Development Company in Dubai, UAE",
+      "subtitle": "Build smarter businesses with websites, AI systems, mobile apps and custom software solutions.",
+      "cta": [
+        "Get Free Quote",
+        "Call Now",
+        "Start Project"
+      ]
+    },
+
+    "why_choose_us": {
+      "title": "Why Choose ZFusionAI",
+      "points": [
+        "SEO-optimized websites built for ranking and conversions",
+        "Custom AI solutions for real business growth",
+        "Fast and scalable web application development",
+        "Modern UI/UX for higher customer trust",
+        "Serving businesses across all UAE",
+        "Dedicated support and long-term maintenance"
+      ]
+    },
+
+    "services": [
+      "AI Development",
+      "Website Development",
+      "Web Application Development",
+      "Mobile App Development",
+      "SEO Optimization",
+      "Business Automation",
+      "CRM & ERP Systems",
+      "Cloud Deployment",
+      "E-commerce Development",
+      "Maintenance & Support"
+    ]
+  },
+
+  "seo_content_blocks": {
+    "web_development_dubai": {
+      "title": "Best Web Development Company in Dubai",
+      "content": "ZFusionAI develops high-performance websites for startups, SMEs and enterprises in Dubai. Our websites are mobile responsive, SEO optimized and built to convert visitors into customers."
+    },
+
+    "ai_company_uae": {
+      "title": "AI Company in UAE for Business Growth",
+      "content": "We help UAE businesses automate operations using AI chatbots, machine learning systems, analytics dashboards and custom artificial intelligence tools."
+    },
+
+    "website_ranking": {
+      "title": "Rank Higher on Google with SEO-Friendly Development",
+      "content": "Our websites use clean code, fast loading speeds, optimized structure, schema markup, mobile-first design and keyword-focused content strategies."
+    }
+  },
+
+  "technical_seo": {
+    "must_have": [
+      "Fast page speed under 2 seconds",
+      "Mobile responsive design",
+      "Schema markup",
+      "Open Graph tags",
+      "Meta title and description",
+      "Sitemap.xml",
+      "Robots.txt",
+      "Image alt tags",
+      "Canonical URLs",
+      "Internal linking strategy",
+      "SSL HTTPS",
+      "Clean semantic HTML"
+    ]
+  },
+
+  "schema_markup": {
+    "type": "LocalBusiness",
+    "name": "ZFusionAI",
+    "telephone": "+971 55 471 2353",
+    "address": "Dubai, UAE",
+    "areaServed": "All UAE",
+    "url": "https://zfusionai.info"
+  },
+
+  "footer": {
+    "title": "ZFusionAI - AI & Web Development Across UAE",
+    "phone": "+971 55 471 2353",
+    "address": "Dubai, UAE",
+    "service_area": "All UAE",
+    "quick_links": [
+      "Home",
+      "Services",
+      "About Us",
+      "Contact"
+    ]
+  }
+}
