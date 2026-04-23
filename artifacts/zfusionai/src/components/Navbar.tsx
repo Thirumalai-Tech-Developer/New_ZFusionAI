@@ -36,14 +36,20 @@ export default function Navbar() {
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link href="/">
-            <div className="flex items-center gap-2 cursor-pointer group">
-              <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary overflow-hidden">
-                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full group-hover:bg-primary/40 transition-all duration-500"></div>
-                <span className="font-bold text-lg relative z-10">Z</span>
+            <div className="flex items-center gap-2.5 cursor-pointer group">
+              <div className="relative h-12 w-12 md:h-14 md:w-14 shrink-0">
+                <div className="absolute inset-0 rounded-full bg-primary/30 blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+                <img
+                  src="/brand/logo.png"
+                  alt="ZFusionAI"
+                  className="relative h-full w-full object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.5)]"
+                />
               </div>
-              <span className="font-bold text-xl tracking-tight">
-                ZFusion<span className="text-primary">AI</span>
-              </span>
+              <img
+                src="/brand/wordmark.png"
+                alt="ZFusionAI"
+                className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.4)]"
+              />
             </div>
           </Link>
 

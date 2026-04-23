@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Zap } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "wouter";
 
 const cols = [
@@ -40,13 +40,20 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
             <Link href="/">
-              <div className="flex items-center gap-2 mb-5 cursor-pointer inline-flex">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-black shadow-[0_0_20px_rgba(255,122,0,0.5)]">
-                  <Zap className="h-5 w-5" />
+              <div className="flex items-center gap-2.5 mb-5 cursor-pointer">
+                <div className="relative h-14 w-14 shrink-0">
+                  <div className="absolute inset-0 rounded-full bg-primary/30 blur-xl" />
+                  <img
+                    src="/brand/logo.png"
+                    alt="ZFusionAI"
+                    className="relative h-full w-full object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.5)]"
+                  />
                 </div>
-                <span className="text-xl font-bold text-white tracking-tight">
-                  ZFusionAI
-                </span>
+                <img
+                  src="/brand/wordmark.png"
+                  alt="ZFusionAI"
+                  className="h-14 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.4)]"
+                />
               </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
