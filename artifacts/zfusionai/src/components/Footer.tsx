@@ -52,7 +52,7 @@ export default function Footer() {
                 <img
                   src="/brand/wordmark.png"
                   alt="ZFusionAI"
-                  className="h-14 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.4)]"
+                  className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.4)]"
                 />
               </div>
             </Link>

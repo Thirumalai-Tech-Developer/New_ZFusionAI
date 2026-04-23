@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 const sections = [
   { id: "hero", label: "HOME" },
   { id: "services", label: "SERVICES" },
   { id: "process", label: "HOW WE WORK" },
+  { id: "pricing", label: "PRICING" },
   { id: "contact", label: "CONTACT" },
 ];
 
@@ -24,7 +24,7 @@ export default function SideNav() {
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.4 }
       );
 
       observer.observe(element);
@@ -41,23 +41,33 @@ export default function SideNav() {
   };
 
   return (
-    <div className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 z-50 flex-col gap-4">
-      {sections.map(({ id, label }) => (
-        <button
-          key={id}
-          onClick={() => scrollTo(id)}
-          className="group relative flex items-center justify-end"
-        >
-          <span className="absolute right-8 text-xs font-bold tracking-widest text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 transition-all duration-300 pointer-events-none whitespace-nowrap">
-            {label}
-          </span>
-          <div 
-            className={`w-1.5 h-8 rounded-full transition-all duration-300 ${
-              activeSection === id ? "bg-primary shadow-[0_0_10px_rgba(255,122,0,0.5)] h-12" : "bg-white/20 group-hover:bg-white/50"
-            }`}
-          />
-        </button>
-      ))}
+    <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3">
+      {sections.map(({ id, label }) => {
+        const isActive = activeSection === id;
+        return (
+          <button
+            key={id}
+            onClick={() => scrollTo(id)}
+            className="group relative flex items-center justify-end"
+            aria-label={label}
+          >
+            <span
+              className={`absolute right-7 text-[10px] font-bold tracking-widest opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 transition-all duration-300 pointer-events-none whitespace-nowrap rounded-md bg-card/95 backdrop-blur px-2 py-1 border border-white/10 ${
+                isActive ? "text-primary" : "text-white"
+              }`}
+            >
+              {label}
+            </span>
+            <div
+              className={`rounded-full transition-all duration-300 ${
+                isActive
+                  ? "w-1.5 h-12 bg-primary shadow-[0_0_12px_rgba(255,122,0,0.6)]"
+                  : "w-1 h-7 bg-white/30 group-hover:bg-white/70 group-hover:h-9"
+              }`}
+            />
+          </button>
+        );
+      })}
     </div>
   );
 }

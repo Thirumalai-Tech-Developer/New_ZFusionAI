@@ -48,13 +48,13 @@ export default function Navbar() {
               <img
                 src="/brand/wordmark.png"
                 alt="ZFusionAI"
-                className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.4)]"
+                className="h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.4)]"
               />
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7 xl:gap-8">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.href}>
                 <span
@@ -71,10 +71,10 @@ export default function Navbar() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden md:flex">
+          <div className="hidden lg:flex">
             <Link href="/contact" className="inline-flex">
               <Button
-                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-6 shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all duration-300 group"
+                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-5 xl:px-6 shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all duration-300 group"
               >
                 Get Proposal
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -84,7 +84,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-white p-2 cursor-pointer"
+            className="lg:hidden text-white p-2 cursor-pointer"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -99,7 +99,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-24 px-6 md:hidden flex flex-col"
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-24 px-6 lg:hidden flex flex-col"
           >
             <nav className="flex flex-col gap-6 items-center">
               {navLinks.map((link) => (
