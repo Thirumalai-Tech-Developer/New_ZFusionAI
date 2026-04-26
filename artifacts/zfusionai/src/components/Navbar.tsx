@@ -40,13 +40,13 @@ export default function Navbar() {
               <div className="relative h-12 w-12 md:h-14 md:w-14 shrink-0">
                 <div className="absolute inset-0 rounded-full bg-primary/30 blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
                 <img
-                  src="/brand/logo.png"
+                  src="/brand/logo_compressed.png"
                   alt="ZFusionAI"
                   className="relative h-full w-full object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.5)]"
                 />
               </div>
               <img
-                src="/brand/wordmark.png"
+                src="/brand/wordmark_compressed.png"
                 alt="ZFusionAI"
                 className="h-20 md:h-20 lg:h-20 w-auto object-contain drop-shadow-[0_0_10px_rgba(255,122,0,0.4)]"
               />
