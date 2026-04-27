@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/Contact";

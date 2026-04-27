@@ -18,7 +18,6 @@ import SideNav from "@/components/SideNav";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "wouter";
 
 export default function Landing() {
   const [scrolled, setScrolled] = useState(false);

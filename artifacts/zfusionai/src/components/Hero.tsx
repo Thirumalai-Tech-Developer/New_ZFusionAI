@@ -9,7 +9,7 @@ export default function Hero() {
     <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Cinematic Radial Glow */}
       <motion.div 
-        className="hidden sm:block absolute top-1/2 left-1/2 translate-x translate-y w-[500px] h-[500px] rounded-full bg-primary/20 blur-[70px] mix-blend-screen pointer-events-none"
+        className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/20 blur-[70px] mix-blend-screen pointer-events-none"
         animate={{
           x: `calc(-50% + 30px)`,
           y: `calc(-50% + 30px)`,
@@ -40,7 +40,7 @@ export default function Hero() {
             // initial={{ opacity: 0, y: 20 }}
             // animate={{ opacity: 1, y: 0 }}
             // transition={{ duration: 0.5, delay: 0 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-8"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8"
           >
             AI & Software Solutions Built for Business Growth
           </h1>

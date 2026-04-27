@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
-import { ArrowRight, Activity, TrendingUp, ShieldCheck } from "lucide-react";
+import { ArrowRight, Activity, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
