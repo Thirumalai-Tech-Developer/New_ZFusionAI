@@ -1,10 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://zfusionai.info/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://zfusionai.info/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zfusionai.info/industries</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://zfusionai.info/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://zfusionai.info/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://zfusionai.info/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://zfusionai.info/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://zfusionai.info/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://zfusionai.info/services</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://zfusionai.info/industries</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://zfusionai.info/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://zfusionai.info/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://zfusionai.info/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <url>
+    <loc>https://zfusionai.info/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- Web Development -->
+  <url><loc>https://zfusionai.info/web-development-dubai</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://zfusionai.info/website-development-dubai</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://zfusionai.info/web-design-dubai</loc><changefreq>monthly</changefreq><priority>0.84</priority></url>
+  <url><loc>https://zfusionai.info/website-redesign-dubai</loc><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://zfusionai.info/ecommerce-development-dubai</loc><changefreq>monthly</changefreq><priority>0.84</priority></url>
+  <url><loc>https://zfusionai.info/landing-page-design-dubai</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://zfusionai.info/small-business-website-dubai</loc><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://zfusionai.info/startup-website-dubai</loc><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://zfusionai.info/restaurant-website-dubai</loc><changefreq>monthly</changefreq><priority>0.79</priority></url>
+  <url><loc>https://zfusionai.info/real-estate-website-dubai</loc><changefreq>monthly</changefreq><priority>0.81</priority></url>
+  <url><loc>https://zfusionai.info/clinic-website-dubai</loc><changefreq>monthly</changefreq><priority>0.79</priority></url>
+  <url><loc>https://zfusionai.info/responsive-web-design-dubai</loc><changefreq>monthly</changefreq><priority>0.77</priority></url>
+  <url><loc>https://zfusionai.info/premium-website-dubai</loc><changefreq>monthly</changefreq><priority>0.76</priority></url>
+  <url><loc>https://zfusionai.info/fast-website-dubai</loc><changefreq>monthly</changefreq><priority>0.76</priority></url>
+
+  <!-- AI Services -->
+  <url><loc>https://zfusionai.info/ai-company-dubai</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://zfusionai.info/ai-development-dubai</loc><changefreq>monthly</changefreq><priority>0.84</priority></url>
+  <url><loc>https://zfusionai.info/ai-automation-dubai</loc><changefreq>monthly</changefreq><priority>0.84</priority></url>
+  <url><loc>https://zfusionai.info/chatbot-development-dubai</loc><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://zfusionai.info/whatsapp-chatbot-dubai</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://zfusionai.info/lead-automation-dubai</loc><changefreq>monthly</changefreq><priority>0.79</priority></url>
+  <url><loc>https://zfusionai.info/crm-automation-dubai</loc><changefreq>monthly</changefreq><priority>0.79</priority></url>
+  <url><loc>https://zfusionai.info/workflow-automation-dubai</loc><changefreq>monthly</changefreq><priority>0.79</priority></url>
+  <url><loc>https://zfusionai.info/gpt-integration-dubai</loc><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://zfusionai.info/openai-development-dubai</loc><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://zfusionai.info/voicebot-dubai</loc><changefreq>monthly</changefreq><priority>0.76</priority></url>
+
+  <!-- Mobile Apps -->
+  <url><loc>https://zfusionai.info/mobile-app-development-dubai</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://zfusionai.info/android-app-development-dubai</loc><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://zfusionai.info/ios-app-development-dubai</loc><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://zfusionai.info/flutter-development-dubai</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://zfusionai.info/react-native-dubai</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://zfusionai.info/food-delivery-app-dubai</loc><changefreq>monthly</changefreq><priority>0.79</priority></url>
+  <url><loc>https://zfusionai.info/booking-app-dubai</loc><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://zfusionai.info/marketplace-app-dubai</loc><changefreq>monthly</changefreq><priority>0.78</priority></url>
+
+  <!-- Software -->
+  <url><loc>https://zfusionai.info/custom-software-dubai</loc><changefreq>monthly</changefreq><priority>0.83</priority></url>
+  <url><loc>https://zfusionai.info/react-development-dubai</loc><changefreq>monthly</changefreq><priority>0.80</priority></url>
+
 </urlset>

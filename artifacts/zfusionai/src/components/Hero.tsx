@@ -86,7 +86,7 @@ export default function Hero() {
             // initial={{ opacity: 0 }}
             // animate={{ opacity: 1 }}
             // transition={{ duration: 1, delay: 0 }}
-            className="mt-20 pt-10 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm text-muted-foreground"
+            className=" pt-5 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm text-muted-foreground"
           >
             <div className="flex items-center justify-center gap-2">
               <Zap className="h-4 w-4 text-primary" /> Fast Delivery

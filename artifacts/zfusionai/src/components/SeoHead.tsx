@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet-async";
+import { seoServiceLinks } from "@/pages/services";
 
 const SITE_URL = "https://zfusionai.info";
 const SITE_NAME = "ZFusionAI";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/brand/logo.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.png`;
 
 export interface SeoHeadProps {
   title: string;
@@ -31,17 +32,6 @@ const localBusinessSchema = {
     addressLocality: "Dubai",
     addressCountry: "AE",
   },
-  areaServed: [
-    "Dubai",
-    "Abu Dhabi",
-    "Sharjah",
-    "Ajman",
-    "Ras Al Khaimah",
-    "Fujairah",
-    "Umm Al Quwain",
-    "United Arab Emirates",
-  ],
-  sameAs: [],
 };
 
 export default function SeoHead({
@@ -53,7 +43,18 @@ export default function SeoHead({
   type = "website",
   schema,
 }: SeoHeadProps) {
+  const matchedSeoPage = seoServiceLinks.find((item) => item.slug === path);
+
+  const finalTitle = matchedSeoPage
+    ? `${matchedSeoPage.label} | ${SITE_NAME}`
+    : title;
+
+  const finalDescription = matchedSeoPage
+    ? `${matchedSeoPage.label}. Custom AI, websites, mobile apps and software solutions for Dubai businesses. Contact ZFusionAI today.`
+    : description;
+
   const url = `${SITE_URL}${path}`;
+
   const schemaArray = Array.isArray(schema)
     ? [localBusinessSchema, ...schema]
     : schema
@@ -61,36 +62,41 @@ export default function SeoHead({
     : [localBusinessSchema];
 
   return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+    <Helmet prioritizeSeoTags>
+      <title>{finalTitle}</title>
+
+      <meta name="description" content={finalDescription} />
+
       {keywords.length > 0 && (
         <meta name="keywords" content={keywords.join(", ")} />
       )}
+
       <meta name="author" content={SITE_NAME} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content="index,follow,max-image-preview:large" />
+
+      {/* Canonical */}
       <link rel="canonical" href={url} />
 
       {/* Open Graph */}
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:type" content={type} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={finalTitle} />
+      <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
       <meta property="og:locale" content="en_AE" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={finalTitle} />
+      <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={image} />
 
       {/* Geo */}
       <meta name="geo.region" content="AE-DU" />
       <meta name="geo.placename" content="Dubai" />
 
-      {/* Schema.org */}
+      {/* Schema */}
       <script type="application/ld+json">
         {JSON.stringify(schemaArray)}
       </script>

@@ -2,7 +2,6 @@ import SeoHead from "@/components/SeoHead";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import SideNav from "@/components/SideNav";
 import { ArrowDown } from "lucide-react";
 import {
   lazy,
@@ -34,9 +33,9 @@ export default function Landing() {
 
   useEffect(() => {
     let ticking = false;
-    let t1: number;
-    let t2: number;
-    let t3: number;
+    let t1: ReturnType<typeof setTimeout>;
+    let t2: ReturnType<typeof setTimeout>;
+    let t3: ReturnType<typeof setTimeout>;
 
     const loadStage1 = () => {
       startTransition(() => setStage1(true));
@@ -53,11 +52,11 @@ export default function Landing() {
     const beginProgressiveLoad = () => {
       loadStage1();
 
-      t1 = window.setTimeout(() => {
+      t1 = setTimeout(() => {
         loadStage2();
       }, 500);
 
-      t2 = window.setTimeout(() => {
+      t2 = setTimeout(() => {
         loadStage3();
       }, 1100);
     };
@@ -93,7 +92,7 @@ export default function Landing() {
         { timeout: 1800 }
       );
     } else {
-      t3 = window.setTimeout(() => {
+      t3 = setTimeout(() => {
         beginProgressiveLoad();
       }, 1800);
     }
@@ -155,7 +154,6 @@ export default function Landing() {
       />
 
       <Navbar />
-      <SideNav />
 
       <Suspense fallback={null}>
         <BackgroundEffects />
