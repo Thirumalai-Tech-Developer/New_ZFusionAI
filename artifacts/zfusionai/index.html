@@ -101,9 +101,9 @@
     <link rel="apple-touch-icon" href="/logo.png" />
 
     <!-- Performance -->
-    <link rel="dns-prefetch" href="//zfusionai.info" />
-    <link rel="preload" as="image" href="/brand/logo.webp" />
-    <link rel="preload" as="image" href="/brand/wordmark.webp" />
+    <link rel="dns-prefetch" href="/zfusionai.info" />
+    <link rel="preload" as="image" href="/brand/logo_compressed.png" />
+    <link rel="preload" as="image" href="/brand/wordmark_compressed.png" />
 
     <!-- Open Graph -->
     <meta
@@ -130,7 +130,7 @@
       name="twitter:description"
       content="AI, websites, apps and automation systems built for UAE business growth."
     />
-    <meta name="twitter:image" content="https://zfusionai.info/brand/logo.webp" />
+    <meta name="twitter:image" content="https://zfusionai.info/logo.png" />
 
     <!-- Business Structured Data -->
     <script type="application/ld+json">
@@ -156,184 +156,11 @@
       }
     </script>
 
-    <!-- Critical CSS for first paint -->
-    <style>
-      :root {
-        color-scheme: dark;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        background: #0a0a0a;
-        color: #ffffff;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      #root {
-        min-height: 100vh;
-      }
-
-      /* Hero fallback skeleton */
-      .boot-shell {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        text-align: center;
-      }
-
-      .boot-wrap {
-        max-width: 920px;
-        width: 100%;
-      }
-
-      .boot-badge {
-        display: inline-block;
-        border: 1px solid rgba(255,255,255,.08);
-        background: rgba(255,255,255,.03);
-        color: rgba(255,255,255,.75);
-        padding: .45rem .9rem;
-        border-radius: 999px;
-        font-size: .9rem;
-        margin-bottom: 1rem;
-      }
-
-      .boot-title {
-        margin: 0;
-        font-size: clamp(2.2rem, 8vw, 5.5rem);
-        line-height: 1.05;
-        letter-spacing: -0.04em;
-      }
-
-      .boot-desc {
-        max-width: 760px;
-        margin: 1rem auto 0;
-        color: rgba(255,255,255,.72);
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-        line-height: 1.7;
-      }
-
-      .boot-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 2rem;
-      }
-
-      .boot-btn {
-        border: 0;
-        border-radius: 999px;
-        padding: .95rem 1.5rem;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .boot-btn-primary {
-        background: #ff7a00;
-        color: #000;
-      }
-
-      .boot-btn-secondary {
-        background: rgba(255,255,255,.05);
-        color: #fff;
-        border: 1px solid rgba(255,255,255,.08);
-      }
-
-      .boot-glow {
-        position: fixed;
-        inset: auto;
-        width: 420px;
-        height: 420px;
-        left: 50%;
-        top: 42%;
-        transform: translate(-50%, -50%);
-        border-radius: 999px;
-        background: rgba(255,122,0,.14);
-        filter: blur(70px);
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      @media (max-width: 640px) {
-        .boot-glow {
-          display: none;
-        }
-      }
-    </style>
   </head>
 
   <body>
-    <!-- Fast fallback hero before React hydrates -->
-    <div class="boot-glow"></div>
-
-    <div id="root">
-      <main class="boot-shell">
-        <section class="boot-wrap">
-          <div class="boot-badge">B2B & B2C Technology Partner</div>
-
-          <h1 class="boot-title">
-            AI & Software Solutions Built for Business Growth
-          </h1>
-
-          <p class="boot-desc">
-            We build custom AI, web, mobile, and automation systems for Dubai
-            businesses. Scalable architecture. Fast delivery. Serious
-            engineering.
-          </p>
-
-          <div class="boot-actions">
-            <a href="/contact" class="boot-btn boot-btn-primary">
-              Book Free Call
-            </a>
-
-            <a href="/services" class="boot-btn boot-btn-secondary">
-              View Services
-            </a>
-          </div>
-        </section>
-      </main>
-    </div>
-
     <!-- Main App -->
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Lightweight enhancement JS -->
-    <script>
-      // Smooth anchor scrolling
-      document.addEventListener("click", function (e) {
-        const target = e.target.closest('a[href^="#"]');
-        if (!target) return;
-
-        const id = target.getAttribute("href");
-        const el = document.querySelector(id);
-
-        if (el) {
-          e.preventDefault();
-          el.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }
-      });
-
-      // Remove fallback once React paints real app
-      window.addEventListener("load", function () {
-        requestAnimationFrame(() => {
-          document.body.classList.add("app-loaded");
-        });
-      });
-    </script>
   </body>
 </html>
