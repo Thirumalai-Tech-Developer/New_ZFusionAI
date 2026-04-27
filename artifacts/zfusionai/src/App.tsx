@@ -13,8 +13,10 @@ import ContactPage from "@/pages/contact";
 import TermsPage from "@/pages/terms";
 import PrivacyPage from "@/pages/privacy";
 import FloatingActions from "@/components/FloatingActions";
+import { seoServiceLinks } from "@/pages/services";
 
 const queryClient = new QueryClient();
+const seoServiceRoutes = seoServiceLinks.map((item) => item.slug);
 
 function Router() {
   return (
@@ -26,6 +28,9 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/terms" component={TermsPage} />
       <Route path="/privacy" component={PrivacyPage} />
+      {seoServiceRoutes.map((path) => (
+        <Route key={path} path={path} component={ServicesPage} />
+      ))}
       <Route component={NotFound} />
     </Switch>
   );

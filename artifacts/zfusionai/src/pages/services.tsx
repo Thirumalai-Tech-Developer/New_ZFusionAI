@@ -6,6 +6,49 @@ import { Brain, Globe, Smartphone, Workflow, Cloud, Headset, CheckCircle2, Arrow
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
+const seoServiceLinks = [
+  { slug: "/web-development-dubai", label: "Web Development Company in Dubai" },
+  { slug: "/website-development-dubai", label: "Website Development Dubai for Businesses" },
+  { slug: "/web-design-dubai", label: "Web Design Dubai" },
+  { slug: "/website-redesign-dubai", label: "Website Redesign Dubai" },
+  { slug: "/ecommerce-development-dubai", label: "Ecommerce Website Development Dubai" },
+  { slug: "/landing-page-design-dubai", label: "Landing Page Design Dubai" },
+  { slug: "/small-business-website-dubai", label: "Small Business Website Dubai" },
+  { slug: "/startup-website-dubai", label: "Startup Website Dubai" },
+  { slug: "/restaurant-website-dubai", label: "Restaurant Website Dubai" },
+  { slug: "/real-estate-website-dubai", label: "Real Estate Website Development Dubai" },
+  { slug: "/clinic-website-dubai", label: "Clinic Website Development Dubai" },
+  { slug: "/responsive-web-design-dubai", label: "Responsive Web Design Dubai" },
+  { slug: "/premium-website-dubai", label: "Premium Website Dubai" },
+  { slug: "/fast-website-dubai", label: "Fast Website Development Dubai" },
+
+  { slug: "/ai-company-dubai", label: "AI Company in Dubai" },
+  { slug: "/ai-development-dubai", label: "AI Development Dubai" },
+  { slug: "/ai-automation-dubai", label: "AI Automation Solutions Dubai" },
+  { slug: "/chatbot-development-dubai", label: "AI Chatbot Development Dubai" },
+  { slug: "/whatsapp-chatbot-dubai", label: "WhatsApp Chatbot Dubai" },
+  { slug: "/lead-automation-dubai", label: "Lead Automation Dubai" },
+  { slug: "/crm-automation-dubai", label: "CRM Automation Dubai" },
+  { slug: "/workflow-automation-dubai", label: "Workflow Automation Dubai" },
+  { slug: "/gpt-integration-dubai", label: "GPT Integration Dubai" },
+  { slug: "/openai-development-dubai", label: "OpenAI Development Dubai" },
+  { slug: "/voicebot-dubai", label: "AI Voice Bot Dubai" },
+
+  { slug: "/mobile-app-development-dubai", label: "Mobile App Development Dubai" },
+  { slug: "/android-app-development-dubai", label: "Android App Development Dubai" },
+  { slug: "/ios-app-development-dubai", label: "iOS App Development Dubai" },
+  { slug: "/flutter-development-dubai", label: "Flutter App Development Dubai" },
+  { slug: "/react-native-dubai", label: "React Native Development Dubai" },
+  { slug: "/food-delivery-app-dubai", label: "Food Delivery App Dubai" },
+  { slug: "/booking-app-dubai", label: "Booking App Dubai" },
+  { slug: "/marketplace-app-dubai", label: "Marketplace App Dubai" },
+
+  { slug: "/custom-software-dubai", label: "Custom Software Development Dubai" },
+  { slug: "/react-development-dubai", label: "React Development Company Dubai" }
+];
+
+
+
 const servicesDetails = [
   {
     id: "ai-development",
@@ -128,6 +171,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
+    
     <PageLayout>
       <SeoHead
         title="Web Development, AI Solutions & Software Services in UAE | ZFusionAI"
@@ -148,14 +192,13 @@ export default function ServicesPage() {
         path="/services"
         schema={{
           "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "AI, Web, Mobile and Automation Development",
-          provider: {
-            "@type": "Organization",
-            name: "ZFusionAI",
-            url: "https://zfusionai.info",
-          },
-          areaServed: { "@type": "Country", name: "United Arab Emirates" },
+          "@type": "ItemList",
+          itemListElement: seoServiceLinks.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            url: `https://zfusionai.info${item.slug}`,
+            name: item.label
+          }))
         }}
       />
       {/* Hero */}
@@ -292,6 +335,27 @@ export default function ServicesPage() {
         ))}
       </div>
 
+      {/* SEO Internal Links */}
+      <section className="py-6 border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12">
+          <details className="group">
+            <summary className="cursor-pointer text-xs text-muted-foreground hover:text-white transition-colors">
+              Explore More Services
+            </summary>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-4">
+              {seoServiceLinks.map((item) => (
+                <Link key={item.slug} href={item.slug}>
+                  <a className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                    {item.label}
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </details>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-card/30 border-t border-white/5 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
@@ -310,3 +374,4 @@ export default function ServicesPage() {
     </PageLayout>
   );
 }
+export { seoServiceLinks };
