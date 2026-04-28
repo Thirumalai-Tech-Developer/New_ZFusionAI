@@ -2,18 +2,18 @@ import SeoHead from "@/components/SeoHead";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import BackgroundEffects from "@/components/BackgroundEffects";
+import SideNav from "@/components/SideNav";
+import TrustedBy from "@/components/TrustedBy";
+import Services from "@/components/Services";
 import { ArrowDown } from "lucide-react";
 import {
   lazy,
   Suspense,
   useEffect,
   useState,
-  startTransition,
 } from "react";
 
-const BackgroundEffects = lazy(() => import("@/components/BackgroundEffects"));
-const TrustedBy = lazy(() => import("@/components/TrustedBy"));
-const Services = lazy(() => import("@/components/Services"));
 const WhyChoose = lazy(() => import("@/components/WhyChoose"));
 const Industries = lazy(() => import("@/components/Industries"));
 const Stats = lazy(() => import("@/components/Stats"));
@@ -27,39 +27,8 @@ const ContactPreview = lazy(() => import("@/components/ContactPreview"));
 export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
 
-  const [stage1, setStage1] = useState(false);
-  const [stage2, setStage2] = useState(false);
-  const [stage3, setStage3] = useState(false);
-
   useEffect(() => {
     let ticking = false;
-    let t1: ReturnType<typeof setTimeout>;
-    let t2: ReturnType<typeof setTimeout>;
-    let t3: ReturnType<typeof setTimeout>;
-
-    const loadStage1 = () => {
-      startTransition(() => setStage1(true));
-    };
-
-    const loadStage2 = () => {
-      startTransition(() => setStage2(true));
-    };
-
-    const loadStage3 = () => {
-      startTransition(() => setStage3(true));
-    };
-
-    const beginProgressiveLoad = () => {
-      loadStage1();
-
-      t1 = setTimeout(() => {
-        loadStage2();
-      }, 500);
-
-      t2 = setTimeout(() => {
-        loadStage3();
-      }, 1100);
-    };
 
     const handleScroll = () => {
       if (ticking) return;
@@ -74,36 +43,16 @@ export default function Landing() {
           return prev !== next ? next : prev;
         });
 
-        if (y > 180 && !stage1) {
-          beginProgressiveLoad();
-        }
-
         ticking = false;
       });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(
-        () => {
-          beginProgressiveLoad();
-        },
-        { timeout: 1800 }
-      );
-    } else {
-      t3 = setTimeout(() => {
-        beginProgressiveLoad();
-      }, 1800);
-    }
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
     };
-  }, [stage1]);
+  }, []);
 
   const scrollToServices = () => {
     document.getElementById("services")?.scrollIntoView({
@@ -153,43 +102,26 @@ export default function Landing() {
         }}
       />
 
+      <BackgroundEffects />
       <Navbar />
-
-      <Suspense fallback={null}>
-        <BackgroundEffects />
-      </Suspense>
+      <SideNav />
 
       <main className="relative z-10">
         <Hero />
+        <TrustedBy />
+        <Services />
 
         <Suspense fallback={null}>
-          <TrustedBy />
-          <Services />
+          <WhyChoose />
+          <Industries />
+          <Stats />
+          <Process />
+          <Testimonials />
+          <Pricing />
+          <FAQ />
+          <FinalCTA />
+          <ContactPreview />
         </Suspense>
-
-        {stage1 && (
-          <Suspense fallback={null}>
-            <WhyChoose />
-            <Industries />
-            <Stats />
-          </Suspense>
-        )}
-
-        {stage2 && (
-          <Suspense fallback={null}>
-            <Process />
-            <Testimonials />
-            <Pricing />
-          </Suspense>
-        )}
-
-        {stage3 && (
-          <Suspense fallback={null}>
-            <FAQ />
-            <FinalCTA />
-            <ContactPreview />
-          </Suspense>
-        )}
       </main>
 
       <Footer />
