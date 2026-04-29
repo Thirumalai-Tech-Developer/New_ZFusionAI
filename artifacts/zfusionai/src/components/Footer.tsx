@@ -103,9 +103,9 @@ export default function Footer() {
 
           {cols.map((col) => (
             <div key={col.title} className="md:col-span-2">
-              <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+              <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
                 {col.title}
-              </h4>
+              </h3>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.name}>
@@ -131,9 +131,9 @@ export default function Footer() {
           ))}
 
           <div className="col-span-2 md:col-span-2">
-            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
               Service Areas
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li>Dubai</li>
               <li>Abu Dhabi</li>

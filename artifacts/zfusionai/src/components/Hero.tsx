@@ -62,13 +62,13 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link href="/contact" className="w-full sm:w-auto inline-flex">
-              <Button
-                size="lg"
-                className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg hover:shadow-[0_0_20px_rgba(255,122,0,0.6)] transition-all duration-300 group"
-              >
-                Book Free Call
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+            <Button
+              size="lg"
+              className="w-full rounded-full bg-orange-600 hover:bg-orange-700 text-white px-8 py-6 text-lg min-h-[56px] hover:shadow-[0_0_20px_rgba(255,122,0,0.6)] transition-all duration-300 group focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+            >
+              Book Free Call
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
             </Link>
             <Link href="/services" className="w-full sm:w-auto inline-flex">
               <Button

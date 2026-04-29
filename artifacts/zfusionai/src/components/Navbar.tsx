@@ -74,7 +74,7 @@ export default function Navbar() {
           <div className="hidden lg:flex">
             <Link href="/contact" className="inline-flex">
               <Button
-                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-5 xl:px-6 shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all duration-300 group"
+                className="rounded-full bg-orange-600 hover:bg-orange-700 text-white px-5 xl:px-6 min-h-[48px] shadow-[0_0_20px_rgba(255,122,0,0.3)] hover:shadow-[0_0_30px_rgba(255,122,0,0.5)] transition-all duration-300 group"
               >
                 Get Proposal
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
