@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PageLayout from "@/components/PageLayout";
 import SeoHead from "@/components/SeoHead";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck,
   Scale,
@@ -19,8 +19,10 @@ import {
   PhoneCall,
   MessageSquare,
   CheckCircle2,
-  ExternalLink,
   ChevronRight,
+  Search,
+  ListFilter,
+  ArrowUpRight,
 } from "lucide-react";
 import { generateWhatsAppLink, WHATSAPP_CONFIG } from "@/lib/whatsappEngine";
 
@@ -255,6 +257,10 @@ const termsSchema = {
 
 export default function TermsPage() {
   const [activeSection, setActiveSection] = useState<string>("agreement");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const isUserClickingRef = useRef<boolean>(false);
 
   const whatsAppLegalLink = generateWhatsAppLink({
     service: "general",
@@ -262,25 +268,47 @@ export default function TermsPage() {
     scopeSummary: "Enterprise Terms & Conditions / NDA inquiry via zfusionai.com/terms",
   });
 
+  const filteredSections = termsSections.filter(
+    (s) =>
+      s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.shortTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.num.includes(searchQuery) ||
+      s.highlight.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const scrollToClause = (id: string) => {
+    isUserClickingRef.current = true;
     setActiveSection(id);
+    setMobileMenuOpen(false);
+
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -120;
+      const yOffset = -110;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
+
+    setTimeout(() => {
+      isUserClickingRef.current = false;
+    }, 600);
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 180;
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? Math.min(100, Math.max(0, Math.round((winScroll / height) * 100))) : 0;
+      setScrollProgress(scrolled);
+
+      if (isUserClickingRef.current) return;
+
+      const triggerY = window.scrollY + 200;
       for (const section of termsSections) {
         const el = document.getElementById(section.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
+          if (triggerY >= top && triggerY < top + height) {
             setActiveSection(section.id);
             break;
           }
@@ -289,8 +317,11 @@ export default function TermsPage() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const activeSectionData = termsSections.find((s) => s.id === activeSection) || termsSections[0];
 
   return (
     <PageLayout>
@@ -418,95 +449,183 @@ export default function TermsPage() {
         </div>
       </section>
 
-      {/* Main Two-Column Cyber Grid */}
-      <section className="py-16 md:py-24 bg-[#030605]">
+      {/* Main Split-Screen Architecture: Hard-Coded Sticky List on Left + Scrolling Brief on Right */}
+      <section className="py-16 md:py-24 bg-[#030605] relative">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="grid lg:grid-cols-12 gap-10 max-w-7xl mx-auto">
-            {/* Left Column: Sticky Table of Contents Navigation */}
-            <aside className="lg:col-span-4 hidden lg:block">
-              <div className="sticky top-28 space-y-4">
-                <div className="p-5 rounded-2xl bg-slate-900/80 border border-white/10 backdrop-blur-xl shadow-xl">
-                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
-                    <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center gap-2">
-                      <Scale className="w-3.5 h-3.5" />
-                      TABLE OF CONTENTS
+
+          {/* Mobile Sticky Quick-Jump Pill Bar (Hard-Coded Stay on Mobile Viewports) */}
+          <div className="lg:hidden sticky top-20 z-30 mb-8 p-3 rounded-xl bg-slate-900/90 border border-emerald-500/30 backdrop-blur-xl shadow-2xl">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 truncate">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span className="text-xs font-mono text-emerald-400 font-semibold truncate">
+                  {activeSectionData.num} // {activeSectionData.shortTitle}
+                </span>
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="px-2.5 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center gap-1.5 shrink-0"
+              >
+                <ListFilter className="w-3.5 h-3.5" />
+                <span>Jump ({termsSections.length})</span>
+              </button>
+            </div>
+
+            {/* Mobile Dropdown Drawer */}
+            <AnimatePresence>
+              {mobileMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="mt-3 pt-3 border-t border-white/10 space-y-1 max-h-64 overflow-y-auto"
+                >
+                  {termsSections.map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => scrollToClause(s.id)}
+                      className={`w-full text-left px-3 py-2 rounded-lg text-xs font-mono flex items-center justify-between ${
+                        activeSection === s.id
+                          ? "bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/40"
+                          : "text-slate-300 hover:bg-white/5"
+                      }`}
+                    >
+                      <span>
+                        <span className="text-emerald-400 mr-2">{s.num} //</span>
+                        {s.shortTitle}
+                      </span>
+                      {activeSection === s.id && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-10 max-w-7xl mx-auto items-start relative">
+            
+            {/* Left Column: HARD-CODED STICKY LIST OF CLAUSES (Premium Locked Rail) */}
+            <aside className="lg:col-span-4 hidden lg:block sticky top-24 self-start z-20">
+              <div className="rounded-2xl bg-slate-900/90 border border-emerald-500/30 backdrop-blur-2xl shadow-2xl flex flex-col max-h-[calc(100vh-7.5rem)] overflow-hidden">
+                
+                {/* Header with Live Progress */}
+                <div className="p-4 border-b border-white/10 bg-slate-950/60">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-mono uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-2">
+                      <Scale className="w-4 h-4 text-emerald-400" />
+                      TERMS INDEX
                     </span>
-                    <span className="text-[10px] font-mono text-slate-400">14 CLAUSES</span>
+                    <span className="text-[11px] font-mono text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                      {scrollProgress}% READ
+                    </span>
                   </div>
 
-                  <nav className="space-y-1 max-h-[58vh] overflow-y-auto pr-1 hide-scrollbar">
-                    {termsSections.map((s) => {
-                      const isActive = activeSection === s.id;
-                      return (
-                        <button
-                          key={s.id}
-                          onClick={() => scrollToClause(s.id)}
-                          className={`w-full text-left px-3 py-2 rounded-lg text-xs font-mono transition-all flex items-center justify-between group ${
-                            isActive
-                              ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-semibold"
-                              : "text-slate-400 hover:text-white hover:bg-white/5"
-                          }`}
-                        >
-                          <span className="flex items-center gap-2 truncate">
-                            <span className={isActive ? "text-emerald-400" : "text-slate-500"}>
-                              {s.num} //
-                            </span>
-                            <span className="truncate">{s.shortTitle}</span>
-                          </span>
-                          <ChevronRight
-                            className={`w-3 h-3 transition-transform ${
-                              isActive ? "text-emerald-400 translate-x-0.5" : "text-slate-600 opacity-0 group-hover:opacity-100"
-                            }`}
-                          />
-                        </button>
-                      );
-                    })}
-                  </nav>
+                  {/* Reading Progress Line */}
+                  <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden mb-3">
+                    <div
+                      className="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 transition-all duration-150"
+                      style={{ width: `${scrollProgress}%` }}
+                    />
+                  </div>
+
+                  {/* Interactive Search Filter Input */}
+                  <div className="relative">
+                    <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                    <input
+                      type="text"
+                      placeholder="Filter 14 clauses..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full pl-8 pr-3 py-1.5 bg-black/40 border border-white/10 rounded-lg text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50"
+                    />
+                  </div>
                 </div>
 
-                {/* Direct Legal Desk Card in Sidebar */}
-                <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-950/40 to-slate-950/80 border border-emerald-500/30 shadow-lg">
-                  <div className="text-xs font-mono text-emerald-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    <span>CONTRACT ESCALATION</span>
-                  </div>
-                  <h4 className="text-sm font-bold text-white font-display mb-2">
-                    Custom Enterprise MSA / NDA?
-                  </h4>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                    Direct access to senior partners for custom procurement, master services agreements, and rapid NDA execution.
-                  </p>
+                {/* Hard-Coded Staying Navigation List (Pins on screen while brief scrolls) */}
+                <nav className="p-3 space-y-1 overflow-y-auto flex-grow hide-scrollbar">
+                  {filteredSections.map((s) => {
+                    const isActive = activeSection === s.id;
+                    return (
+                      <button
+                        key={s.id}
+                        onClick={() => scrollToClause(s.id)}
+                        className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-mono transition-all flex items-center justify-between group relative ${
+                          isActive
+                            ? "bg-gradient-to-r from-emerald-500/20 to-emerald-500/5 text-emerald-300 border border-emerald-500/40 shadow-md font-semibold"
+                            : "text-slate-400 hover:text-white hover:bg-white/5 border border-transparent"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 truncate">
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full shrink-0 transition-all ${
+                              isActive ? "bg-emerald-400 scale-125 shadow-[0_0_8px_#10b981]" : "bg-slate-600 group-hover:bg-slate-400"
+                            }`}
+                          />
+                          <span className={isActive ? "text-emerald-400 font-bold" : "text-slate-500"}>
+                            {s.num} //
+                          </span>
+                          <span className="truncate">{s.shortTitle}</span>
+                        </div>
+                        <ChevronRight
+                          className={`w-3.5 h-3.5 transition-transform shrink-0 ${
+                            isActive
+                              ? "text-emerald-400 translate-x-0.5"
+                              : "text-slate-600 opacity-0 group-hover:opacity-100"
+                          }`}
+                        />
+                      </button>
+                    );
+                  })}
+
+                  {filteredSections.length === 0 && (
+                    <div className="py-6 text-center text-xs font-mono text-slate-500">
+                      No matching clauses found.
+                    </div>
+                  )}
+                </nav>
+
+                {/* Direct WhatsApp Legal Quick Action Bar in Sticky Rail */}
+                <div className="p-3.5 border-t border-white/10 bg-slate-950/80">
                   <a
                     href={whatsAppLegalLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-lg bg-emerald-500 text-slate-950 text-xs font-bold font-mono hover:bg-emerald-400 transition-all shadow-md shadow-emerald-500/20"
+                    className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-xl bg-emerald-500 text-slate-950 text-xs font-bold font-mono hover:bg-emerald-400 transition-all shadow-md shadow-emerald-500/20"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
                     <span>WhatsApp Legal Desk</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-auto" />
                   </a>
+                  <div className="text-[10px] font-mono text-center text-slate-400 mt-2">
+                    HOTLINE: +971 54 202 6653
+                  </div>
                 </div>
               </div>
             </aside>
 
-            {/* Right Column: Numbered Clause Terminal Cards */}
+            {/* Right Column: THE TERMS BRIEF (Smoothly Scrolls Beside the Locked List) */}
             <div className="lg:col-span-8 space-y-8">
               {termsSections.map((s) => {
                 const Icon = s.icon;
+                const isActive = activeSection === s.id;
                 return (
                   <motion.article
                     key={s.id}
                     id={s.id}
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.4 }}
-                    className="p-6 md:p-8 rounded-2xl bg-slate-900/50 border border-white/10 hover:border-emerald-500/30 transition-all backdrop-blur-xl shadow-2xl relative overflow-hidden group"
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.35 }}
+                    className={`p-6 md:p-8 rounded-2xl bg-slate-900/60 border transition-all backdrop-blur-xl shadow-2xl relative overflow-hidden group ${
+                      isActive
+                        ? "border-emerald-500/50 ring-1 ring-emerald-500/20 shadow-emerald-950/20"
+                        : "border-white/10 hover:border-emerald-500/30"
+                    }`}
                   >
                     {/* Top Monospaced Tag Header */}
                     <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b border-white/10">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400/80" />
+                        <span className={`w-2 h-2 rounded-full ${isActive ? "bg-emerald-400 animate-pulse" : "bg-emerald-400/80"}`} />
                         <span className="text-xs font-mono text-emerald-400 font-semibold tracking-wider">
                           CLAUSE {s.num} // [{s.id.toUpperCase().replace(/-/g, "_")}]
                         </span>
@@ -527,7 +646,7 @@ export default function TermsPage() {
                       <span><strong>Key Provision:</strong> {s.highlight}</span>
                     </div>
 
-                    {/* Detailed Content */}
+                    {/* Detailed Content / Terms Brief */}
                     <div className="space-y-3.5 text-slate-300 text-sm md:text-base leading-relaxed font-sans">
                       {s.content.map((para, pIdx) => (
                         <p key={pIdx} className="leading-relaxed">
