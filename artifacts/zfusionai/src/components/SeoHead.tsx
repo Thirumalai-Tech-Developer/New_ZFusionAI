@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { seoServiceLinks } from "@/pages/services";
 
-const SITE_URL = "https://zfusionai.info";
+const SITE_URL = "https://zfusionai.com";
 const SITE_NAME = "ZFusionAI";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/brand/logo_compressed.png`;
 
 export interface SeoHeadProps {
   title: string;
@@ -20,13 +20,13 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "ZFusionAI",
   description:
-    "AI, web, mobile and automation development company in Dubai, UAE.",
+    "Next-Gen AI Agents, WhatsApp Web API Cloud Middleware & High-Frequency Web Development in Dubai, UAE.",
   url: SITE_URL,
   telephone: "+971 55 471 2353",
-  email: "support@zfusionai.info",
+  email: "support@zfusionai.com",
   image: DEFAULT_OG_IMAGE,
   logo: DEFAULT_OG_IMAGE,
-  priceRange: "AED 599+",
+  priceRange: "Free Tier Available / AED 0+",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Dubai",

@@ -13,11 +13,11 @@ const cols = [
   {
     title: "Services",
     links: [
-      { name: "AI Development", href: "/services#ai-development" },
-      { name: "Website Development", href: "/services#web-development" },
-      { name: "Mobile Apps", href: "/services#mobile-apps" },
-      { name: "Automation", href: "/services#business-automation" },
-      { name: "Cloud Services", href: "/services#cloud-deployment" },
+      { name: "WhatsApp Web API", href: "/services/whatsapp-api" },
+      { name: "AI Agentic Build", href: "/services/agentic-ai" },
+      { name: "Full Stack Web Dev", href: "/services/full-stack-web" },
+      { name: "Free Developer Tiers", href: "/#pricing" },
+      { name: "All Enterprise Services", href: "/services" },
     ],
   },
   {
@@ -84,10 +84,10 @@ export default function Footer() {
 
             <div className="mt-6 space-y-2 text-sm">
               <a
-                href="mailto:support@zfusionai.info"
+                href="mailto:support@zfusionai.com"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               >
-                <Mail className="h-4 w-4" /> support@zfusionai.info
+                <Mail className="h-4 w-4" /> support@zfusionai.com
               </a>
               <a
                 href="tel:+971554712353"

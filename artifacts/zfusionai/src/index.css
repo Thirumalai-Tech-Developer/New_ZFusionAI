@@ -4,7 +4,18 @@
 @plugin "@tailwindcss/typography";
 
 body {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
+  background-color: #030605;
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -318,4 +329,79 @@ body {
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+}
+
+/* =========================================================================
+   LOGO FIELD & AVANT-GARDE VISUAL ARCHITECTURE
+   ========================================================================= */
+
+/* THEME 1: WHATSAPP WEB API (LIQUID GLASS MORPHISM) */
+[data-field="whatsapp"] {
+  --field-accent: #25d366;
+  --field-accent-glow: rgba(37, 211, 102, 0.4);
+  --field-bg: #030c07;
+  --field-border: rgba(37, 211, 102, 0.2);
+}
+
+.liquid-glass {
+  background: rgba(6, 23, 14, 0.45);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(37, 211, 102, 0.22);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(167, 243, 208, 0.15);
+}
+
+.liquid-glass-bubble-in {
+  background: rgba(18, 140, 126, 0.25);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  border-radius: 18px 18px 18px 4px;
+}
+
+.liquid-glass-bubble-out {
+  background: rgba(37, 211, 102, 0.18);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  border-radius: 18px 18px 4px 18px;
+}
+
+/* THEME 2: AI AGENTIC BUILD (AUTONOMOUS NEURAL MATRIX) */
+[data-field="agentic"] {
+  --field-accent: #00f2fe;
+  --field-accent-glow: rgba(0, 242, 254, 0.4);
+  --field-bg: #020206;
+  --field-border: rgba(157, 78, 221, 0.25);
+}
+
+.neural-card {
+  background: rgba(8, 7, 18, 0.65);
+  backdrop-filter: blur(24px) contrast(110%);
+  -webkit-backdrop-filter: blur(24px) contrast(110%);
+  border: 1px solid rgba(157, 78, 221, 0.25);
+  box-shadow: 0 10px 40px -10px rgba(0, 242, 254, 0.15);
+}
+
+.synapse-node-glow {
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.6), inset 0 0 10px rgba(247, 37, 133, 0.4);
+}
+
+/* THEME 3: FULL STACK WEB DEVELOPMENT (CYBER-ARCHITECTONIC TERMINAL) */
+[data-field="fullstack"] {
+  --field-accent: #3b82f6;
+  --field-accent-glow: rgba(59, 130, 246, 0.35);
+  --field-bg: #06070a;
+  --field-border: rgba(59, 130, 246, 0.2);
+}
+
+.terminal-shell {
+  background: rgba(12, 14, 20, 0.92);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.cyber-grid-bg {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
 }

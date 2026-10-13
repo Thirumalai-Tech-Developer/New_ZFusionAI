@@ -1,143 +1,130 @@
+import React, { lazy, Suspense } from "react";
 import SeoHead from "@/components/SeoHead";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import BackgroundEffects from "@/components/BackgroundEffects";
-import SideNav from "@/components/SideNav";
-import TrustedBy from "@/components/TrustedBy";
-import Services from "@/components/Services";
-import { ArrowDown } from "lucide-react";
-import {
-  lazy,
-  Suspense,
-  useEffect,
-  useState,
-} from "react";
+import ProceduralCalculator from "@/components/pricing/ProceduralCalculator";
 
 const WhyChoose = lazy(() => import("@/components/WhyChoose"));
-const Industries = lazy(() => import("@/components/Industries"));
 const Stats = lazy(() => import("@/components/Stats"));
 const Process = lazy(() => import("@/components/Process"));
-const Testimonials = lazy(() => import("@/components/Testimonials"));
-const Pricing = lazy(() => import("@/components/Pricing"));
 const FAQ = lazy(() => import("@/components/FAQ"));
 const FinalCTA = lazy(() => import("@/components/FinalCTA"));
-const ContactPreview = lazy(() => import("@/components/ContactPreview"));
+
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://zfusionai.com/#organization",
+      "name": "ZFusionAI",
+      "url": "https://zfusionai.com",
+      "logo": "https://zfusionai.com/brand/logo_compressed.png",
+      "description": "Enterprise digital engineering laboratory specializing in WhatsApp Web API middleware, autonomous AI agent swarms, and sub-50ms full-stack web applications.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+971554712353",
+        "contactType": "technical support",
+        "contactOption": "WhatsApp",
+        "areaServed": "Global",
+        "availableLanguage": ["English", "Arabic"],
+      },
+      "knowsAbout": [
+        "WhatsApp Business Cloud API Middleware",
+        "Autonomous Multi-Agent AI Swarms",
+        "High-Frequency Full Stack Web Development",
+        "React 19 & TypeScript 5.9 Systems",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://zfusionai.com/#website",
+      "url": "https://zfusionai.com",
+      "name": "ZFusionAI",
+      "publisher": {
+        "@id": "https://zfusionai.com/#organization",
+      },
+    },
+    {
+      "@type": "OfferCatalog",
+      "name": "ZFusionAI Core Digital Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "WhatsApp Web API Integration - Free Developer Sandbox",
+          "price": "0",
+          "priceCurrency": "AED",
+          "description": "1,000 free monthly events with direct Meta Cloud API webhook routing.",
+        },
+        {
+          "@type": "Offer",
+          "name": "AI Agentic Build - Free Autonomous Agent Node",
+          "price": "0",
+          "priceCurrency": "AED",
+          "description": "1 autonomous single-node agent workflow with vector memory integration.",
+        },
+        {
+          "@type": "Offer",
+          "name": "Full Stack Web Development - Free Blueprint & Boilerplate",
+          "price": "0",
+          "priceCurrency": "AED",
+          "description": "Complete system architectural review, ERD specs, and production Docker boilerplate.",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://zfusionai.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does ZFusionAI offer a permanent free tier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ZFusionAI maintains an open-access developer framework providing free tiers for all three services: 1,000 free WhatsApp API events, 1 free autonomous AI agent node, and complete full-stack architecture blueprints.",
+          },
+        },
+        {
+          "@type": "Question",
+          "name": "How do clients interact and scope projects with ZFusionAI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ZFusionAI operates a WhatsApp-first procedural model. Clients connect directly to Senior Engineering Partners via WhatsApp Click-to-Chat deep links, receiving real-time scoping and sprint timelines without static contact form delays.",
+          },
+        },
+      ],
+    },
+  ],
+};
 
 export default function Landing() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (ticking) return;
-
-      ticking = true;
-
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-
-        setScrolled((prev) => {
-          const next = y > 200;
-          return prev !== next ? next : prev;
-        });
-
-        ticking = false;
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollToServices = () => {
-    document.getElementById("services")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-hidden selection:bg-primary/30">
+    <div className="relative min-h-screen bg-[#030605] text-[#f8fafc] overflow-x-hidden selection:bg-emerald-500/30">
       <SeoHead
-        title="AI & Web Development Company in Dubai, UAE | ZFusionAI"
-        description="ZFusionAI is a leading AI and web development company in Dubai, UAE providing custom websites, AI automation, mobile apps, SEO-ready business platforms and software solutions across all UAE."
-        keywords={[
-          "web development Dubai",
-          "AI company Dubai",
-          "website development UAE",
-          "software company Dubai",
-          "AI solutions UAE",
-          "mobile app development Dubai",
-          "custom website Dubai",
-          "SEO company Dubai",
-          "business website UAE",
-          "automation company Dubai",
-          "AI development Dubai",
-          "ERP software UAE",
-          "CRM development Dubai",
-          "ecommerce website Dubai",
-        ]}
+        title="ZFusionAI | Next-Gen AI Agents, WhatsApp API & Full-Stack Web Architecture"
+        description="ZFusionAI (zfusionai.com) delivers bespoke WhatsApp Cloud API middleware, autonomous AI agent swarms, and sub-50ms full-stack web platforms with a permanent free tier."
         path="/"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "ZFusionAI",
-          url: "https://zfusionai.info",
-          logo: "https://zfusionai.info/brand/logo.png",
-          description:
-            "AI, web, mobile and automation development company in Dubai, UAE.",
-          contactPoint: {
-            "@type": "ContactPoint",
-            telephone: "+971 55 471 2353",
-            contactType: "customer support",
-            email: "support@zfusionai.info",
-            areaServed: "AE",
-            availableLanguage: ["English", "Arabic"],
-          },
-        }}
+        schema={homepageSchema}
       />
 
-      <BackgroundEffects />
       <Navbar />
-      <SideNav />
 
       <main className="relative z-10">
         <Hero />
-        <TrustedBy />
-        <Services />
+        
+        {/* Procedural Pricing & Free Tier Section */}
+        <ProceduralCalculator />
 
         <Suspense fallback={null}>
-          <WhyChoose />
-          <Industries />
           <Stats />
+          <WhyChoose />
           <Process />
-          <Testimonials />
-          <Pricing />
           <FAQ />
           <FinalCTA />
-          <ContactPreview />
         </Suspense>
       </main>
 
       <Footer />
-
-      {!scrolled && (
-        <button
-          onClick={scrollToServices}
-          aria-label="Scroll to services"
-          className="hidden md:flex fixed bottom-8 left-8 z-50 items-center gap-2 rounded-full bg-card/80 border border-white/10 px-4 py-2 text-sm font-medium text-white shadow-md hover:border-primary/50 transition-all group"
-        >
-          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 text-primary group-hover:bg-primary group-hover:text-black transition-colors">
-            <ArrowDown className="h-4 w-4" />
-          </div>
-          View cases
-        </button>
-      )}
     </div>
   );
 }

@@ -17,10 +17,9 @@ function Counter({ to, decimals = 0 }: { to: number; decimals?: number }) {
   );
 
   useEffect(() => {
-    if (inView) {
-      const controls = animate(count, to, { duration: 2, ease: "easeOut" });
-      return controls.stop;
-    }
+    if (!inView) return;
+    const controls = animate(count, to, { duration: 2, ease: "easeOut" });
+    return () => controls.stop();
   }, [inView, to, count]);
 
   useEffect(() => {

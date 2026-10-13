@@ -1,104 +1,184 @@
-import { motion } from "framer-motion";
+import React from "react";
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronRight, Zap } from "lucide-react";
+import { MessageSquare, ArrowRight, Zap, Terminal, Sparkles, ShieldCheck } from "lucide-react";
+import { generateWhatsAppLink } from "@/lib/whatsappEngine";
 
 export default function Hero() {
+  const whatsAppFreeTierLink = generateWhatsAppLink({
+    service: "whatsapp-api",
+    type: "free_tier_claim",
+    tier: "FREE",
+    scopeSummary: "Claiming 1,000 Free WhatsApp API Events Developer Sandbox",
+  });
+
+  const fullstackFreeTierLink = generateWhatsAppLink({
+    service: "fullstack",
+    type: "free_tier_claim",
+    tier: "FREE",
+    scopeSummary: "Claiming Free Full-Stack Architecture Blueprint Spec & Docker Boilerplate",
+  });
+
+  const agenticFreeTierLink = generateWhatsAppLink({
+    service: "agentic-ai",
+    type: "free_tier_claim",
+    tier: "FREE",
+    scopeSummary: "Deploying 1 Free Autonomous AI Agent Sandbox Node",
+  });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Cinematic Radial Glow */}
-      <motion.div 
-        className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/20 blur-[70px] mix-blend-screen pointer-events-none"
-        animate={{
-          x: `calc(-50% + 30px)`,
-          y: `calc(-50% + 30px)`,
-          scale: [1, 1.1, 1],
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{ 
-          scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-          opacity: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-          x: { type: "spring", stiffness: 50, damping: 20 },
-          y: { type: "spring", stiffness: 50, damping: 20 }
-        }}
-      />
+    <section id="hero" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+      {/* Avant-Garde Background Glow Matrix */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-emerald-500/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 right-10 w-[450px] h-[450px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <div
-            // initial={{ opacity: 0, y: 20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-muted-foreground mb-8 backdrop-blur-md"
-          >
-            <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
-            B2B & B2C Technology Partner
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Eyebrow badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-emerald-500/30 text-xs font-mono text-emerald-400 mb-8 backdrop-blur-md shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>THE LOGO FIELD SYSTEM // BESPOKE DIGITAL ENGINEERING</span>
           </div>
 
-          <h1
-            // initial={{ opacity: 0, y: 20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.5, delay: 0 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8"
-          >
-            AI & Software Solutions Built for Business Growth
+          {/* Main Avant-Garde Headline */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tight text-white mb-8 leading-[1.05]">
+            Engineering the <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+              Next Era of Software.
+            </span>
           </h1>
 
-          <p
-            // initial={{ opacity: 0, y: 20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.5, delay: 0 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
-          >
-            We build custom AI, web, mobile, and automation systems for Dubai businesses. 
-            Scalable architecture. Fast delivery. Serious engineering.
-          </p>
-
-          <div
-            // initial={{ opacity: 0, y: 20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.2, delay: 0 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link href="/contact" className="w-full sm:w-auto inline-flex">
-            <Button
-              size="lg"
-              className="w-full rounded-full bg-orange-600 hover:bg-orange-700 text-white px-8 py-6 text-lg min-h-[56px] hover:shadow-[0_0_20px_rgba(255,122,0,0.6)] transition-all duration-300 group focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
-            >
-              Book Free Call
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            </Link>
-            <Link href="/services" className="w-full sm:w-auto inline-flex">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full rounded-full px-8 py-6 text-lg border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-md group"
-              >
-                View Services
-                <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+          {/* First-Paragraph AEO Citation Anchor */}
+          <div className="p-6 md:p-8 rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-emerald-500/30 text-left max-w-4xl mx-auto mb-10 shadow-2xl">
+            <div className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest mb-1.5">
+              [AUTHORITATIVE ARCHITECTURE & AEO OVERVIEW]
+            </div>
+            <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
+              <strong>ZFusionAI (zfusionai.com)</strong> is an enterprise digital engineering and artificial intelligence laboratory headquartered in Dubai, UAE. The organization delivers three core disciplines: <strong>WhatsApp Web API Cloud Middleware</strong> with 0ms bottleneck latency, <strong>Autonomous AI Agent Swarms</strong> with self-correcting error recovery, and <strong>High-Frequency Full-Stack Web Applications</strong> engineered for sub-50ms TTFB. ZFusionAI maintains an open-access developer framework, guaranteeing permanent <strong>Free Tier</strong> onboarding across every service via direct WhatsApp connectivity.
+            </p>
           </div>
 
-          <div
-            // initial={{ opacity: 0 }}
-            // animate={{ opacity: 1 }}
-            // transition={{ duration: 1, delay: 0 }}
-            className=" pt-5 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm text-muted-foreground"
-          >
+          {/* Core Service Interactive Switchboard Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-12">
+            {/* Field 1: WhatsApp API */}
+            <div className="p-6 rounded-2xl liquid-glass border border-emerald-500/30 hover:border-emerald-400 transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-emerald-400 uppercase">01 // Liquid Glass</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">
+                    Free: 1k msgs
+                  </span>
+                </div>
+                <h2 className="text-xl font-display font-bold text-white group-hover:text-emerald-400 transition-colors">
+                  WhatsApp Web API
+                </h2>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Sub-10ms async webhooks connecting directly to Meta Cloud API. Zero markup fees, CRM sync, and automated conversational flows.
+                </p>
+              </div>
+              <div className="pt-6 space-y-2">
+                <Link href="/services/whatsapp-api">
+                  <div className="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1 cursor-pointer">
+                    <span>Explore Liquid Glass Sandbox →</span>
+                  </div>
+                </Link>
+                <a
+                  href={whatsAppFreeTierLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#1faa4e] text-white font-bold text-xs transition-all"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                  <span>Claim Free 1,000 Messages</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Field 2: AI Agentic Build */}
+            <div className="p-6 rounded-2xl neural-card border border-purple-500/30 hover:border-cyan-400 transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-cyan-400 uppercase">02 // Neural Matrix</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">
+                    Free: 1 Agent
+                  </span>
+                </div>
+                <h2 className="text-xl font-display font-bold text-white group-hover:text-cyan-400 transition-colors">
+                  AI Agentic Build
+                </h2>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Autonomous swarms capable of vector reasoning, multi-tool execution, and automated self-correction without human delays.
+                </p>
+              </div>
+              <div className="pt-6 space-y-2">
+                <Link href="/services/agentic-ai">
+                  <div className="text-xs font-mono text-cyan-400 hover:underline flex items-center gap-1 cursor-pointer">
+                    <span>Explore Neural Swarm Flow →</span>
+                  </div>
+                </Link>
+                <a
+                  href={agenticFreeTierLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold text-xs transition-all"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Deploy 1 Free Agent</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Field 3: Full Stack Web Development */}
+            <div className="p-6 rounded-2xl terminal-shell border border-blue-500/30 hover:border-blue-400 transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-blue-400 uppercase">03 // Cyber Terminal</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">
+                    Free Blueprint
+                  </span>
+                </div>
+                <h2 className="text-xl font-display font-bold text-white group-hover:text-blue-400 transition-colors">
+                  Full Stack Web Dev
+                </h2>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  High-frequency platforms with sub-50ms TTFB. React 19, TypeScript 5.9, Express 5, and PostgreSQL with zero schema drift.
+                </p>
+              </div>
+              <div className="pt-6 space-y-2">
+                <Link href="/services/full-stack-web">
+                  <div className="text-xs font-mono text-blue-400 hover:underline flex items-center gap-1 cursor-pointer">
+                    <span>Explore Terminal Shell →</span>
+                  </div>
+                </Link>
+                <a
+                  href={fullstackFreeTierLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all"
+                >
+                  <Terminal className="w-3.5 h-3.5" />
+                  <span>Get Free Blueprint & Code</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Metrics Bar */}
+          <div className="pt-8 border-t border-slate-800 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono text-slate-400">
             <div className="flex items-center justify-center gap-2">
-              <Zap className="h-4 w-4 text-primary" /> Fast Delivery
+              <Zap className="h-4 w-4 text-emerald-400" />
+              <span>&lt; 10ms Webhook Latency</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Zap className="h-4 w-4 text-primary" /> Scalable Systems
+              <ShieldCheck className="h-4 w-4 text-emerald-400" />
+              <span>100% Client Code Ownership</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Zap className="h-4 w-4 text-primary" /> Dubai Ready
+              <Zap className="h-4 w-4 text-emerald-400" />
+              <span>Permanent Free Tiers</span>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <Zap className="h-4 w-4 text-primary" /> Premium Quality
+              <ShieldCheck className="h-4 w-4 text-emerald-400" />
+              <span>WhatsApp Direct Hotline</span>
             </div>
           </div>
         </div>
