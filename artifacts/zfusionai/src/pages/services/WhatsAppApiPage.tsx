@@ -58,6 +58,8 @@ export default function WhatsAppApiPage() {
           "@type": "Organization",
           "name": "ZFusionAI",
           "url": "https://zfusionai.com",
+          "telephone": "+971 54 202 6653",
+          "email": "support@zfusionai.com",
         },
         "serviceType": "Messaging Middleware and Automation",
         "areaServed": "Global",

@@ -57,6 +57,8 @@ export default function FullStackWebPage() {
           "@type": "Organization",
           "name": "ZFusionAI",
           "url": "https://zfusionai.com",
+          "telephone": "+971 54 202 6653",
+          "email": "support@zfusionai.com",
         },
         "serviceType": "Custom Web Application Engineering",
         "areaServed": "Global",

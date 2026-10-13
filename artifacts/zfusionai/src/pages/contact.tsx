@@ -20,10 +20,10 @@ export default function ContactPage() {
     "mainEntity": {
       "@type": "Organization",
       "name": "ZFusionAI",
-      "telephone": "+971554712353",
+      "telephone": "+971 54 202 6653",
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+971554712353",
+        "telephone": "+971 54 202 6653",
         "contactType": "technical support",
         "contactOption": "WhatsApp",
         "availableLanguage": ["English", "Arabic"],
@@ -35,7 +35,7 @@ export default function ContactPage() {
     <>
       <SeoHead
         title="WhatsApp Direct Contact | ZFusionAI Engineering Partner"
-        description="Zero traditional forms. Connect directly with ZFusionAI senior engineers on WhatsApp (+971 55 471 2353) for instant scoping and free tier activations."
+        description="Zero traditional forms. Connect directly with ZFusionAI senior engineers on WhatsApp (+971 54 202 6653) for instant scoping and free tier activations."
         path="/contact"
         schema={schemaData}
       />

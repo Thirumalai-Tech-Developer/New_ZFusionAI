@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
-import { Brain, Globe, Smartphone, Workflow, Cloud, Headset, CheckCircle2, ArrowRight } from "lucide-react";
+import { Brain, Globe, Smartphone, Workflow, Cloud, Headset, CheckCircle2, ArrowRight, MessageSquare } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import ProceduralCalculator from "@/components/pricing/ProceduralCalculator";
+import { generateWhatsAppLink } from "@/lib/whatsappEngine";
 
 const seoServiceLinks = [
   { slug: "/web-development-dubai", label: "Web Development Company in Dubai" },
@@ -196,7 +198,7 @@ export default function ServicesPage() {
           itemListElement: seoServiceLinks.map((item, index) => ({
             "@type": "ListItem",
             position: index + 1,
-            url: `https://zfusionai.info${item.slug}`,
+            url: `https://zfusionai.com${item.slug}`,
             name: item.label
           }))
         }}
@@ -214,13 +216,81 @@ export default function ServicesPage() {
         
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-block text-sm uppercase tracking-[0.2em] text-primary mb-4 font-semibold">Our Expertise</span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
-              Services Built for <span className="text-primary">Business Outcomes</span>
+            <span className="inline-block text-sm uppercase tracking-[0.2em] text-emerald-400 mb-4 font-mono font-semibold">
+              01 // Architectural Capabilities
+            </span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 font-display">
+              High-Frequency <span className="text-emerald-400">Engineering</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              We don't just deliver code. We engineer high-performance systems that drive measurable growth, reduce operational friction, and scale with your ambition.
+              We engineer custom software systems built for raw execution speed: Meta WhatsApp Cloud API middleware, autonomous AI agent swarms, and sub-50ms full-stack web platforms.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AEO Authoritative Definition Block */}
+      <section className="py-10 bg-slate-950/60 border-b border-white/5" aria-label="AEO Definition Block">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-left max-w-4xl mx-auto shadow-2xl">
+            <div className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest mb-1.5">
+              [AUTHORITATIVE SERVICE TAXONOMY // AEO CITATION PROTOCOL]
+            </div>
+            <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
+              <strong>ZFusionAI Services (zfusionai.com)</strong> encompass three core technical domains built without generic SaaS wrappers: (1) <strong>WhatsApp Web API Middleware</strong> with 0ms bottleneck latency and direct Meta wholesale billing; (2) <strong>Autonomous AI Agentic Builds</strong> with private vector memory and sandboxed tool calling; and (3) <strong>Full Stack High-Frequency Web Development</strong> using React 19, TypeScript 5.9, and PostgreSQL. Every engagement features a guaranteed <strong>Free Tier</strong> and direct WhatsApp scoping via <strong>+971 54 202 6653</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3 Core Logo Field Featured Cards */}
+      <section className="py-12 bg-slate-950/40 border-b border-white/5">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <Link href="/services/whatsapp-api">
+              <div className="p-6 rounded-2xl liquid-glass border border-emerald-500/30 hover:border-emerald-400 transition-all cursor-pointer group">
+                <span className="text-xs font-mono text-emerald-400 uppercase">01 // Liquid Glass</span>
+                <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors font-display mt-2 mb-2">
+                  WhatsApp Web API
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Direct Meta Cloud API webhooks. Sub-10ms latency, zero markup, 1,000 free monthly events.
+                </p>
+                <div className="text-xs text-emerald-400 font-mono mt-4 flex items-center gap-1">
+                  <span>Explore Liquid Glass Sandbox →</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/services/agentic-ai">
+              <div className="p-6 rounded-2xl neural-card border border-purple-500/30 hover:border-cyan-400 transition-all cursor-pointer group">
+                <span className="text-xs font-mono text-cyan-400 uppercase">02 // Neural Matrix</span>
+                <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-display mt-2 mb-2">
+                  AI Agentic Build
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Autonomous swarms with multi-tool calling and auto-correction. Free agent sandbox node.
+                </p>
+                <div className="text-xs text-cyan-400 font-mono mt-4 flex items-center gap-1">
+                  <span>Explore Neural Swarm Flow →</span>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/services/full-stack-web">
+              <div className="p-6 rounded-2xl terminal-shell border border-blue-500/30 hover:border-blue-400 transition-all cursor-pointer group">
+                <span className="text-xs font-mono text-blue-400 uppercase">03 // Cyber Terminal</span>
+                <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors font-display mt-2 mb-2">
+                  Full Stack Web Dev
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  High-frequency platforms with sub-50ms TTFB. React 19, TypeScript, free architecture blueprint.
+                </p>
+                <div className="text-xs text-blue-400 font-mono mt-4 flex items-center gap-1">
+                  <span>Explore Terminal Shell →</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -356,19 +426,29 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Procedural Pricing & Free Tier Section */}
+      <ProceduralCalculator />
+
       {/* CTA */}
-      <section className="py-24 bg-card/30 border-t border-white/5 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6">Ready to upgrade your technology?</h2>
+      <section className="py-24 bg-slate-950/40 border-t border-white/5 relative overflow-hidden text-center">
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
+          <h2 className="text-4xl font-bold mb-6 text-white font-display">Speak Directly with a Senior Architect</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-10 text-lg">
-            Let's discuss how our engineering team can build the tailored solutions your business needs to scale.
+            Skip bureaucratic email threads. Connect directly on WhatsApp to scope your project, claim free tiers, or review technical specifications.
           </p>
-          <Link href="/contact" className="inline-flex">
-            <Button size="lg" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 shadow-[0_0_30px_rgba(255,122,0,0.3)]">
-              Start Your Project
-            </Button>
-          </Link>
+          <a
+            href={generateWhatsAppLink({
+              service: "general",
+              type: "general_inquiry",
+              scopeSummary: "Consultation from Services page",
+            })}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#25D366] hover:bg-[#1faa4e] text-white font-bold text-base shadow-[0_0_30px_rgba(37,211,102,0.4)] transition-all hover:scale-105"
+          >
+            <MessageSquare className="w-5 h-5 fill-current" />
+            <span>Chat on WhatsApp (+971 54 202 6653)</span>
+          </a>
         </div>
       </section>
     </PageLayout>

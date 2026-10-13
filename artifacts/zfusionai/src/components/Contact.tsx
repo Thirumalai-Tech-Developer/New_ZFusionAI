@@ -139,10 +139,10 @@ export default function Contact() {
                 <div>
                   <p className="text-sm text-muted-foreground">Phone</p>
                   <a
-                    href="tel:+971554712353"
+                    href="tel:+971542026653"
                     className="text-white font-medium hover:text-primary"
                   >
-                    +971 55 471 2353
+                    +971 54 202 6653
                   </a>
                 </div>
               </div>

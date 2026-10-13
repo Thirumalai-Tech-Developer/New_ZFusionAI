@@ -57,17 +57,32 @@ const sections = [
   },
   {
     title: "14. Contact",
-    body: `Questions about these Terms can be sent to support@zfusionai.info or +971 55 471 2353.`,
+    body: `Questions about these Terms can be sent to support@zfusionai.com or +971 54 202 6653.`,
   },
 ];
+
+const termsSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "ZFusionAI Terms & Conditions",
+  "url": "https://zfusionai.com/terms",
+  "description": "Terms and conditions governing enterprise software engineering, WhatsApp API integrations, and AI agent services by ZFusionAI.",
+  "inLanguage": "en-AE",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "ZFusionAI",
+    "url": "https://zfusionai.com"
+  }
+};
 
 export default function TermsPage() {
   return (
     <PageLayout>
       <SeoHead
-        title="Terms & Conditions | ZFusionAI"
-        description="Terms and conditions governing the use of ZFusionAI services, website and software solutions."
+        title="Terms & Conditions | ZFusionAI Dubai"
+        description="Terms and conditions governing the use of ZFusionAI services, WhatsApp API integrations, AI agent sandboxes and software solutions."
         path="/terms"
+        schema={termsSchema}
       />
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent pointer-events-none" />

@@ -4,8 +4,8 @@
  */
 
 export const WHATSAPP_CONFIG = {
-  phone: "+971554712353",
-  cleanPhone: "971554712353",
+  phone: "+971 54 202 6653",
+  cleanPhone: "971542026653",
   businessName: "ZFusionAI Engineering Partner",
   defaultGreeting: "Hi ZFusionAI, I'm interested in discussing a project.",
 };

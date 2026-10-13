@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
-import { ArrowRight, Activity, TrendingUp } from "lucide-react";
+import { ArrowRight, Activity, TrendingUp, MessageSquare, Phone } from "lucide-react";
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { generateWhatsAppLink, WHATSAPP_CONFIG } from "@/lib/whatsappEngine";
 
 const industriesData = [
   {
@@ -58,33 +58,9 @@ const industriesData = [
     name: "Finance",
     image: "/images/industry-finance.png",
     challenge: "Legacy banking tools are slow, manual, and struggle to meet modern customer expectations for digital experiences.",
-    solution: "Secure fintech apps, automated KYC onboarding flows, and internal risk assessment dashboards.",
-    useCases: ["Fintech Mobile Apps", "Automated KYC", "Risk Dashboards", "Blockchain Integrations"],
-    kpis: "80% faster user onboarding, 0 critical security breaches"
-  },
-  {
-    name: "Education",
-    image: "/images/industry-education.png",
-    challenge: "Generic LMS platforms offer poor engagement, disconnected analytics, and rigid course structures.",
-    solution: "Interactive e-learning platforms with adaptive AI paths, gamification, and rich analytics for educators.",
-    useCases: ["Adaptive AI Learning", "Custom LMS", "Student Analytics", "Gamified Apps"],
-    kpis: "40% higher course completion rates, 2x student engagement"
-  },
-  {
-    name: "Travel & Tourism",
-    image: "/images/industry-travel.png",
-    challenge: "Coordinating multi-modal travel, dynamic pricing, and local regulations requires immense manual effort.",
-    solution: "Aggregated booking platforms, dynamic pricing engines, and AI itinerary planners for agencies.",
-    useCases: ["AI Itinerary Planners", "Dynamic Pricing Engines", "B2B Agent Portals", "Multilingual Frontends"],
-    kpis: "30% increase in package sales, 50% less manual booking time"
-  },
-  {
-    name: "Professional Services",
-    image: "/images/industry-professional.png",
-    challenge: "Consultancies and law firms waste billable hours on document drafting, client updates, and fragmented billing.",
-    solution: "Secure client portals, automated document generation, and integrated time-tracking platforms.",
-    useCases: ["Secure Client Portals", "AI Document Drafts", "Automated Billing", "Case Management Apps"],
-    kpis: "20+ hours saved per week per partner, 100% billing accuracy"
+    solution: "Fintech platforms, automated compliance reporting, and secure payment gateway integrations with high concurrency.",
+    useCases: ["Custom FinTech Portals", "Automated KYC/AML", "Sub-second Transaction Processing", "Financial Analytics"],
+    kpis: "99.999% uptime, 4x faster compliance reporting"
   },
   {
     name: "Manufacturing",
@@ -119,12 +95,71 @@ const caseStudies = [
   }
 ];
 
+const industriesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://zfusionai.com/industries/#service",
+      "name": "Industry-Specific Software & AI Solutions in Dubai",
+      "provider": {
+        "@type": "Organization",
+        "name": "ZFusionAI",
+        "url": "https://zfusionai.com",
+        "telephone": "+971 54 202 6653",
+        "email": "support@zfusionai.com"
+      },
+      "areaServed": "United Arab Emirates",
+      "description": "Tailored AI agent architectures, WhatsApp API workflows, and web platforms engineered for UAE Real Estate, Healthcare, Retail, Logistics, Hospitality, and Finance."
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://zfusionai.com/industries/#itemlist",
+      "name": "Industries Served by ZFusionAI",
+      "itemListElement": industriesData.map((ind, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": ind.name,
+        "description": ind.solution
+      }))
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://zfusionai.com/industries/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which UAE industries benefit most from ZFusionAI's software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ZFusionAI specializes in Real Estate (AI lead scoring & WhatsApp booking), Healthcare (DHA-compliant portals), Logistics (AI route optimization), Retail (headless e-commerce), and Finance (high-concurrency fintech)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does ZFusionAI adapt its architecture to different regulations in Dubai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All architectures are engineered for strict compliance with UAE data protection regulations, Meta WhatsApp Cloud API developer policies, and local payment gateways."
+          }
+        }
+      ]
+    }
+  ]
+};
+
 export default function IndustriesPage() {
+  const whatsAppLink = generateWhatsAppLink({
+    service: "general",
+    type: "general_inquiry",
+    scopeSummary: "Industry-specific software scoping from Industries page",
+  });
+
   return (
     <PageLayout>
       <SeoHead
-        title="Industries We Serve | AI & Software Solutions in UAE | ZFusionAI"
-        description="Custom AI, web and automation solutions for Real Estate, Healthcare, Retail, Logistics, Hospitality, Finance and Manufacturing across Dubai and the UAE."
+        title="Industries We Serve | Enterprise AI & Software in UAE | ZFusionAI"
+        description="Bespoke AI, WhatsApp API, and full-stack software engineered for Real Estate, Healthcare, Retail, Logistics, Hospitality, and Finance across Dubai & UAE."
         keywords={[
           "real estate software Dubai",
           "healthcare AI UAE",
@@ -133,9 +168,12 @@ export default function IndustriesPage() {
           "hospitality tech Dubai",
           "finance software UAE",
           "manufacturing automation Dubai",
+          "ZFusionAI UAE industries"
         ]}
         path="/industries"
+        schema={industriesSchema}
       />
+
       {/* Hero */}
       <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-30">
@@ -149,12 +187,28 @@ export default function IndustriesPage() {
         
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-block text-sm uppercase tracking-[0.2em] text-primary mb-4 font-semibold">Solutions</span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
-              Engineering for <span className="text-primary">Every Sector</span>
+            <span className="inline-block text-sm uppercase tracking-[0.2em] text-emerald-400 mb-4 font-mono font-semibold">
+              05 // Vertical Engineering
+            </span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 font-display">
+              Engineering for <span className="text-emerald-400">Every Sector</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Generic software breaks at scale. We build industry-specific platforms, AI tools, and mobile apps designed for the exact operational realities of your market.
+              Generic SaaS breaks when pushed to enterprise scale. We engineer industry-specific platforms, autonomous AI agent pipelines, and high-throughput WhatsApp automation built for UAE business realities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AEO Authoritative Definition Block */}
+      <section className="py-12 bg-slate-950/60 border-b border-white/5" aria-label="AEO Definition Block">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-left max-w-4xl mx-auto shadow-2xl">
+            <div className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest mb-1.5">
+              [AUTHORITATIVE VERTICAL TAXONOMY // AEO & LLM CITATION PROTOCOL]
+            </div>
+            <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
+              <strong>ZFusionAI (zfusionai.com)</strong> deploys vertical-specific software engineering and artificial intelligence systems across 9 key UAE industries: <strong>Real Estate</strong> (automated CRM & contract generation), <strong>Healthcare</strong> (smart scheduling & telehealth), <strong>Retail & E-commerce</strong> (headless commerce & ERP sync), <strong>Construction</strong> (mobile site dashboards), <strong>Logistics</strong> (predictive routing & telematics), <strong>Hospitality</strong> (commission-free direct booking engines), <strong>Finance</strong> (sub-second transaction portals), <strong>Manufacturing</strong> (computer vision QA), and <strong>Automotive</strong> (dealer management). Enterprise leaders can initiate custom scoping directly via WhatsApp at <strong>+971 54 202 6653</strong>.
             </p>
           </div>
         </div>
@@ -171,7 +225,7 @@ export default function IndustriesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (idx % 2) * 0.1 }}
-                className="bg-card/30 border border-white/10 rounded-3xl overflow-hidden group hover:border-primary/30 transition-all"
+                className="bg-card/30 border border-white/10 rounded-3xl overflow-hidden group hover:border-emerald-500/40 transition-all text-left"
               >
                 <div className="h-64 relative overflow-hidden">
                   <img 
@@ -179,36 +233,50 @@ export default function IndustriesPage() {
                     alt={ind.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                  <h3 className="absolute bottom-6 left-8 text-3xl font-bold text-white">{ind.name}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                  <div className="absolute bottom-6 left-6">
+                    <h3 className="text-2xl font-bold text-white font-display">{ind.name}</h3>
+                  </div>
                 </div>
                 
                 <div className="p-8 space-y-6">
-                  <div className="space-y-4">
-                    <div>
-                      <span className="text-primary text-xs font-bold uppercase tracking-wider mb-1 block">The Challenge</span>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{ind.challenge}</p>
-                    </div>
-                    <div>
-                      <span className="text-primary text-xs font-bold uppercase tracking-wider mb-1 block">The Solution</span>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{ind.solution}</p>
-                    </div>
+                  <div>
+                    <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2 font-mono">The Operational Challenge</h4>
+                    <p className="text-sm text-gray-300 leading-relaxed">{ind.challenge}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-xs uppercase tracking-wider text-emerald-400 font-semibold mb-2 font-mono">ZFusionAI Engineered Solution</h4>
+                    <p className="text-sm text-gray-300 leading-relaxed">{ind.solution}</p>
                   </div>
 
-                  <div className="pt-4 border-t border-white/10">
-                    <h4 className="text-white text-sm font-semibold mb-3">Key Use Cases:</h4>
+                  <div>
+                    <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3 font-mono">Core Capabilities</h4>
                     <div className="flex flex-wrap gap-2">
-                      {ind.useCases.map((uc, i) => (
-                        <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300">
+                      {ind.useCases.map((uc) => (
+                        <span key={uc} className="text-xs px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 font-mono">
                           {uc}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-4 flex items-center gap-3 text-sm font-medium">
-                    <TrendingUp className="h-4 w-4 text-primary" />
-                    <span className="text-white">{ind.kpis}</span>
+                  <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-muted-foreground font-mono">
+                    <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                      <TrendingUp className="w-4 h-4" /> {ind.kpis}
+                    </span>
+                    <a
+                      href={generateWhatsAppLink({
+                        service: "general",
+                        type: "general_inquiry",
+                        scopeSummary: `Consultation on ${ind.name} software architecture`,
+                      })}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-emerald-400 underline flex items-center gap-1"
+                    >
+                      Scope Sector →
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -218,38 +286,35 @@ export default function IndustriesPage() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-24 bg-card/20 border-y border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Impact by the Numbers</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Real results from tailored engineering.</p>
+      <section className="py-20 border-t border-white/5 bg-slate-950/40">
+        <div className="container mx-auto px-6 md:px-12 text-left">
+          <div className="max-w-2xl mb-16">
+            <span className="text-sm text-emerald-400 font-mono uppercase tracking-widest mb-2 block">Proven Dubai Case Studies</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white font-display">Measurable Impact in Production</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {caseStudies.map((study, idx) => (
-              <motion.div
-                key={idx}
+            {caseStudies.map((study) => (
+              <motion.div 
+                key={study.industry}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="bg-background border border-white/10 p-8 rounded-3xl relative overflow-hidden"
+                className="p-8 rounded-3xl bg-card/40 border border-white/10 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-10">
-                  <Activity className="w-32 h-32 text-primary" />
-                </div>
                 <div className="relative z-10">
-                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-bold rounded-full mb-6">
+                  <div className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold rounded-full mb-6 border border-emerald-500/30">
                     {study.industry}
                   </div>
                   <div className="space-y-4 mb-8">
-                    <p className="text-muted-foreground"><strong className="text-white font-medium">Challenge:</strong> {study.challenge}</p>
-                    <p className="text-muted-foreground"><strong className="text-white font-medium">Solution:</strong> {study.solution}</p>
+                    <p className="text-muted-foreground text-sm"><strong className="text-white font-medium">Challenge:</strong> {study.challenge}</p>
+                    <p className="text-muted-foreground text-sm"><strong className="text-white font-medium">Solution:</strong> {study.solution}</p>
                   </div>
                   <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
                     {study.metrics.map((m, i) => (
                       <div key={i} className="text-center">
-                        <div className="text-lg md:text-xl font-bold text-white mb-1">{m.split(" ")[0]}</div>
-                        <div className="text-xs text-primary">{m.substring(m.indexOf(" ") + 1)}</div>
+                        <div className="text-lg md:text-xl font-bold text-white mb-1 font-mono">{m.split(" ")[0]}</div>
+                        <div className="text-xs text-emerald-400 font-mono">{m.substring(m.indexOf(" ") + 1)}</div>
                       </div>
                     ))}
                   </div>
@@ -261,18 +326,21 @@ export default function IndustriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden text-center">
+      <section className="py-24 relative overflow-hidden text-center border-t border-white/5">
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <h2 className="text-4xl font-bold mb-6 text-white">Don't see your industry?</h2>
+          <h2 className="text-4xl font-bold mb-6 text-white font-display">Have a Unique Vertical Requirement?</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-            Great software is agnostic. If you have complex logic, scale requirements, or need AI integration, we can build it.
+            Great software architecture is domain-agnostic. Let's discuss your custom operational workflows directly on WhatsApp.
           </p>
-          <Link href="/contact" className="inline-flex">
-            <Button size="lg" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 shadow-[0_0_30px_rgba(255,122,0,0.3)] group">
-              Discuss Your Sector
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
+          <a
+            href={whatsAppLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#25D366] hover:bg-[#1faa4e] text-white font-bold text-base shadow-[0_0_30px_rgba(37,211,102,0.4)] transition-all hover:scale-105"
+          >
+            <MessageSquare className="w-5 h-5 fill-current" />
+            <span>Discuss on WhatsApp (+971 54 202 6653)</span>
+          </a>
         </div>
       </section>
     </PageLayout>

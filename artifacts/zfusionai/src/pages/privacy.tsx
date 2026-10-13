@@ -49,17 +49,32 @@ const sections = [
   },
   {
     title: "12. Contact",
-    body: `For privacy-related questions, contact support@zfusionai.info or +971 55 471 2353.`,
+    body: `For privacy-related questions, contact support@zfusionai.com or +971 54 202 6653.`,
   },
 ];
+
+const privacySchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "ZFusionAI Privacy Policy",
+  "url": "https://zfusionai.com/privacy",
+  "description": "Privacy policy and data protection standards governing enterprise software and messaging interactions by ZFusionAI.",
+  "inLanguage": "en-AE",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "ZFusionAI",
+    "url": "https://zfusionai.com"
+  }
+};
 
 export default function PrivacyPage() {
   return (
     <PageLayout>
       <SeoHead
-        title="Privacy Policy | ZFusionAI"
-        description="How ZFusionAI collects, uses and protects your personal information when you use our website and services."
+        title="Privacy Policy | ZFusionAI Dubai"
+        description="How ZFusionAI collects, uses and protects your data when using our WhatsApp Cloud API middleware, AI agent systems and web solutions."
         path="/privacy"
+        schema={privacySchema}
       />
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 border-b border-white/10">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent pointer-events-none" />
