@@ -14,7 +14,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-hidden selection:bg-primary/30 flex flex-col">
+    <div className="relative min-h-screen bg-background text-foreground overflow-hidden selection:bg-emerald-500/30 selection:text-emerald-100 flex flex-col">
       <BackgroundEffects />
       <Navbar />
       <motion.main 

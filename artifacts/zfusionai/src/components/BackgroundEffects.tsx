@@ -24,10 +24,10 @@ export default function BackgroundEffects() {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 rounded-full bg-primary/20"
+          className={`absolute w-1 h-1 rounded-full ${i % 2 === 0 ? "bg-emerald-500/25" : "bg-cyan-500/25"}`}
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
+            y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
             scale: Math.random() * 2 + 1,
             opacity: Math.random() * 0.5 + 0.1,
           }}
