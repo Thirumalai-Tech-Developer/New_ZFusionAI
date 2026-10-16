@@ -1,5 +1,5 @@
 import { useRef, useState, type FormEvent } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Send, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { api } from "@/lib/api";
@@ -8,6 +8,7 @@ import { Panel, errorMessage, fieldClass, primaryButton } from "./shared";
 type Turn = { role: "user" | "assistant"; content: string };
 
 export default function PlaygroundPanel({ aiConfigured }: { aiConfigured: boolean }) {
+  const queryClient = useQueryClient();
   const [turns, setTurns] = useState<Turn[]>([]);
   const [input, setInput] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
@@ -16,6 +17,7 @@ export default function PlaygroundPanel({ aiConfigured }: { aiConfigured: boolea
     mutationFn: (messages: Turn[]) =>
       api<{ reply: string }>("/account/ai/playground", { method: "POST", body: { messages } }),
     onSuccess: (res, messages) => {
+      void queryClient.invalidateQueries({ queryKey: ["account", "me"] });
       setTurns([...messages, { role: "assistant", content: res.reply }]);
       requestAnimationFrame(() =>
         listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" }),
@@ -41,11 +43,11 @@ export default function PlaygroundPanel({ aiConfigured }: { aiConfigured: boolea
     <Panel
       id="playground"
       title="AI agent playground"
-      description="Preview how your auto-reply agent answers. Playground replies don't use your message allowance."
+      description="Preview your auto-reply agent. Each successful reply uses one message from your shared allowance."
       icon={<Sparkles className="w-5 h-5" />}
       action={
         turns.length > 0 ? (
-          <button type="button" className="text-xs text-slate-400 hover:text-white" onClick={() => setTurns([])}>
+          <button type="button" className="text-xs text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white" onClick={() => setTurns([])}>
             Clear
           </button>
         ) : undefined
@@ -59,11 +61,11 @@ export default function PlaygroundPanel({ aiConfigured }: { aiConfigured: boolea
 
       <div
         ref={listRef}
-        className="h-64 overflow-y-auto space-y-3 p-4 rounded-xl bg-[#0b141a] border border-white/10"
+        className="h-64 overflow-y-auto space-y-3 p-4 rounded-xl bg-slate-50 dark:bg-[#0b141a] border border-slate-900/10 dark:border-white/10"
         aria-live="polite"
       >
         {turns.length === 0 && (
-          <p className="text-xs text-slate-500 text-center pt-20">
+          <p className="text-xs text-slate-600 dark:text-slate-500 text-center pt-20">
             Ask something a customer might send, e.g. “Do you deliver to Abu Dhabi?”
           </p>
         )}
@@ -71,14 +73,14 @@ export default function PlaygroundPanel({ aiConfigured }: { aiConfigured: boolea
           <div key={i} className={`flex ${t.role === "user" ? "justify-end" : "justify-start"}`}>
             <div
               className={`max-w-[85%] px-3 py-2 rounded-lg text-sm whitespace-pre-wrap ${
-                t.role === "user" ? "bg-[#005c4b] text-white" : "bg-[#202c33] text-slate-100"
+                t.role === "user" ? "bg-slate-50 dark:bg-[#005c4b] text-slate-950 dark:text-white" : "bg-[#202c33] text-slate-100"
               }`}
             >
               {t.content}
             </div>
           </div>
         ))}
-        {ask.isPending && <div className="text-xs text-slate-500">Agent is typing…</div>}
+        {ask.isPending && <div className="text-xs text-slate-600 dark:text-slate-500">Agent is typing…</div>}
       </div>
 
       <form onSubmit={onSubmit} className="mt-3 flex gap-2">

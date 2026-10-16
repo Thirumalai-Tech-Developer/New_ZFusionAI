@@ -100,23 +100,23 @@ export default function WhatsAppConnectionPanel() {
       icon={<MessageSquare className="w-5 h-5" />}
       action={
         conn ? (
-          <span className="text-[11px] font-mono px-2 py-1 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+          <span className="text-[11px] font-mono px-2 py-1 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
             CONNECTED
           </span>
         ) : (
-          <span className="text-[11px] font-mono px-2 py-1 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">
+          <span className="text-[11px] font-mono px-2 py-1 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30">
             NOT CONNECTED
           </span>
         )
       }
     >
       {isLoading ? (
-        <div className="h-40 animate-pulse rounded-lg bg-white/5" />
+        <div className="h-40 animate-pulse rounded-lg bg-slate-900/5 dark:bg-white/5" />
       ) : (
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
             <label className="space-y-1.5 block">
-              <span className="text-xs text-slate-300">Phone number ID *</span>
+              <span className="text-xs text-slate-700 dark:text-slate-300">Phone number ID *</span>
               <input
                 className={fieldClass}
                 value={form.phoneNumberId}
@@ -127,7 +127,7 @@ export default function WhatsAppConnectionPanel() {
               />
             </label>
             <label className="space-y-1.5 block">
-              <span className="text-xs text-slate-300">WhatsApp Business Account ID</span>
+              <span className="text-xs text-slate-700 dark:text-slate-300">WhatsApp Business Account ID</span>
               <input
                 className={fieldClass}
                 value={form.businessAccountId}
@@ -137,7 +137,7 @@ export default function WhatsAppConnectionPanel() {
               />
             </label>
             <label className="space-y-1.5 block">
-              <span className="text-xs text-slate-300">
+              <span className="text-xs text-slate-700 dark:text-slate-300">
                 Access token {conn ? "(leave blank to keep current)" : "*"}
               </span>
               <input
@@ -151,7 +151,7 @@ export default function WhatsAppConnectionPanel() {
               />
             </label>
             <label className="space-y-1.5 block">
-              <span className="text-xs text-slate-300">
+              <span className="text-xs text-slate-700 dark:text-slate-300">
                 App secret {conn?.hasAppSecret ? "(saved)" : "(recommended)"}
               </span>
               <input
@@ -165,13 +165,13 @@ export default function WhatsAppConnectionPanel() {
             </label>
           </div>
 
-          <div className="p-4 rounded-xl bg-black/20 border border-white/10 space-y-3">
+          <div className="p-4 rounded-xl bg-slate-200/20 dark:bg-black/20 border border-slate-900/10 dark:border-white/10 space-y-3">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <Bot className="w-4 h-4 text-cyan-400" />
-                <span className="text-sm font-semibold text-white">AI auto-reply agent</span>
+                <Bot className="w-4 h-4 text-cyan-700 dark:text-cyan-400" />
+                <span className="text-sm font-semibold text-slate-950 dark:text-white">AI auto-reply agent</span>
               </div>
-              <label className="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+              <label className="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-700 dark:text-slate-300">
                 <input
                   type="checkbox"
                   className="w-4 h-4 accent-emerald-500"
@@ -182,7 +182,7 @@ export default function WhatsAppConnectionPanel() {
               </label>
             </div>
             <label className="space-y-1.5 block">
-              <span className="text-xs text-slate-400">Who answers?</span>
+              <span className="text-xs text-slate-600 dark:text-slate-400">Who answers?</span>
               <select
                 className={fieldClass}
                 value={form.agentId}
@@ -197,7 +197,7 @@ export default function WhatsAppConnectionPanel() {
               </select>
             </label>
             <label className={`space-y-1.5 block ${form.agentId ? "opacity-50" : ""}`}>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-600 dark:text-slate-400">
                 Instructions for your agent — business details, tone, FAQs, opening hours, what to escalate.
               </span>
               <textarea
@@ -232,10 +232,10 @@ export default function WhatsAppConnectionPanel() {
       )}
 
       {conn && (
-        <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
-          <p className="text-xs text-slate-400">
+        <div className="mt-6 pt-6 border-t border-slate-900/10 dark:border-white/10 space-y-3">
+          <p className="text-xs text-slate-600 dark:text-slate-400">
             In Meta for Developers → WhatsApp → Configuration, set the callback URL and verify
-            token below, then subscribe to the <code className="text-emerald-300">messages</code> field.
+            token below, then subscribe to the <code className="text-emerald-700 dark:text-emerald-300">messages</code> field.
           </p>
           <CopyField label="Callback URL" value={conn.webhookUrl} />
           <CopyField label="Verify token" value={conn.verifyToken} secret />

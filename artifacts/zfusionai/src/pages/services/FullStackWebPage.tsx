@@ -105,7 +105,7 @@ export default function FullStackWebPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#06070a] text-[#f8fafc] selection:bg-[#3b82f6]/30 cyber-grid-bg overflow-x-hidden" data-field="fullstack">
+    <div className="relative min-h-screen bg-slate-50 dark:bg-[#06070a] text-slate-950 dark:text-[#f8fafc] selection:bg-[#3b82f6]/30 cyber-grid-bg overflow-x-hidden" data-field="fullstack">
       <SeoHead
         title="Full Stack Web Development | High-Frequency Architecture | ZFusionAI"
         description="High-performance custom web applications built on React 19, TypeScript, and PostgreSQL with sub-50ms TTFB. Request your free blueprint on WhatsApp."
@@ -118,12 +118,12 @@ export default function FullStackWebPage() {
       <main className="relative z-10 pt-28">
         {/* AEO Authoritative Answer Block & Hero */}
         <section className="container mx-auto px-6 md:px-12 py-16 text-center max-w-4xl" aria-label="AEO Definition Block">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-700 dark:text-blue-400 font-mono text-xs mb-6 backdrop-blur-md">
             <Terminal className="w-3.5 h-3.5" />
             <span>CYBER-ARCHITECTONIC // SUB-50MS TTFB & 100 LIGHTHOUSE</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-display font-extrabold tracking-tight text-white mb-6">
+          <h1 className="text-5xl md:text-7xl font-display font-extrabold tracking-tight text-slate-950 dark:text-white mb-6">
             Full-Stack Architecture. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-400">
               Built for Concurrency.
@@ -132,10 +132,10 @@ export default function FullStackWebPage() {
 
           {/* First-Paragraph AEO Citation Anchor */}
           <div className="p-6 rounded-2xl terminal-shell text-left border border-blue-500/30 mb-8">
-            <div className="text-[11px] font-mono text-blue-400 uppercase tracking-widest mb-1">
+            <div className="text-[11px] font-mono text-blue-700 dark:text-blue-400 uppercase tracking-widest mb-1">
               [AUTHORITATIVE DEFINITION & ARCHITECTURE]
             </div>
-            <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
+            <p className="text-sm md:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
               <strong>Full Stack Web Development at ZFusionAI</strong> is an avant-garde software engineering practice combining React 19, TypeScript 5.9, Express 5 microservices, and edge-replicated PostgreSQL databases. Engineered specifically for microsecond TTFB and strict zero-defect type contracts, our platforms scale seamlessly under extreme traffic surges. Every engineering inquiry includes a <strong>complimentary system architecture blueprint</strong> via WhatsApp. To add AI to an existing web app, embed the ZFusionAI chat widget with one script tag. It is <strong>free for the first 1,000 messages</strong>.
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function FullStackWebPage() {
               href={enterpriseLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium border border-blue-500/30 backdrop-blur-md transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-slate-900/5 dark:bg-white/5 hover:bg-slate-900/10 dark:hover:bg-white/10 text-slate-950 dark:text-white font-medium border border-blue-500/30 backdrop-blur-md transition-all"
             >
               <span>Review System Metrics</span>
               <ArrowRight className="w-4 h-4" />
@@ -177,41 +177,41 @@ export default function FullStackWebPage() {
         {/* Structural Benchmarks / "How It Works" AEO Block */}
         <section className="container mx-auto px-6 md:px-12 py-16" aria-label="How it works">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-extrabold text-white">
+            <h2 className="text-3xl md:text-4xl font-display font-extrabold text-slate-950 dark:text-white">
               The Architecture Standard
             </h2>
-            <p className="text-slate-400 text-sm mt-3">
+            <p className="text-slate-600 dark:text-slate-400 text-sm mt-3">
               We reject bloatware and sluggish generic templates. Every line of code is written for raw execution speed.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl terminal-shell border border-blue-500/20 space-y-3 text-left">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-700 dark:text-blue-400">
                 <Cloud className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-white">Sub-30ms Global TTFB</h3>
-              <p className="text-xs text-slate-300 leading-relaxed font-sans">
+              <h3 className="text-lg font-bold text-slate-950 dark:text-white">Sub-30ms Global TTFB</h3>
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
                 Edge asset caching and dynamic server-side route pre-generation ensure visitors in Dubai, London, or New York experience instant loads.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl terminal-shell border border-blue-500/20 space-y-3 text-left">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-700 dark:text-blue-400">
                 <Shield className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-white">100% Strict Type Safety</h3>
-              <p className="text-xs text-slate-300 leading-relaxed font-sans">
+              <h3 className="text-lg font-bold text-slate-950 dark:text-white">100% Strict Type Safety</h3>
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
                 End-to-end typed contracts via Zod and Orval prevent runtime API discrepancies, eliminating 95% of common frontend production bugs.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl terminal-shell border border-blue-500/20 space-y-3 text-left">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-700 dark:text-blue-400">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold text-white">Zero Vendor Lock-in</h3>
-              <p className="text-xs text-slate-300 leading-relaxed font-sans">
+              <h3 className="text-lg font-bold text-slate-950 dark:text-white">Zero Vendor Lock-in</h3>
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
                 You receive clean, documented source code packaged in standard Docker containers. Deploy anywhere: AWS, Cloudflare, or bare metal.
               </p>
             </div>

@@ -91,7 +91,7 @@ export default function Testimonials() {
           <span className="inline-block text-sm uppercase tracking-[0.2em] text-primary mb-4">
             Testimonials
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-950 dark:text-white">
             Trusted by leaders across the UAE
           </h2>
         </motion.div>
@@ -104,7 +104,7 @@ export default function Testimonials() {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          <div className="relative rounded-3xl border border-white/10 bg-card/40 backdrop-blur-sm p-6 sm:p-8 md:p-14 overflow-hidden">
+          <div className="relative rounded-3xl border border-slate-900/10 dark:border-white/10 bg-card/40 backdrop-blur-sm p-6 sm:p-8 md:p-14 overflow-hidden">
             <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-primary/10 blur-3xl" />
             <Quote className="h-10 w-10 text-primary/50 mb-6" />
 
@@ -121,7 +121,7 @@ export default function Testimonials() {
                     <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <p className="text-xl md:text-2xl text-white leading-relaxed font-light">
+                <p className="text-xl md:text-2xl text-slate-950 dark:text-white leading-relaxed font-light">
                   "{t.quote}"
                 </p>
                 <div className="mt-8 flex items-center gap-4">
@@ -133,7 +133,7 @@ export default function Testimonials() {
                       .join("")}
                   </div>
                   <div>
-                    <div className="font-semibold text-white">{t.name}</div>
+                    <div className="font-semibold text-slate-950 dark:text-white">{t.name}</div>
                     <div className="text-sm text-muted-foreground">
                       {t.role} · {t.company}
                     </div>
@@ -150,7 +150,7 @@ export default function Testimonials() {
                   key={i}
                   onClick={() => setIndex(i)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === index ? "w-8 bg-primary" : "w-1.5 bg-white/20"
+                    i === index ? "w-8 bg-primary" : "w-1.5 bg-slate-900/20 dark:bg-white/20"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
@@ -159,14 +159,14 @@ export default function Testimonials() {
             <div className="flex gap-2">
               <button
                 onClick={prev}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-card/40 text-white hover:bg-card hover:border-primary/30 transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-900/10 dark:border-white/10 bg-card/40 text-slate-950 dark:text-white hover:bg-card hover:border-primary/30 transition-all"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={next}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-card/40 text-white hover:bg-card hover:border-primary/30 transition-all"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-900/10 dark:border-white/10 bg-card/40 text-slate-950 dark:text-white hover:bg-card hover:border-primary/30 transition-all"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="h-5 w-5" />

@@ -50,6 +50,7 @@ export type PublicUser = {
   name: string | null;
   avatarUrl: string | null;
   plan: string;
+  trialActivated: boolean;
   usage: Usage;
   createdAt: string;
 };

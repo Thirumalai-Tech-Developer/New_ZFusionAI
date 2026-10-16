@@ -46,7 +46,7 @@ export default function Services() {
     <section id="services" className="py-32 relative">
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-3xl mb-20">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -54,7 +54,7 @@ export default function Services() {
           >
             Engineering <span className="text-primary">Excellence</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -74,18 +74,18 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full bg-card border-white/5 hover:border-primary/50 transition-all duration-500 overflow-hidden group relative">
+              <Card className="h-full bg-card border-slate-900/5 dark:border-white/5 hover:border-primary/50 transition-all duration-500 overflow-hidden group relative">
                 {/* Top Glowing Border Effect */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 <CardContent className="p-8 relative z-10 flex flex-col h-full">
-                  <div className="mb-6 p-4 rounded-2xl bg-white/5 inline-flex text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
+                  <div className="mb-6 p-4 rounded-2xl bg-slate-900/5 dark:bg-white/5 inline-flex text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
                     {service.icon}
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                   <p className="text-muted-foreground mb-8 flex-grow">{service.description}</p>
-                  
+
                   <ul className="space-y-3">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-center text-sm text-muted-foreground/80 group-hover:text-muted-foreground transition-colors">

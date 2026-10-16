@@ -48,12 +48,12 @@ export default function Stats() {
           <span className="inline-block text-sm uppercase tracking-[0.2em] text-primary mb-4">
             Results
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-950 dark:text-white">
             Numbers that move businesses
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-3xl overflow-hidden border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-900/10 dark:bg-white/10 rounded-3xl overflow-hidden border border-slate-900/10 dark:border-white/10">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -67,7 +67,7 @@ export default function Stats() {
                 <Counter to={stat.value} decimals={stat.decimals} />
                 {stat.suffix}
               </div>
-              <div className="text-base font-semibold text-white">{stat.label}</div>
+              <div className="text-base font-semibold text-slate-950 dark:text-white">{stat.label}</div>
               <div className="text-sm text-muted-foreground mt-1">{stat.sublabel}</div>
             </motion.div>
           ))}

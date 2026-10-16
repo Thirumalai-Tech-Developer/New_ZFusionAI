@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Check, Sparkles, Rocket, Crown } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const tiers = [
   {
@@ -67,8 +68,9 @@ const tiers = [
 ];
 
 export default function Pricing() {
+  const money = useCurrency();
   return (
-    <section id="pricing" className="relative py-24 md:py-32 border-t border-white/5">
+    <section id="pricing" className="relative py-24 md:py-32 border-t border-slate-900/5 dark:border-white/5">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -83,13 +85,13 @@ export default function Pricing() {
               Transparent Pricing
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 tracking-tight">
-            Website Building <span className="text-primary">starting at AED 599</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-950 dark:text-white mb-5 tracking-tight">
+            Website Building <span className="text-primary">starting at {money.format(599)}</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Honest pricing for every stage of business. Final cost may vary based on your
-            chosen <span className="text-white font-medium">hosting plan</span>,{" "}
-            <span className="text-white font-medium">domain name</span>, and any premium
+            chosen <span className="text-slate-950 dark:text-white font-medium">hosting plan</span>,{" "}
+            <span className="text-slate-950 dark:text-white font-medium">domain name</span>, and any premium
             third-party services you require.
           </p>
         </motion.div>
@@ -107,7 +109,7 @@ export default function Pricing() {
                 className={`relative rounded-2xl border p-8 flex flex-col ${
                   tier.highlight
                     ? "border-primary/50 bg-gradient-to-b from-primary/10 via-card to-card shadow-[0_0_40px_rgba(255,122,0,0.15)]"
-                    : "border-white/10 bg-card/60 backdrop-blur"
+                    : "border-slate-900/10 dark:border-white/10 bg-card/60 backdrop-blur"
                 }`}
               >
                 {tier.highlight && (
@@ -126,19 +128,14 @@ export default function Pricing() {
                   <Icon className="h-6 w-6" />
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2">{tier.name}</h3>
+                <h3 className="text-xl font-bold text-slate-950 dark:text-white mb-2">{tier.name}</h3>
                 <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
                   {tier.description}
                 </p>
 
                 <div className="mb-6 flex items-baseline gap-2">
-                  {tier.currency && (
-                    <span className="text-sm font-semibold text-muted-foreground">
-                      {tier.currency}
-                    </span>
-                  )}
-                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight break-words">
-                    {tier.price}
+                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-950 dark:text-white tracking-tight break-words">
+                    {tier.currency ? money.format(Number(tier.price.replaceAll(",", ""))) : tier.price}
                   </span>
                   <span className="text-sm text-muted-foreground">{tier.suffix}</span>
                 </div>
@@ -157,7 +154,7 @@ export default function Pricing() {
                     className={`w-full rounded-full ${
                       tier.highlight
                         ? "bg-primary text-black hover:bg-primary/90"
-                        : "bg-card border border-white/10 text-white hover:bg-white/5"
+                        : "bg-card border border-slate-900/10 dark:border-white/10 text-slate-950 dark:text-white hover:bg-slate-900/5 dark:hover:bg-white/5"
                     }`}
                   >
                     {tier.highlight ? "Start Your Project" : "Get a Quote"}
@@ -169,8 +166,9 @@ export default function Pricing() {
         </div>
 
         <p className="mt-10 text-center text-xs text-muted-foreground max-w-2xl mx-auto">
-          All prices are exclusive of VAT. Hosting (typically AED 200-800/year) and domain
-          registration (typically AED 40-200/year) are billed at cost. We recommend the
+          {money.estimated && "Converted amounts are estimates; final quotes are billed in AED. "}
+          All prices are exclusive of VAT. Hosting (typically {money.format(200)}–{money.format(800)}/year) and domain
+          registration (typically {money.format(40)}–{money.format(200)}/year) are billed at cost. We recommend the
           best provider for your specific needs and never mark up infrastructure.
         </p>
       </div>

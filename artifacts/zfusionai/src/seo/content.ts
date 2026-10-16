@@ -4,8 +4,8 @@ export type Faq = { q: string; a: string };
 
 export const trialSteps = [
   {
-    title: "Sign in with Google or GitHub",
-    text: "Create your ZFusionAI account in one click. Your free trial with 1,000 WhatsApp messages is activated instantly, with no credit card.",
+    title: "Sign in to your account",
+    text: "Create your account, then register a unique phone number to activate 1,000 shared trial messages. One trial per number; no credit card.",
   },
   {
     title: "Connect your WhatsApp Business number",
@@ -24,7 +24,7 @@ export const trialSteps = [
 export const whatsappFaqs: Faq[] = [
   {
     q: "Does ZFusionAI offer a free trial for its WhatsApp API?",
-    a: "Yes. Every new ZFusionAI account receives a free trial of 1,000 messages, shared across WhatsApp automation, AI agents and the web app chat widget. It includes AI auto-replies, the REST API, API keys and webhooks. No credit card is required: sign in with Google or GitHub.",
+    a: "Yes. Each eligible phone number can claim one free trial of 1,000 messages, shared across WhatsApp automation, AI agents and the web app chat widget. It includes AI auto-replies, the REST API, API keys and webhooks. No credit card is required: sign in to your account.",
   },
   {
     q: "What counts as one message in the free trial?",
@@ -56,8 +56,8 @@ export type Step = { title: string; text: string };
 
 export const agenticSteps: Step[] = [
   {
-    title: "Sign in with Google or GitHub",
-    text: "Your free trial starts instantly with 1,000 messages shared across AI agents, the web widget and WhatsApp. No credit card.",
+    title: "Sign in to your account",
+    text: "Sign in and register a unique phone number to activate 1,000 messages shared across AI agents, the web widget and WhatsApp. No credit card.",
   },
   {
     title: "Create an agent",
@@ -76,7 +76,7 @@ export const agenticSteps: Step[] = [
 export const agenticFaqs: Faq[] = [
   {
     q: "Can I try ZFusionAI AI agents for free?",
-    a: "Yes. Every new account gets a free trial of 1,000 messages that covers AI agent runs, web widget replies and WhatsApp messages. Sign in with Google or GitHub. No credit card is required.",
+    a: "Yes. Each eligible phone number can claim one free trial of 1,000 messages that covers AI agent runs, web widget replies and WhatsApp messages. Sign in to your account. No credit card is required.",
   },
   {
     q: "What is an AI agent and how is it different from a chatbot?",
@@ -103,7 +103,7 @@ export const agenticFaqs: Faq[] = [
 export const webSteps: Step[] = [
   {
     title: "Create a free account",
-    text: "Sign in with Google or GitHub to get 1,000 free trial messages.",
+    text: "Sign in to your account to get 1,000 free trial messages.",
   },
   {
     title: "Build an AI agent",

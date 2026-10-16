@@ -22,25 +22,25 @@ export default function FloatingActions() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="w-80 p-4 rounded-2xl bg-slate-950/95 backdrop-blur-xl border border-emerald-500/30 shadow-[0_12px_40px_rgba(0,0,0,0.8)] text-left space-y-3 mb-2"
+            className="w-80 p-4 rounded-2xl bg-slate-50/95 dark:bg-slate-950/95 backdrop-blur-xl border border-emerald-500/30 shadow-[0_12px_40px_rgba(0,0,0,0.8)] text-left space-y-3 mb-2"
           >
-            <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+            <div className="flex items-center justify-between border-b border-slate-300 dark:border-slate-800 pb-2.5">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold text-slate-950 dark:text-white uppercase tracking-wider">
                   WhatsApp Direct Desk
                 </span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-slate-400 hover:text-white transition-colors p-1"
+                className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors p-1"
                 aria-label="Close dock"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
             </div>
 
-            <p className="text-xs text-slate-300 leading-snug">
+            <p className="text-xs text-slate-700 dark:text-slate-300 leading-snug">
               Select an instant activation chip to open directly in WhatsApp with pre-filled context:
             </p>
 
@@ -48,21 +48,21 @@ export default function FloatingActions() {
               {QUICK_PROMPTS.map((prompt) => (
                 <a
                   key={prompt.id}
-                  href={generateWhatsAppLink(prompt.payload)}
-                  target="_blank"
+                  href={prompt.payload.type === "free_tier_claim" ? "/login?next=/dashboard" : generateWhatsAppLink(prompt.payload)}
+                  target={prompt.payload.type === "free_tier_claim" ? undefined : "_blank"}
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between p-2.5 rounded-xl bg-slate-900/80 hover:bg-emerald-950/40 border border-slate-800 hover:border-emerald-500/40 text-xs font-medium text-slate-200 hover:text-emerald-300 transition-all group"
+                  className="w-full flex items-center justify-between p-2.5 rounded-xl bg-slate-100/80 dark:bg-slate-900/80 hover:bg-emerald-100/40 dark:hover:bg-emerald-950/40 border border-slate-300 dark:border-slate-800 hover:border-emerald-500/40 text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-emerald-700 dark:hover:text-emerald-300 transition-all group"
                 >
                   <span className="flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+                    <Sparkles className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400 group-hover:scale-110 transition-transform" />
                     <span>{prompt.label}</span>
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-600 dark:text-slate-500 group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors" />
                 </a>
               ))}
             </div>
 
-            <div className="pt-1 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <div className="pt-1 border-t border-slate-300 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-400 font-mono">
               <span>● Senior Architects Online</span>
               <span>Sub-1m Response</span>
             </div>
@@ -75,7 +75,7 @@ export default function FloatingActions() {
         {/* Toggle Intent Drawer Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-900/90 hover:bg-slate-800 text-xs font-mono text-emerald-400 border border-emerald-500/30 backdrop-blur-md shadow-lg transition-all"
+          className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-100/90 dark:bg-slate-900/90 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-mono text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 backdrop-blur-md shadow-lg transition-all"
         >
           <Sparkles className="w-3.5 h-3.5" />
           <span>{isOpen ? "Hide Options" : "Quick Actions (Free Tiers)"}</span>
@@ -96,7 +96,7 @@ export default function FloatingActions() {
         >
           <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25 pointer-events-none" />
           <MessageSquare className="h-6 w-6 relative z-10 fill-current" />
-          <span className="absolute right-full mr-3 whitespace-nowrap rounded-lg bg-slate-950/95 backdrop-blur px-3 py-1.5 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-emerald-500/30">
+          <span className="absolute right-full mr-3 whitespace-nowrap rounded-lg bg-slate-50/95 dark:bg-slate-950/95 backdrop-blur px-3 py-1.5 text-xs font-medium text-slate-950 dark:text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-emerald-500/30">
             WhatsApp Lead Architect
           </span>
         </motion.a>

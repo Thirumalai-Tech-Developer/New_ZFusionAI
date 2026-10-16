@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Bot, Plus, Send, Trash2, Wrench } from "lucide-react";
 import { toast } from "sonner";
 import { api, type Agent, type AgentInput, type AgentTool } from "@/lib/api";
@@ -22,6 +22,7 @@ const TOOL_EXAMPLE: AgentTool[] = [
 type Turn = { role: "user" | "assistant"; content: string; steps?: { tool: string; result: string }[] };
 
 function AgentTester({ agent, aiConfigured }: { agent: Agent; aiConfigured: boolean }) {
+  const queryClient = useQueryClient();
   const [turns, setTurns] = useState<Turn[]>([]);
   const [input, setInput] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,7 @@ function AgentTester({ agent, aiConfigured }: { agent: Agent; aiConfigured: bool
         body: { messages: messages.map(({ role, content }) => ({ role, content })) },
       }),
     onSuccess: (res, messages) => {
+      void queryClient.invalidateQueries({ queryKey: ["account", "me"] });
       setTurns([...messages, { role: "assistant", content: res.reply, steps: res.steps }]);
       requestAnimationFrame(() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" }));
     },
@@ -57,9 +59,9 @@ function AgentTester({ agent, aiConfigured }: { agent: Agent; aiConfigured: bool
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-white">Test this agent</h3>
+        <h3 className="text-sm font-semibold text-slate-950 dark:text-white">Test this agent</h3>
         {turns.length > 0 && (
-          <button type="button" className="text-xs text-slate-400 hover:text-white" onClick={() => setTurns([])}>
+          <button type="button" className="text-xs text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white" onClick={() => setTurns([])}>
             Clear
           </button>
         )}
@@ -69,9 +71,9 @@ function AgentTester({ agent, aiConfigured }: { agent: Agent; aiConfigured: bool
           The AI gateway isn't configured on the server yet (AI_GATEWAY_URL / AI_GATEWAY_API_KEY).
         </div>
       )}
-      <div ref={listRef} className="h-64 overflow-y-auto space-y-3 p-4 rounded-xl bg-black/30 border border-white/10" aria-live="polite">
+      <div ref={listRef} className="h-64 overflow-y-auto space-y-3 p-4 rounded-xl bg-slate-200/30 dark:bg-black/30 border border-slate-900/10 dark:border-white/10" aria-live="polite">
         {turns.length === 0 && (
-          <p className="text-xs text-slate-500 text-center pt-20">Test runs are free and don't use your message allowance.</p>
+          <p className="text-xs text-slate-600 dark:text-slate-500 text-center pt-20">Each successful test uses one message from your shared allowance.</p>
         )}
         {turns.map((t, i) => (
           <div key={i} className={`flex flex-col ${t.role === "user" ? "items-end" : "items-start"} gap-1`}>
@@ -81,12 +83,12 @@ function AgentTester({ agent, aiConfigured }: { agent: Agent; aiConfigured: bool
                 {s.tool} → {s.result.slice(0, 120)}
               </div>
             ))}
-            <div className={`max-w-[85%] px-3 py-2 rounded-lg text-sm whitespace-pre-wrap ${t.role === "user" ? "bg-emerald-700 text-white" : "bg-slate-800 text-slate-100"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg text-sm whitespace-pre-wrap ${t.role === "user" ? "bg-emerald-700 text-slate-950 dark:text-white" : "bg-slate-200 dark:bg-slate-800 text-slate-100"}`}>
               {t.content}
             </div>
           </div>
         ))}
-        {run.isPending && <div className="text-xs text-slate-500">Agent is thinking…</div>}
+        {run.isPending && <div className="text-xs text-slate-600 dark:text-slate-500">Agent is thinking…</div>}
       </div>
       <form onSubmit={onSubmit} className="flex gap-2">
         <input className={fieldClass} value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask the agent something…" maxLength={4000} disabled={!aiConfigured} />
@@ -128,11 +130,11 @@ function AgentEditor({ agent, onSaved }: { agent?: Agent; onSaved: (a: Agent) =>
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <label className="space-y-1.5 block">
-        <span className="text-xs text-slate-300">Agent name</span>
+        <span className="text-xs text-slate-700 dark:text-slate-300">Agent name</span>
         <input className={fieldClass} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} maxLength={80} required />
       </label>
       <label className="space-y-1.5 block">
-        <span className="text-xs text-slate-300">Instructions (system prompt)</span>
+        <span className="text-xs text-slate-700 dark:text-slate-300">Instructions (system prompt)</span>
         <textarea
           className={`${fieldClass} min-h-32 font-mono text-xs leading-relaxed`}
           value={form.instructions}
@@ -143,8 +145,8 @@ function AgentEditor({ agent, onSaved }: { agent?: Agent; onSaved: (a: Agent) =>
       </label>
       <div className="space-y-1.5">
         <div className="flex items-center justify-between gap-2">
-          <span className="text-xs text-slate-300">Tools (webhooks the agent can call, max 10)</span>
-          <button type="button" className="text-[11px] font-mono text-emerald-400 hover:underline" onClick={() => setToolsJson(JSON.stringify(TOOL_EXAMPLE, null, 2))}>
+          <span className="text-xs text-slate-700 dark:text-slate-300">Tools (webhooks the agent can call, max 10)</span>
+          <button type="button" className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 hover:underline" onClick={() => setToolsJson(JSON.stringify(TOOL_EXAMPLE, null, 2))}>
             Insert example
           </button>
         </div>
@@ -154,10 +156,10 @@ function AgentEditor({ agent, onSaved }: { agent?: Agent; onSaved: (a: Agent) =>
           onChange={(e) => setToolsJson(e.target.value)}
           spellCheck={false}
         />
-        {toolsError && <p className="text-xs text-red-400">{toolsError}</p>}
-        <p className="text-[11px] text-slate-500">
-          When the agent calls a tool, ZFusionAI POSTs <code className="text-emerald-300">{`{ tool, arguments, agent_id }`}</code> to its HTTPS URL
-          and signs the body with <code className="text-emerald-300">X-ZFusion-Signature: sha256=HMAC(tool secret, body)</code>.
+        {toolsError && <p className="text-xs text-red-700 dark:text-red-400">{toolsError}</p>}
+        <p className="text-[11px] text-slate-600 dark:text-slate-500">
+          When the agent calls a tool, ZFusionAI POSTs <code className="text-emerald-700 dark:text-emerald-300">{`{ tool, arguments, agent_id }`}</code> to its HTTPS URL
+          and signs the body with <code className="text-emerald-700 dark:text-emerald-300">X-ZFusion-Signature: sha256=HMAC(tool secret, body)</code>.
         </p>
       </div>
       <div className="flex flex-wrap gap-3">
@@ -214,7 +216,7 @@ export default function AgentsPanel({ aiConfigured }: { aiConfigured: boolean })
               className={`px-3 py-1.5 rounded-full text-xs border transition-colors ${
                 !creating && selected?.id === a.id
                   ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-200"
-                  : "border-white/10 text-slate-300 hover:bg-white/5"
+                  : "border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-900/5 dark:hover:bg-white/5"
               }`}
             >
               {a.name}
@@ -224,7 +226,7 @@ export default function AgentsPanel({ aiConfigured }: { aiConfigured: boolean })
       )}
 
       {isLoading ? (
-        <div className="h-40 animate-pulse rounded-lg bg-white/5" />
+        <div className="h-40 animate-pulse rounded-lg bg-slate-900/5 dark:bg-white/5" />
       ) : (
         <div className="grid xl:grid-cols-2 gap-6">
           <AgentEditor agent={creating ? undefined : selected} onSaved={(a) => setSelectedId(a.id)} />
@@ -234,8 +236,8 @@ export default function AgentsPanel({ aiConfigured }: { aiConfigured: boolean })
               <CopyField label="Agent ID" value={selected.id} />
               <CopyField label="Tool signing secret" value={selected.toolSecret} secret />
               <details>
-                <summary className="text-xs font-mono text-emerald-400 cursor-pointer">Use via API · cURL & OpenAI SDK</summary>
-                <pre className="mt-3 p-4 rounded-xl bg-black/50 border border-white/10 text-[11px] leading-relaxed text-slate-300 overflow-x-auto">{`# Run the agent (1 message)
+                <summary className="text-xs font-mono text-emerald-700 dark:text-emerald-400 cursor-pointer">Use via API · cURL & OpenAI SDK</summary>
+                <pre className="mt-3 p-4 rounded-xl bg-slate-200/50 dark:bg-black/50 border border-slate-900/10 dark:border-white/10 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300 overflow-x-auto">{`# Run the agent (1 message)
 curl -X POST ${origin}/api/v1/agents/${selected.id}/runs \\
   -H "Authorization: Bearer zf_live_YOUR_KEY" \\
   -H "Content-Type: application/json" \\
@@ -254,7 +256,7 @@ const res = await client.chat.completions.create({
               </details>
             </div>
           ) : (
-            <div className="p-6 rounded-xl border border-dashed border-white/10 text-sm text-slate-400">
+            <div className="p-6 rounded-xl border border-dashed border-slate-900/10 dark:border-white/10 text-sm text-slate-600 dark:text-slate-400">
               Create your first agent, then test it here. Each API or widget reply uses one message from your
               free trial allowance; tests are free.
             </div>

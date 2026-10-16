@@ -6,6 +6,7 @@ import { getAgent, runAgent } from "../lib/agents";
 import type { ChatMessage } from "../lib/ai";
 import { decrypt, encrypt, randomToken } from "../lib/crypto";
 import { HttpError } from "../lib/errors";
+import { withMessage } from "../lib/quota";
 import { assertToolUrl } from "../lib/safeFetch";
 import { parse } from "../lib/validate";
 import { requireUser } from "../middlewares/auth";
@@ -67,6 +68,13 @@ function validateTools(tools: z.infer<typeof toolSchema>[]) {
 
 const agents = new Hono<AppEnv>();
 agents.use("*", requireUser);
+agents.use("*", async (c, next) => {
+  if (c.req.method !== "GET" && c.req.method !== "DELETE" &&
+      c.var.user!.plan === "trial" && !c.var.user!.trialActivatedAt) {
+    throw new HttpError(403, "Activate your trial with a phone number first.", "trial_required");
+  }
+  await next();
+});
 
 agents.get("/", async (c) => {
   const { db, user, config } = c.var;
@@ -125,7 +133,7 @@ agents.delete("/:id", async (c) => {
   return c.json({ ok: true });
 });
 
-/** Dashboard playground: test an agent (including tool calls). Not metered. */
+/** Dashboard previews use the same message allowance as production. */
 agents.post("/:id/test", rateLimit("AI_TEST_LIMITER", "agent-test"), async (c) => {
   const agent = await getAgent(c.var, c.var.user!.id, c.req.param("id"));
   const { messages } = parse(
@@ -137,7 +145,7 @@ agents.post("/:id/test", rateLimit("AI_TEST_LIMITER", "agent-test"), async (c) =
     }),
     await jsonBody(c),
   );
-  return c.json(await runAgent(c.var, agent, messages as ChatMessage[]));
+  return c.json(await withMessage(c.var.db, c.var.user!.id, () => runAgent(c.var, agent, messages as ChatMessage[])));
 });
 
 export default agents;

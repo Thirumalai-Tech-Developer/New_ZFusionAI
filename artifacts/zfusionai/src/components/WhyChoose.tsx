@@ -40,11 +40,11 @@ export default function WhyChoose() {
   return (
     <section id="why-choose" className="py-32 bg-secondary/50 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-      
+
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           <div className="lg:w-1/3 sticky top-32">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -52,7 +52,7 @@ export default function WhyChoose() {
             >
               Why Choose <span className="text-primary">ZFusionAI</span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -71,7 +71,7 @@ export default function WhyChoose() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-card p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-colors group"
+                className="bg-card p-6 rounded-2xl border border-slate-900/5 dark:border-white/5 hover:border-primary/30 transition-colors group"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-2 rounded-full bg-primary/10 text-primary group-hover:scale-110 transition-transform">

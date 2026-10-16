@@ -48,7 +48,7 @@ export default function Process() {
           <span className="inline-block text-sm uppercase tracking-[0.2em] text-primary mb-4">
             How we work
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-950 dark:text-white">
             A clear, milestone-driven process
           </h2>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
@@ -80,7 +80,7 @@ export default function Process() {
                     <div className="text-sm font-mono text-primary mb-2">
                       0{i + 1}
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                    <h3 className="text-2xl md:text-3xl font-bold text-slate-950 dark:text-white mb-3">
                       {step.title}
                     </h3>
                     <p className="text-muted-foreground leading-relaxed max-w-md ${isLeft ? 'md:ml-auto' : ''}">

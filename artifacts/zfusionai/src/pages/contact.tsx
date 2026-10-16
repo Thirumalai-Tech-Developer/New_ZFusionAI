@@ -43,33 +43,33 @@ export default function ContactPage() {
       <PageLayout>
         <section className="relative pt-24 pb-20 px-6 max-w-6xl mx-auto text-center" aria-label="WhatsApp Contact Command Center">
           {/* Header */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-mono text-xs mb-6 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#25d366] animate-ping" />
             <span>ZERO DELAY // DIRECT WHATSAPP PIPELINE</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-display font-extrabold text-white tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-display font-extrabold text-slate-950 dark:text-white tracking-tight mb-6">
             Direct WhatsApp Command Center. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
               No Traditional Forms. No Waiting.
             </span>
           </h1>
 
-          <p className="text-slate-300 max-w-2xl mx-auto text-base md:text-lg mb-12">
+          <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg mb-12">
             We eliminated static contact forms that get lost in inboxes. Speak directly with a Senior Engineering Architect on WhatsApp in real time.
           </p>
 
           {/* Quick Channels Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mb-16">
             {/* Channel 1: Free Tier Immediate Activation */}
-            <div className="p-6 rounded-2xl bg-slate-900/80 border border-emerald-500/30 shadow-xl flex flex-col justify-between space-y-4">
+            <div className="p-6 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-emerald-500/30 shadow-xl flex flex-col justify-between space-y-4">
               <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 flex items-center justify-center">
                   <Zap className="w-5 h-5" />
                 </div>
-                <div className="text-xs font-mono text-emerald-400 uppercase">Channel 01</div>
-                <h2 className="text-xl font-bold text-white font-display">Instant Free Tier Activation</h2>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <div className="text-xs font-mono text-emerald-700 dark:text-emerald-400 uppercase">Channel 01</div>
+                <h2 className="text-xl font-bold text-slate-950 dark:text-white font-display">Instant Free Tier Activation</h2>
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                   Claim 1,000 free WhatsApp API events, 1 free autonomous AI agent sandbox, or a full-stack production blueprint.
                 </p>
               </div>
@@ -90,14 +90,14 @@ export default function ContactPage() {
             </div>
 
             {/* Channel 2: WhatsApp Web API Middleware */}
-            <div className="p-6 rounded-2xl bg-slate-900/80 border border-emerald-500/30 shadow-xl flex flex-col justify-between space-y-4">
+            <div className="p-6 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-emerald-500/30 shadow-xl flex flex-col justify-between space-y-4">
               <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-[#25d366]/20 text-[#25d366] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-[#25d366]/20 text-emerald-700 dark:text-[#25d366] flex items-center justify-center">
                   <MessageSquare className="w-5 h-5 fill-current" />
                 </div>
-                <div className="text-xs font-mono text-[#25d366] uppercase">Channel 02</div>
-                <h2 className="text-xl font-bold text-white font-display">WhatsApp API Consultation</h2>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <div className="text-xs font-mono text-emerald-700 dark:text-[#25d366] uppercase">Channel 02</div>
+                <h2 className="text-xl font-bold text-slate-950 dark:text-white font-display">WhatsApp API Consultation</h2>
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                   Review direct Meta Cloud API integration, CRM pipelines, and automated broadcast scaling with our messaging architect.
                 </p>
               </div>
@@ -118,14 +118,14 @@ export default function ContactPage() {
             </div>
 
             {/* Channel 3: Full Stack & AI Agent Scoping */}
-            <div className="p-6 rounded-2xl bg-slate-900/80 border border-cyan-500/30 shadow-xl flex flex-col justify-between space-y-4">
+            <div className="p-6 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-cyan-500/30 shadow-xl flex flex-col justify-between space-y-4">
               <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-700 dark:text-cyan-400 flex items-center justify-center">
                   <Sparkles className="w-5 h-5" />
                 </div>
-                <div className="text-xs font-mono text-cyan-400 uppercase">Channel 03</div>
-                <h2 className="text-xl font-bold text-white font-display">AI & Full-Stack Scoping</h2>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <div className="text-xs font-mono text-cyan-700 dark:text-cyan-400 uppercase">Channel 03</div>
+                <h2 className="text-xl font-bold text-slate-950 dark:text-white font-display">AI & Full-Stack Scoping</h2>
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                   Discuss autonomous multi-agent workflows, vector knowledge bases, or high-frequency web development sprints.
                 </p>
               </div>
@@ -147,21 +147,21 @@ export default function ContactPage() {
           </div>
 
           {/* Master WhatsApp Hotline Card */}
-          <div className="p-8 rounded-3xl bg-slate-950/90 border-2 border-emerald-500/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 text-left">
+          <div className="p-8 rounded-3xl bg-slate-50/90 dark:bg-slate-950/90 border-2 border-emerald-500/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 text-left">
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs">
+              <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-mono text-xs">
                 <Phone className="w-4 h-4" />
                 <span>OFFICIAL WHATSAPP BUSINESS VERIFIED LINE</span>
               </div>
-              <h2 className="text-3xl font-display font-extrabold text-white">
+              <h2 className="text-3xl font-display font-extrabold text-slate-950 dark:text-white">
                 {WHATSAPP_CONFIG.phone}
               </h2>
-              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 font-mono pt-1">
+              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-slate-400 font-mono pt-1">
                 <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-emerald-400" /> Average Response: &lt; 2 minutes
+                  <Clock className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" /> Average Response: &lt; 2 minutes
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-emerald-400" /> Direct Senior Architect Connection
+                  <Shield className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" /> Direct Senior Architect Connection
                 </span>
               </div>
             </div>

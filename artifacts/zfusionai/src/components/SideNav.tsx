@@ -52,8 +52,8 @@ export default function SideNav() {
             aria-label={label}
           >
             <span
-              className={`absolute right-7 text-[10px] font-bold tracking-widest opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 transition-all duration-300 pointer-events-none whitespace-nowrap rounded-md bg-card/95 backdrop-blur px-2 py-1 border border-white/10 ${
-                isActive ? "text-primary" : "text-white"
+              className={`absolute right-7 text-[10px] font-bold tracking-widest opacity-0 group-hover:opacity-100 group-hover:-translate-x-2 transition-all duration-300 pointer-events-none whitespace-nowrap rounded-md bg-card/95 backdrop-blur px-2 py-1 border border-slate-900/10 dark:border-white/10 ${
+                isActive ? "text-primary" : "text-slate-950 dark:text-white"
               }`}
             >
               {label}
@@ -62,7 +62,7 @@ export default function SideNav() {
               className={`rounded-full transition-all duration-300 ${
                 isActive
                   ? "w-1.5 h-12 bg-primary shadow-[0_0_12px_rgba(255,122,0,0.6)]"
-                  : "w-1 h-7 bg-white/30 group-hover:bg-white/70 group-hover:h-9"
+                  : "w-1 h-7 bg-slate-900/30 dark:bg-white/30 group-hover:bg-slate-900/70 dark:group-hover:bg-white/70 group-hover:h-9"
               }`}
             />
           </button>

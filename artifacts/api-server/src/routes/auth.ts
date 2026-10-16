@@ -1,15 +1,18 @@
 import { Hono, type Context } from "hono";
 import { deleteCookie, getSignedCookie, setSignedCookie } from "hono/cookie";
 import { and, eq } from "drizzle-orm";
-import { oauthAccountsTable, usersTable } from "@workspace/db";
+import { oauthAccountsTable, passwordAccountsTable, usersTable } from "@workspace/db";
+import { z } from "zod";
+import { parse } from "../lib/validate";
+import { hashPassword, verifyPassword } from "../lib/password";
 import type { Config } from "../lib/config";
-import { randomToken, sha256Base64Url } from "../lib/crypto";
+import { randomToken, sha256, sha256Base64Url } from "../lib/crypto";
 import { HttpError } from "../lib/errors";
 import { logger } from "../lib/logger";
 import { createSession, destroySession } from "../middlewares/auth";
 import { rateLimit } from "../middlewares/rateLimit";
 import type { AppEnv } from "../types";
-import { toPublicUser } from "./serializers";
+import { jsonBody, toPublicUser } from "./serializers";
 
 type Provider = "google" | "github";
 
@@ -168,6 +171,12 @@ async function upsertUser(c: Context<AppEnv>, provider: Provider, profile: Profi
     [user] = await db.select().from(usersTable).where(eq(usersTable.email, profile.email)).limit(1);
   }
 
+  // Password registrations have not proved email ownership. Never silently
+  // merge a verified Google identity into an unverified password account.
+  const [passwordAccount] = await db.select({ id: passwordAccountsTable.userId })
+    .from(passwordAccountsTable).where(eq(passwordAccountsTable.userId, user!.id)).limit(1);
+  if (passwordAccount) throw new HttpError(409, "Use email and password to sign in to this account.", "password_account_exists");
+
   await db
     .insert(oauthAccountsTable)
     .values({ userId: user!.id, provider, providerAccountId: profile.providerAccountId })
@@ -176,6 +185,47 @@ async function upsertUser(c: Context<AppEnv>, provider: Provider, profile: Profi
 }
 
 const auth = new Hono<AppEnv>();
+
+const credentials = z.object({
+  email: z.string().trim().email().max(254).transform((value) => value.toLowerCase()),
+  password: z.string().min(1).max(128),
+});
+
+auth.post("/register", rateLimit("AUTH_LIMITER", "register"), async (c) => {
+  const input = parse(credentials.extend({
+    name: z.string().trim().min(1).max(100),
+    password: z.string().min(15, "Use at least 15 characters.").max(128),
+  }), await jsonBody(c));
+  const id = crypto.randomUUID();
+  const passwordHash = await hashPassword(input.password, c.var.config.sessionSecret);
+  const [, created] = await c.env.DB.batch([
+    c.env.DB.prepare("INSERT INTO users (id, email, name) VALUES (?, ?, ?) ON CONFLICT DO NOTHING").bind(id, input.email, input.name),
+    c.env.DB.prepare("INSERT INTO password_accounts (user_id, password_hash) SELECT id, ? FROM users WHERE id = ? RETURNING user_id").bind(passwordHash, id),
+  ]);
+  if (!created.results.length) throw new HttpError(409, "This email is already registered. Sign in to your existing account.", "account_exists");
+  const [user] = await c.var.db.select().from(usersTable).where(eq(usersTable.id, id));
+  if (c.var.user) await destroySession(c);
+  await createSession(c, id);
+  return c.json({ user: toPublicUser(user!) }, 201);
+});
+
+auth.post("/login", rateLimit("AUTH_LIMITER", "password-login"), async (c) => {
+  const input = parse(credentials, await jsonBody(c));
+  // Limit attempts against one email even when requests come from different IPs.
+  if (c.env.AUTH_LIMITER) {
+    const { success } = await c.env.AUTH_LIMITER.limit({ key: `password-email:${await sha256(input.email)}` });
+    if (!success) throw new HttpError(429, "Too many sign-in attempts. Please try again in a minute.", "rate_limited");
+  }
+  const [row] = await c.var.db.select({ user: usersTable, hash: passwordAccountsTable.passwordHash })
+    .from(usersTable).innerJoin(passwordAccountsTable, eq(passwordAccountsTable.userId, usersTable.id))
+    .where(eq(usersTable.email, input.email)).limit(1);
+  if (!await verifyPassword(input.password, row?.hash, c.var.config.sessionSecret)) {
+    throw new HttpError(401, "Incorrect email or password.", "invalid_credentials");
+  }
+  if (c.var.user) await destroySession(c);
+  await createSession(c, row!.user.id);
+  return c.json({ user: toPublicUser(row!.user) });
+});
 
 auth.get("/providers", (c) =>
   c.json({

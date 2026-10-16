@@ -35,22 +35,22 @@ function WidgetSettings({ agent }: { agent: Agent }) {
   return (
     <div className="grid lg:grid-cols-2 gap-6">
       <form onSubmit={onSubmit} className="space-y-4">
-        <label className="inline-flex items-center gap-2 cursor-pointer text-sm text-slate-200">
+        <label className="inline-flex items-center gap-2 cursor-pointer text-sm text-slate-700 dark:text-slate-200">
           <input type="checkbox" className="w-4 h-4 accent-emerald-500" checked={enabled} onChange={(e) => setEnabled(e.target.checked)} />
           Enable the chat widget for this agent
         </label>
         <label className="space-y-1.5 block">
-          <span className="text-xs text-slate-300">Allowed websites (one origin per line, e.g. https://shop.example.com)</span>
+          <span className="text-xs text-slate-700 dark:text-slate-300">Allowed websites (one origin per line, e.g. https://shop.example.com)</span>
           <textarea className={`${fieldClass} min-h-20 font-mono text-xs`} value={origins} onChange={(e) => setOrigins(e.target.value)} placeholder="Leave empty to allow any site (not recommended)" />
         </label>
         <label className="space-y-1.5 block">
-          <span className="text-xs text-slate-300">Welcome message</span>
+          <span className="text-xs text-slate-700 dark:text-slate-300">Welcome message</span>
           <input className={fieldClass} value={welcome} onChange={(e) => setWelcome(e.target.value)} maxLength={300} />
         </label>
-        <label className="flex items-center gap-3 text-xs text-slate-300">
+        <label className="flex items-center gap-3 text-xs text-slate-700 dark:text-slate-300">
           <span>Brand colour</span>
-          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-10 h-8 rounded border border-white/10 bg-transparent" aria-label="Brand colour" />
-          <code className="font-mono text-slate-400">{color}</code>
+          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} className="w-10 h-8 rounded border border-slate-900/10 dark:border-white/10 bg-transparent" aria-label="Brand colour" />
+          <code className="font-mono text-slate-600 dark:text-slate-400">{color}</code>
         </label>
         <button type="submit" className={primaryButton} disabled={save.isPending}>
           {save.isPending ? "Saving…" : "Save widget"}
@@ -59,15 +59,15 @@ function WidgetSettings({ agent }: { agent: Agent }) {
 
       <div className="space-y-4">
         <CopyField label="Embed snippet: paste before </body>" value={agent.embedSnippet} />
-        <p className="text-xs text-slate-400 leading-relaxed">
+        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
           Works on any web app: React, Next.js, WordPress, Shopify or plain HTML. Each reply uses one message from your
           allowance, and visitors are rate-limited to protect it. Conversations appear under <strong>Messages → Web</strong>.
         </p>
         {!agent.widgetEnabled && (
-          <p className="text-xs text-amber-300">The widget is disabled. Enable and save it before embedding.</p>
+          <p className="text-xs text-amber-700 dark:text-amber-300">The widget is disabled. Enable and save it before embedding.</p>
         )}
         {agent.widgetEnabled && agent.widgetAllowedOrigins.length === 0 && (
-          <p className="text-xs text-amber-300">Any website can embed this widget. Add your domains to restrict it.</p>
+          <p className="text-xs text-amber-700 dark:text-amber-300">Any website can embed this widget. Add your domains to restrict it.</p>
         )}
       </div>
     </div>
@@ -99,7 +99,7 @@ export default function WebWidgetPanel() {
       {agent ? (
         <WidgetSettings agent={agent} />
       ) : (
-        <p className="text-sm text-slate-400">Create an AI agent first; the widget runs that agent.</p>
+        <p className="text-sm text-slate-600 dark:text-slate-400">Create an AI agent first; the widget runs that agent.</p>
       )}
     </Panel>
   );

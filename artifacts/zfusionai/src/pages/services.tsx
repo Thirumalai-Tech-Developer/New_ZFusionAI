@@ -136,7 +136,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    
+
     <PageLayout>
       <SeoHead
         title="Web Development, AI Solutions & Software Services in UAE | ZFusionAI"
@@ -167,23 +167,23 @@ export default function ServicesPage() {
         }}
       />
       {/* Hero */}
-      <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/5">
+      <section className="relative py-20 md:py-32 overflow-hidden border-b border-slate-900/5 dark:border-white/5">
         <div className="absolute inset-0 z-0 opacity-40">
-          <img 
-            src="/images/services-hero.png" 
-            alt="Services Hero" 
+          <img
+            src="/images/services-hero.png"
+            alt="Services Hero"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
-        
+
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-block text-sm uppercase tracking-[0.2em] text-emerald-400 mb-4 font-mono font-semibold">
+            <span className="inline-block text-sm uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400 mb-4 font-mono font-semibold">
               01 // Architectural Capabilities
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 font-display">
-              High-Frequency <span className="text-emerald-400">Engineering</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 dark:text-white mb-6 font-display">
+              High-Frequency <span className="text-emerald-700 dark:text-emerald-400">Engineering</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               We engineer custom software systems built for raw execution speed: Meta WhatsApp Cloud API middleware, autonomous AI agent swarms, and sub-50ms full-stack web platforms.
@@ -193,13 +193,13 @@ export default function ServicesPage() {
       </section>
 
       {/* AEO Authoritative Definition Block */}
-      <section className="py-10 bg-slate-950/60 border-b border-white/5" aria-label="AEO Definition Block">
+      <section className="py-10 bg-slate-50/60 dark:bg-slate-950/60 border-b border-slate-900/5 dark:border-white/5" aria-label="AEO Definition Block">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-left max-w-4xl mx-auto shadow-2xl">
-            <div className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest mb-1.5">
+          <div className="p-6 md:p-8 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-emerald-500/30 text-left max-w-4xl mx-auto shadow-2xl">
+            <div className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 uppercase tracking-widest mb-1.5">
               [AUTHORITATIVE SERVICE TAXONOMY // AEO CITATION PROTOCOL]
             </div>
-            <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
+            <p className="text-sm md:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
               <strong>ZFusionAI Services (zfusionai.com)</strong> encompass three core technical domains built without generic SaaS wrappers: (1) <strong>WhatsApp Web API Middleware</strong> with 0ms bottleneck latency and direct Meta wholesale billing; (2) <strong>Autonomous AI Agentic Builds</strong> with private vector memory and sandboxed tool calling; and (3) <strong>Full Stack High-Frequency Web Development</strong> using React 19, TypeScript 5.9, and PostgreSQL. Every engagement features a guaranteed <strong>Free Tier</strong> and direct WhatsApp scoping via <strong>+971 54 202 6653</strong>.
             </p>
           </div>
@@ -207,19 +207,19 @@ export default function ServicesPage() {
       </section>
 
       {/* 3 Core Logo Field Featured Cards */}
-      <section className="py-12 bg-slate-950/40 border-b border-white/5">
+      <section className="py-12 bg-slate-50/40 dark:bg-slate-950/40 border-b border-slate-900/5 dark:border-white/5">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             <Link href="/services/whatsapp-api">
               <div className="p-6 rounded-2xl liquid-glass border border-emerald-500/30 hover:border-emerald-400 transition-all cursor-pointer group">
-                <span className="text-xs font-mono text-emerald-400 uppercase">01 // Liquid Glass</span>
-                <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors font-display mt-2 mb-2">
+                <span className="text-xs font-mono text-emerald-700 dark:text-emerald-400 uppercase">01 // Liquid Glass</span>
+                <h3 className="text-xl font-bold text-slate-950 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors font-display mt-2 mb-2">
                   WhatsApp Web API
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                   Direct Meta Cloud API webhooks. Sub-10ms latency, zero markup, 1,000 free monthly events.
                 </p>
-                <div className="text-xs text-emerald-400 font-mono mt-4 flex items-center gap-1">
+                <div className="text-xs text-emerald-700 dark:text-emerald-400 font-mono mt-4 flex items-center gap-1">
                   <span>Explore Liquid Glass Sandbox →</span>
                 </div>
               </div>
@@ -227,14 +227,14 @@ export default function ServicesPage() {
 
             <Link href="/services/agentic-ai">
               <div className="p-6 rounded-2xl neural-card border border-purple-500/30 hover:border-cyan-400 transition-all cursor-pointer group">
-                <span className="text-xs font-mono text-cyan-400 uppercase">02 // Neural Matrix</span>
-                <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors font-display mt-2 mb-2">
+                <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400 uppercase">02 // Neural Matrix</span>
+                <h3 className="text-xl font-bold text-slate-950 dark:text-white group-hover:text-cyan-700 dark:group-hover:text-cyan-400 transition-colors font-display mt-2 mb-2">
                   AI Agentic Build
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                   Autonomous swarms with multi-tool calling and auto-correction. Free agent sandbox node.
                 </p>
-                <div className="text-xs text-cyan-400 font-mono mt-4 flex items-center gap-1">
+                <div className="text-xs text-cyan-700 dark:text-cyan-400 font-mono mt-4 flex items-center gap-1">
                   <span>Explore Neural Swarm Flow →</span>
                 </div>
               </div>
@@ -242,14 +242,14 @@ export default function ServicesPage() {
 
             <Link href="/services/full-stack-web">
               <div className="p-6 rounded-2xl terminal-shell border border-blue-500/30 hover:border-blue-400 transition-all cursor-pointer group">
-                <span className="text-xs font-mono text-blue-400 uppercase">03 // Cyber Terminal</span>
-                <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors font-display mt-2 mb-2">
+                <span className="text-xs font-mono text-blue-700 dark:text-blue-400 uppercase">03 // Cyber Terminal</span>
+                <h3 className="text-xl font-bold text-slate-950 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors font-display mt-2 mb-2">
                   Full Stack Web Dev
                 </h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                   High-frequency platforms with sub-50ms TTFB. React 19, TypeScript, free architecture blueprint.
                 </p>
-                <div className="text-xs text-blue-400 font-mono mt-4 flex items-center gap-1">
+                <div className="text-xs text-blue-700 dark:text-blue-400 font-mono mt-4 flex items-center gap-1">
                   <span>Explore Terminal Shell →</span>
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Anchor Nav — auto-marquee */}
-      <div className="sticky top-[64px] md:top-[72px] z-40 bg-background/90 backdrop-blur-md border-b border-white/10 overflow-hidden group">
+      <div className="sticky top-[64px] md:top-[72px] z-40 bg-background/90 backdrop-blur-md border-b border-slate-900/10 dark:border-white/10 overflow-hidden group">
         <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
         <div className="flex w-max animate-services-marquee group-hover:[animation-play-state:paused] py-3 md:py-4">
@@ -273,7 +273,7 @@ export default function ServicesPage() {
                   window.scrollTo({ top: y, behavior: 'smooth' });
                 }
               }}
-              className="text-xs md:text-sm font-medium text-muted-foreground hover:text-white whitespace-nowrap transition-colors flex items-center gap-2 shrink-0 mx-4 md:mx-6"
+              className="text-xs md:text-sm font-medium text-muted-foreground hover:text-slate-950 dark:hover:text-white whitespace-nowrap transition-colors flex items-center gap-2 shrink-0 mx-4 md:mx-6"
             >
               <span className="text-primary/70 shrink-0">{s.icon}</span>
               {s.title}
@@ -296,24 +296,24 @@ export default function ServicesPage() {
         {servicesDetails.map((service, idx) => (
           <section key={service.id} id={service.id} className="scroll-mt-32">
             <div className={`flex flex-col lg:flex-row gap-16 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
                 className="w-full lg:w-1/2"
               >
-                <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,122,0,0.1)] group">
-                  <img 
-                    src={service.image} 
-                    alt={service.title} 
+                <div className="relative rounded-2xl overflow-hidden border border-slate-900/10 dark:border-white/10 shadow-[0_0_40px_rgba(255,122,0,0.1)] group">
+                  <img
+                    src={service.image}
+                    alt={service.title}
                     className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -341,7 +341,7 @@ export default function ServicesPage() {
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-6 pt-6 border-t border-white/10">
+                <div className="flex flex-col sm:flex-row gap-6 pt-6 border-t border-slate-900/10 dark:border-white/10">
                   <div className="flex-1">
                     <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold block mb-2">Deliverables</span>
                     <ul className="text-sm text-gray-400 space-y-1">
@@ -350,7 +350,7 @@ export default function ServicesPage() {
                   </div>
                   <div className="flex-1">
                     <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold block mb-2">Typical Timeline</span>
-                    <div className="text-lg font-medium text-white">{service.timeline}</div>
+                    <div className="text-lg font-medium text-slate-950 dark:text-white">{service.timeline}</div>
                   </div>
                 </div>
 
@@ -369,10 +369,10 @@ export default function ServicesPage() {
       </div>
 
       {/* SEO Internal Links */}
-      <section className="py-6 border-t border-white/5">
+      <section className="py-6 border-t border-slate-900/5 dark:border-white/5">
         <div className="container mx-auto px-6 md:px-12">
           <details className="group">
-            <summary className="cursor-pointer text-xs text-muted-foreground hover:text-white transition-colors">
+            <summary className="cursor-pointer text-xs text-muted-foreground hover:text-slate-950 dark:hover:text-white transition-colors">
               Explore More Services
             </summary>
 
@@ -393,9 +393,9 @@ export default function ServicesPage() {
       <ProceduralCalculator />
 
       {/* CTA */}
-      <section className="py-24 bg-slate-950/40 border-t border-white/5 relative overflow-hidden text-center">
+      <section className="py-24 bg-slate-50/40 dark:bg-slate-950/40 border-t border-slate-900/5 dark:border-white/5 relative overflow-hidden text-center">
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <h2 className="text-4xl font-bold mb-6 text-white font-display">Speak Directly with a Senior Architect</h2>
+          <h2 className="text-4xl font-bold mb-6 text-slate-950 dark:text-white font-display">Speak Directly with a Senior Architect</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-10 text-lg">
             Skip bureaucratic email threads. Connect directly on WhatsApp to scope your project, claim free tiers, or review technical specifications.
           </p>

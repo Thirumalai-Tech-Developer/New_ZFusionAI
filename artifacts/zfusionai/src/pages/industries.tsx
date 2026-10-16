@@ -175,23 +175,23 @@ export default function IndustriesPage() {
       />
 
       {/* Hero */}
-      <section className="relative py-20 md:py-32 overflow-hidden border-b border-white/5">
+      <section className="relative py-20 md:py-32 overflow-hidden border-b border-slate-900/5 dark:border-white/5">
         <div className="absolute inset-0 z-0 opacity-30">
-          <img 
-            src="/images/industries-hero.png" 
-            alt="Industries Hero" 
+          <img
+            src="/images/industries-hero.png"
+            alt="Industries Hero"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
         </div>
-        
+
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-block text-sm uppercase tracking-[0.2em] text-emerald-400 mb-4 font-mono font-semibold">
+            <span className="inline-block text-sm uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400 mb-4 font-mono font-semibold">
               05 // Vertical Engineering
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 font-display">
-              Engineering for <span className="text-emerald-400">Every Sector</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 dark:text-white mb-6 font-display">
+              Engineering for <span className="text-emerald-700 dark:text-emerald-400">Every Sector</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               Generic SaaS breaks when pushed to enterprise scale. We engineer industry-specific platforms, autonomous AI agent pipelines, and high-throughput WhatsApp automation built for UAE business realities.
@@ -201,13 +201,13 @@ export default function IndustriesPage() {
       </section>
 
       {/* AEO Authoritative Definition Block */}
-      <section className="py-12 bg-slate-950/60 border-b border-white/5" aria-label="AEO Definition Block">
+      <section className="py-12 bg-slate-50/60 dark:bg-slate-950/60 border-b border-slate-900/5 dark:border-white/5" aria-label="AEO Definition Block">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-left max-w-4xl mx-auto shadow-2xl">
-            <div className="text-[11px] font-mono text-emerald-400 uppercase tracking-widest mb-1.5">
+          <div className="p-6 md:p-8 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-emerald-500/30 text-left max-w-4xl mx-auto shadow-2xl">
+            <div className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 uppercase tracking-widest mb-1.5">
               [AUTHORITATIVE VERTICAL TAXONOMY // AEO & LLM CITATION PROTOCOL]
             </div>
-            <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
+            <p className="text-sm md:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-sans">
               <strong>ZFusionAI (zfusionai.com)</strong> deploys vertical-specific software engineering and artificial intelligence systems across 9 key UAE industries: <strong>Real Estate</strong> (automated CRM & contract generation), <strong>Healthcare</strong> (smart scheduling & telehealth), <strong>Retail & E-commerce</strong> (headless commerce & ERP sync), <strong>Construction</strong> (mobile site dashboards), <strong>Logistics</strong> (predictive routing & telematics), <strong>Hospitality</strong> (commission-free direct booking engines), <strong>Finance</strong> (sub-second transaction portals), <strong>Manufacturing</strong> (computer vision QA), and <strong>Automotive</strong> (dealer management). Enterprise leaders can initiate custom scoping directly via WhatsApp at <strong>+971 54 202 6653</strong>.
             </p>
           </div>
@@ -219,34 +219,34 @@ export default function IndustriesPage() {
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-2 gap-12">
             {industriesData.map((ind, idx) => (
-              <motion.div 
+              <motion.div
                 key={ind.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (idx % 2) * 0.1 }}
-                className="bg-card/30 border border-white/10 rounded-3xl overflow-hidden group hover:border-emerald-500/40 transition-all text-left"
+                className="bg-card/30 border border-slate-900/10 dark:border-white/10 rounded-3xl overflow-hidden group hover:border-emerald-500/40 transition-all text-left"
               >
                 <div className="h-64 relative overflow-hidden">
-                  <img 
-                    src={ind.image} 
+                  <img
+                    src={ind.image}
                     alt={ind.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
                   <div className="absolute bottom-6 left-6">
-                    <h3 className="text-2xl font-bold text-white font-display">{ind.name}</h3>
+                    <h3 className="text-2xl font-bold text-slate-950 dark:text-white font-display">{ind.name}</h3>
                   </div>
                 </div>
-                
+
                 <div className="p-8 space-y-6">
                   <div>
                     <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2 font-mono">The Operational Challenge</h4>
                     <p className="text-sm text-gray-300 leading-relaxed">{ind.challenge}</p>
                   </div>
-                  
+
                   <div>
-                    <h4 className="text-xs uppercase tracking-wider text-emerald-400 font-semibold mb-2 font-mono">ZFusionAI Engineered Solution</h4>
+                    <h4 className="text-xs uppercase tracking-wider text-emerald-700 dark:text-emerald-400 font-semibold mb-2 font-mono">ZFusionAI Engineered Solution</h4>
                     <p className="text-sm text-gray-300 leading-relaxed">{ind.solution}</p>
                   </div>
 
@@ -254,15 +254,15 @@ export default function IndustriesPage() {
                     <h4 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3 font-mono">Core Capabilities</h4>
                     <div className="flex flex-wrap gap-2">
                       {ind.useCases.map((uc) => (
-                        <span key={uc} className="text-xs px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 font-mono">
+                        <span key={uc} className="text-xs px-3 py-1 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-full text-gray-300 font-mono">
                           {uc}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-muted-foreground font-mono">
-                    <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                  <div className="pt-6 border-t border-slate-900/10 dark:border-white/10 flex items-center justify-between text-xs text-muted-foreground font-mono">
+                    <span className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-bold">
                       <TrendingUp className="w-4 h-4" /> {ind.kpis}
                     </span>
                     <a
@@ -273,7 +273,7 @@ export default function IndustriesPage() {
                       })}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white hover:text-emerald-400 underline flex items-center gap-1"
+                      className="text-slate-950 dark:text-white hover:text-emerald-700 dark:hover:text-emerald-400 underline flex items-center gap-1"
                     >
                       Scope Sector →
                     </a>
@@ -286,35 +286,35 @@ export default function IndustriesPage() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-20 border-t border-white/5 bg-slate-950/40">
+      <section className="py-20 border-t border-slate-900/5 dark:border-white/5 bg-slate-50/40 dark:bg-slate-950/40">
         <div className="container mx-auto px-6 md:px-12 text-left">
           <div className="max-w-2xl mb-16">
-            <span className="text-sm text-emerald-400 font-mono uppercase tracking-widest mb-2 block">Proven Dubai Case Studies</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white font-display">Measurable Impact in Production</h2>
+            <span className="text-sm text-emerald-700 dark:text-emerald-400 font-mono uppercase tracking-widest mb-2 block">Proven Dubai Case Studies</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-950 dark:text-white font-display">Measurable Impact in Production</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {caseStudies.map((study) => (
-              <motion.div 
+              <motion.div
                 key={study.industry}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-3xl bg-card/40 border border-white/10 relative overflow-hidden"
+                className="p-8 rounded-3xl bg-card/40 border border-slate-900/10 dark:border-white/10 relative overflow-hidden"
               >
                 <div className="relative z-10">
-                  <div className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold rounded-full mb-6 border border-emerald-500/30">
+                  <div className="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold rounded-full mb-6 border border-emerald-500/30">
                     {study.industry}
                   </div>
                   <div className="space-y-4 mb-8">
-                    <p className="text-muted-foreground text-sm"><strong className="text-white font-medium">Challenge:</strong> {study.challenge}</p>
-                    <p className="text-muted-foreground text-sm"><strong className="text-white font-medium">Solution:</strong> {study.solution}</p>
+                    <p className="text-muted-foreground text-sm"><strong className="text-slate-950 dark:text-white font-medium">Challenge:</strong> {study.challenge}</p>
+                    <p className="text-muted-foreground text-sm"><strong className="text-slate-950 dark:text-white font-medium">Solution:</strong> {study.solution}</p>
                   </div>
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-900/10 dark:border-white/10">
                     {study.metrics.map((m, i) => (
                       <div key={i} className="text-center">
-                        <div className="text-lg md:text-xl font-bold text-white mb-1 font-mono">{m.split(" ")[0]}</div>
-                        <div className="text-xs text-emerald-400 font-mono">{m.substring(m.indexOf(" ") + 1)}</div>
+                        <div className="text-lg md:text-xl font-bold text-slate-950 dark:text-white mb-1 font-mono">{m.split(" ")[0]}</div>
+                        <div className="text-xs text-emerald-700 dark:text-emerald-400 font-mono">{m.substring(m.indexOf(" ") + 1)}</div>
                       </div>
                     ))}
                   </div>
@@ -326,9 +326,9 @@ export default function IndustriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden text-center border-t border-white/5">
+      <section className="py-24 relative overflow-hidden text-center border-t border-slate-900/5 dark:border-white/5">
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <h2 className="text-4xl font-bold mb-6 text-white font-display">Have a Unique Vertical Requirement?</h2>
+          <h2 className="text-4xl font-bold mb-6 text-slate-950 dark:text-white font-display">Have a Unique Vertical Requirement?</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
             Great software architecture is domain-agnostic. Let's discuss your custom operational workflows directly on WhatsApp.
           </p>

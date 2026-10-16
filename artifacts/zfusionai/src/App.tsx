@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeFieldProvider } from "@/context/ThemeFieldContext";
+import { ThemeProvider } from "next-themes";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 
 import Landing from "@/pages/landing";
 import NotFound from "@/pages/not-found";
@@ -88,6 +90,8 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <CurrencyProvider>
         <TooltipProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <ThemeFieldProvider>
@@ -96,8 +100,10 @@ function App() {
             </ThemeFieldProvider>
           </WouterRouter>
           <Toaster />
-          <SonnerToaster theme="dark" position="bottom-right" richColors />
+          <SonnerToaster position="bottom-right" richColors />
         </TooltipProvider>
+        </CurrencyProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </HelmetProvider>
   );

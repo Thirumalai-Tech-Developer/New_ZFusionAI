@@ -54,7 +54,7 @@ const homepageSchema = {
           "name": "WhatsApp Web API Integration - Free Developer Sandbox",
           "price": "0",
           "priceCurrency": "AED",
-          "description": "1,000 free monthly events with direct Meta Cloud API webhook routing.",
+          "description": "One-time 1,000-message trial shared across AI agents, web chat and WhatsApp. Sign-in required; one trial per phone number.",
         },
         {
           "@type": "Offer",
@@ -78,10 +78,10 @@ const homepageSchema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Does ZFusionAI offer a permanent free tier?",
+          "name": "Does ZFusionAI offer a free trial?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. ZFusionAI maintains an open-access developer framework providing free tiers for all three services: 1,000 free WhatsApp API events, 1 free autonomous AI agent node, and complete full-stack architecture blueprints.",
+            "text": "Yes. Create an account and register a unique phone number to activate a one-time allowance of 1,000 messages shared across AI agents, web chat and WhatsApp. Each phone number can claim the trial once.",
           },
         },
         {
@@ -99,10 +99,10 @@ const homepageSchema = {
 
 export default function Landing() {
   return (
-    <div className="relative min-h-screen bg-[#030605] text-[#f8fafc] overflow-x-hidden selection:bg-emerald-500/30">
+    <div className="relative min-h-screen bg-slate-50 dark:bg-[#030605] text-slate-950 dark:text-[#f8fafc] overflow-x-hidden selection:bg-emerald-500/30">
       <SeoHead
         title="ZFusionAI | Next-Gen AI Agents, WhatsApp API & Full-Stack Web Architecture"
-        description="ZFusionAI (zfusionai.com) delivers bespoke WhatsApp Cloud API middleware, autonomous AI agent swarms, and sub-50ms full-stack web platforms with a permanent free tier."
+        description="ZFusionAI (zfusionai.com) delivers WhatsApp Cloud API automation, AI agents and full-stack web platforms. Create an account for a one-time 1,000-message free trial."
         path="/"
         schema={homepageSchema}
       />
@@ -111,7 +111,7 @@ export default function Landing() {
 
       <main className="relative z-10">
         <Hero />
-        
+
         {/* Procedural Pricing & Free Tier Section */}
         <ProceduralCalculator />
 

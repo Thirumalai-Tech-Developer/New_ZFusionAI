@@ -112,7 +112,7 @@ export default function Contact() {
               Contact
             </span>
 
-            <h2 className="text-4xl md:text-6xl font-bold text-white">
+            <h2 className="text-4xl md:text-6xl font-bold text-slate-950 dark:text-white">
               Let's talk business
             </h2>
 
@@ -128,7 +128,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Office</p>
-                  <p className="text-white font-medium">Dubai, UAE</p>
+                  <p className="text-slate-950 dark:text-white font-medium">Dubai, UAE</p>
                 </div>
               </div>
 
@@ -140,7 +140,7 @@ export default function Contact() {
                   <p className="text-sm text-muted-foreground">Phone</p>
                   <a
                     href="tel:+971542026653"
-                    className="text-white font-medium hover:text-primary"
+                    className="text-slate-950 dark:text-white font-medium hover:text-primary"
                   >
                     +971 54 202 6653
                   </a>
@@ -155,7 +155,7 @@ export default function Contact() {
                   <p className="text-sm text-muted-foreground">Email</p>
                   <a
                     href="mailto:support@zfusionai.info"
-                    className="text-white font-medium hover:text-primary"
+                    className="text-slate-950 dark:text-white font-medium hover:text-primary"
                   >
                     support@zfusionai.info
                   </a>
@@ -168,7 +168,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Hours</p>
-                  <p className="text-white font-medium">
+                  <p className="text-slate-950 dark:text-white font-medium">
                     Mon - Fri · 9:00 AM - 6:00 PM
                   </p>
                 </div>
@@ -179,7 +179,7 @@ export default function Contact() {
               {serviceAreas.map((area) => (
                 <span
                   key={area}
-                  className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm text-white"
+                  className="px-3 py-1 rounded-full border border-slate-900/10 dark:border-white/10 bg-slate-900/5 dark:bg-white/5 text-sm text-slate-950 dark:text-white"
                 >
                   {area}
                 </span>
@@ -197,51 +197,51 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="rounded-3xl border border-white/10 bg-card/40 backdrop-blur-sm p-6 md:p-10 space-y-5"
+              className="rounded-3xl border border-slate-900/10 dark:border-white/10 bg-card/40 backdrop-blur-sm p-6 md:p-10 space-y-5"
             >
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-slate-950 dark:text-white mb-2">
                   Name
                 </label>
                   <Input
                     {...register("name")}
                     placeholder="Your full name"
-                    className="h-12 bg-background/60 border-white/10 text-white"
+                    className="h-12 bg-background/60 border-slate-900/10 dark:border-white/10 text-slate-950 dark:text-white"
                   />
                   {errors.name && (
-                    <p className="text-xs text-red-400 mt-1">
+                    <p className="text-xs text-red-700 dark:text-red-400 mt-1">
                       {errors.name.message}
                     </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-sm font-medium text-slate-950 dark:text-white mb-2">
                   Email
                 </label>
                   <Input
                     type="email"
                     {...register("email")}
                     placeholder="Your email"
-                    className="h-12 bg-background/60 border-white/10 text-white"
+                    className="h-12 bg-background/60 border-slate-900/10 dark:border-white/10 text-slate-950 dark:text-white"
                   />
                   {errors.email && (
-                    <p className="text-xs text-red-400 mt-1">
+                    <p className="text-xs text-red-700 dark:text-red-400 mt-1">
                       {errors.email.message}
                     </p>
                   )}
                 </div>
               </div>
-              <label className="block text-sm font-medium text-white mb-2">
+              <label className="block text-sm font-medium text-slate-950 dark:text-white mb-2">
                   Phone Number
                 </label>
               <Input
                 {...register("phone")}
                 placeholder="Phone number"
-                className="h-12 bg-background/60 border-white/10 text-white"
+                className="h-12 bg-background/60 border-slate-900/10 dark:border-white/10 text-slate-950 dark:text-white"
               />
-              <label className="block text-sm font-medium text-white mb-2">
+              <label className="block text-sm font-medium text-slate-950 dark:text-white mb-2">
                   Services
                 </label>
               <Select
@@ -250,7 +250,7 @@ export default function Contact() {
                   setValue("service", v, { shouldValidate: true })
                 }
               >
-                <SelectTrigger className="h-12 bg-background/60 border-white/10 text-white">
+                <SelectTrigger className="h-12 bg-background/60 border-slate-900/10 dark:border-white/10 text-slate-950 dark:text-white">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
 
@@ -264,22 +264,22 @@ export default function Contact() {
               </Select>
 
               {errors.service && (
-                <p className="text-xs text-red-400 -mt-3">
+                <p className="text-xs text-red-700 dark:text-red-400 -mt-3">
                   {errors.service.message}
                 </p>
               )}
-              <label className="block text-sm font-medium text-white mb-2">
+              <label className="block text-sm font-medium text-slate-950 dark:text-white mb-2">
                   Message
               </label>
               <Textarea
                 {...register("message")}
                 rows={6}
                 placeholder="Tell us about your project..."
-                className="bg-background/60 border-white/10 text-white resize-none"
+                className="bg-background/60 border-slate-900/10 dark:border-white/10 text-slate-950 dark:text-white resize-none"
               />
 
               {errors.message && (
-                <p className="text-xs text-red-400 -mt-3">
+                <p className="text-xs text-red-700 dark:text-red-400 -mt-3">
                   {errors.message.message}
                 </p>
               )}

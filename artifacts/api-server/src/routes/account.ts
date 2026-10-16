@@ -6,11 +6,14 @@ import {
   apiKeysTable,
   messageLogsTable,
   whatsappConnectionsTable,
+  usersTable,
   type WhatsappConnection,
 } from "@workspace/db";
 import { isAiConfigured, type ChatMessage } from "../lib/ai";
 import { encrypt, randomToken, sha256 } from "../lib/crypto";
 import { HttpError } from "../lib/errors";
+import { trialPhone, CLAIM_PHONE_SQL, ACTIVATE_TRIAL_SQL } from "../lib/trial";
+import { withMessage } from "../lib/quota";
 import { generateReply, requireConnection, sendMeteredMessage } from "../lib/messaging";
 import { parse } from "../lib/validate";
 import { getConnection, normalizePhone } from "../lib/whatsapp";
@@ -25,6 +28,35 @@ account.use("*", requireUser);
 account.get("/", (c) =>
   c.json({ user: toPublicUser(c.var.user!), aiConfigured: isAiConfigured(c.var.config) }),
 );
+
+account.post("/trial", rateLimit("AUTH_LIMITER", "trial"), async (c) => {
+  const { phone: input } = parse(z.object({ phone: z.string().max(60) }), await jsonBody(c));
+  const phone = trialPhone(input);
+  const user = c.var.user!;
+  if (user.plan !== "trial" || user.trialActivatedAt) return c.json({ user: toPublicUser(user) });
+  const now = Date.now();
+  const [, activation] = await c.env.DB.batch([
+    c.env.DB.prepare(CLAIM_PHONE_SQL).bind(phone, user.id),
+    c.env.DB.prepare(ACTIVATE_TRIAL_SQL).bind(now, now, user.id, phone),
+  ]);
+  if (!activation.results.length) {
+    // A retry after a concurrent successful activation must not award again.
+    const [current] = await c.var.db.select().from(usersTable).where(eq(usersTable.id, user.id));
+    if (current?.trialActivatedAt) return c.json({ user: toPublicUser(current) });
+    throw new HttpError(409, "This phone number has already claimed a free trial. Sign in to your original account or contact support.", "phone_already_used");
+  }
+  const [updated] = await c.var.db.select().from(usersTable).where(eq(usersTable.id, user.id));
+  return c.json({ user: toPublicUser(updated!) });
+});
+
+// Read access and activation stay available; trial products require activation.
+account.use("*", async (c, next) => {
+  if (c.req.method !== "GET" && c.req.method !== "DELETE" &&
+      c.var.user!.plan === "trial" && !c.var.user!.trialActivatedAt) {
+    throw new HttpError(403, "Activate your trial with a phone number first.", "trial_required");
+  }
+  await next();
+});
 
 /* ---------------------------- API keys ---------------------------- */
 
@@ -203,7 +235,7 @@ account.post("/send-test", rateLimit("AI_TEST_LIMITER", "send-test"), async (c) 
   );
 });
 
-/** Preview the WhatsApp system prompt. Not metered (rate limited instead). */
+/** Preview the WhatsApp prompt using the account's shared allowance. */
 account.post("/ai/playground", rateLimit("AI_TEST_LIMITER", "playground"), async (c) => {
   const { messages, systemPrompt } = parse(
     z.object({
@@ -218,10 +250,10 @@ account.post("/ai/playground", rateLimit("AI_TEST_LIMITER", "playground"), async
   const conn = await getConnection(c.var, c.var.user!.id);
   const prompt =
     systemPrompt || conn?.systemPrompt || "You are a helpful WhatsApp customer support assistant.";
-  const reply = await generateReply(c.var, [
+  const reply = await withMessage(c.var.db, c.var.user!.id, () => generateReply(c.var, [
     { role: "system", content: prompt },
     ...(messages as ChatMessage[]),
-  ]);
+  ]));
   return c.json({ reply });
 });
 

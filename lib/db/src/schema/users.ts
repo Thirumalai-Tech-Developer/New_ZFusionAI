@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
 import { sqliteTable, text, integer, uniqueIndex, index } from "drizzle-orm/sqlite-core";
 
-/** Free trial allowance granted to every new account (shared by all products). */
+/** One-time allowance activated after a signed-in account claims a unique phone. */
 export const FREE_TRIAL_MESSAGE_LIMIT = 1000;
 
 const id = () =>
@@ -26,12 +26,28 @@ export const usersTable = sqliteTable(
     name: text("name"),
     avatarUrl: text("avatar_url"),
     plan: text("plan").notNull().default("trial"),
+    // Access is gated by trialActivatedAt; retain the historical SQL default.
     messageLimit: integer("message_limit").notNull().default(FREE_TRIAL_MESSAGE_LIMIT),
+    trialActivatedAt: integer("trial_activated_at", { mode: "timestamp_ms" }),
     messagesUsed: integer("messages_used").notNull().default(0),
     ...timestamps,
   },
   (t) => [uniqueIndex("users_email_idx").on(t.email)],
 );
+
+// Deliberately retained after account deletion: deleting an account must not
+// make its phone eligible for another free trial. No phone is exposed publicly.
+export const trialClaimsTable = sqliteTable("trial_claims", {
+  phone: text("phone").primaryKey(),
+  userId: text("user_id").notNull().unique(),
+  createdAt: timestamps.createdAt,
+});
+
+export const passwordAccountsTable = sqliteTable("password_accounts", {
+  userId: text("user_id").primaryKey().references(() => usersTable.id, { onDelete: "cascade" }),
+  passwordHash: text("password_hash").notNull(),
+  createdAt: timestamps.createdAt,
+});
 
 export const oauthAccountsTable = sqliteTable(
   "oauth_accounts",

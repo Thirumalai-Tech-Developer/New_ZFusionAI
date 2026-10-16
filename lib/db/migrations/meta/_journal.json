@@ -8,6 +8,20 @@
       "when": 1792071848780,
       "tag": "0000_supreme_swarm",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792182799710,
+      "tag": "0001_flippant_gabe_jones",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792183412830,
+      "tag": "0002_swift_wilson_fisk",
+      "breakpoints": true
     }
   ]
 }

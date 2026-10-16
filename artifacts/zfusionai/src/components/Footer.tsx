@@ -55,7 +55,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/10 bg-background pt-20 pb-10">
+    <footer className="relative border-t border-slate-900/10 dark:border-white/10 bg-background pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 mb-16">
           {/* Brand */}
@@ -103,7 +103,7 @@ export default function Footer() {
 
           {cols.map((col) => (
             <div key={col.title} className="md:col-span-2">
-              <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+              <h3 className="text-sm font-semibold text-slate-950 dark:text-white mb-4 uppercase tracking-wider">
                 {col.title}
               </h3>
               <ul className="space-y-2.5">
@@ -131,7 +131,7 @@ export default function Footer() {
           ))}
 
           <div className="col-span-2 md:col-span-2">
-            <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-slate-950 dark:text-white mb-4 uppercase tracking-wider">
               Service Areas
             </h3>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
@@ -144,7 +144,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col items-center justify-center gap-3 text-sm text-muted-foreground text-center">
+        <div className="pt-8 border-t border-slate-900/10 dark:border-white/10 flex flex-col items-center justify-center gap-3 text-sm text-muted-foreground text-center">
           <div className="flex gap-6">
             <Link href="/privacy">
               <span className="hover:text-primary transition-colors cursor-pointer">

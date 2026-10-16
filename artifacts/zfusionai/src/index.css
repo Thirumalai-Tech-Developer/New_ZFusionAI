@@ -5,8 +5,8 @@
 
 body {
   font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
-  background-color: #030605;
-  color: #f8fafc;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
   overflow-x: hidden;
 }
 
@@ -84,6 +84,7 @@ body {
 
 /* LIGHT MODE */
 :root {
+  color-scheme: light;
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
   --opaque-button-border-intensity: -8;
@@ -150,6 +151,7 @@ body {
 }
 
 .dark {
+  color-scheme: dark;
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
   --opaque-button-border-intensity: 9;
@@ -401,7 +403,26 @@ body {
 
 .cyber-grid-bg {
   background-size: 32px 32px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+}
+
+/* Preserve each service's materials while allowing system light mode. */
+:root:not(.dark) [data-field], :root:not(.dark)[data-field] {
+  --field-bg: #f8fafc;
+}
+:root:not(.dark) .liquid-glass {
+  background: rgba(236, 253, 245, .85);
+  box-shadow: 0 8px 32px rgba(6, 78, 59, .08);
+}
+:root:not(.dark) .neural-card {
+  background: rgba(245, 243, 255, .9);
+}
+:root:not(.dark) .terminal-shell {
+  background: rgba(241, 245, 249, .95);
+  box-shadow: 0 12px 48px rgba(15, 23, 42, .1);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

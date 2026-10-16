@@ -52,7 +52,7 @@ export default function FAQ() {
             <span className="inline-block text-sm uppercase tracking-[0.2em] text-primary mb-4">
               FAQ
             </span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-950 dark:text-white">
               Questions, answered straight.
             </h2>
             <p className="mt-6 text-lg text-muted-foreground max-w-md">
@@ -73,9 +73,9 @@ export default function FAQ() {
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
-                  className="border-white/10"
+                  className="border-slate-900/10 dark:border-white/10"
                 >
-                  <AccordionTrigger className="text-left text-base md:text-lg font-medium text-white hover:text-primary py-6">
+                  <AccordionTrigger className="text-left text-base md:text-lg font-medium text-slate-950 dark:text-white hover:text-primary py-6">
                     {faq.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed pb-6">

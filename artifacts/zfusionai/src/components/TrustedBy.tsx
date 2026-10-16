@@ -11,7 +11,7 @@ export default function TrustedBy() {
   ];
 
   return (
-    <section className="py-12 border-y border-white/5 bg-background/50 backdrop-blur-sm overflow-hidden">
+    <section className="py-12 border-y border-slate-900/5 dark:border-white/5 bg-background/50 backdrop-blur-sm overflow-hidden">
       <div className="container mx-auto px-6">
         <p className="text-center text-sm font-medium text-muted-foreground mb-8">
           TRUSTED BY INNOVATIVE COMPANIES ACROSS THE UAE
@@ -23,7 +23,7 @@ export default function TrustedBy() {
           {[...logos, ...logos].map((logo, i) => (
             <div
               key={`logo-${i}`}
-              className="mx-12 text-muted-foreground/40 hover:text-white/60 transition-colors duration-300 grayscale flex-shrink-0"
+              className="mx-12 text-muted-foreground/40 hover:text-slate-950/60 dark:hover:text-white/60 transition-colors duration-300 grayscale flex-shrink-0"
             >
               {logo.icon}
             </div>

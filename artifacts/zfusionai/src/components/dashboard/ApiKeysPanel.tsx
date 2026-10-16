@@ -69,25 +69,25 @@ export default function ApiKeysPanel() {
             Copy this key now — for your security it won't be shown again.
           </p>
           <CopyField label="New API key" value={newKey} />
-          <button type="button" className="text-xs text-slate-400 hover:text-white" onClick={() => setNewKey(null)}>
+          <button type="button" className="text-xs text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white" onClick={() => setNewKey(null)}>
             I've saved it
           </button>
         </div>
       )}
 
       <ul className="mt-5 divide-y divide-white/5">
-        {keys.length === 0 && <li className="py-3 text-sm text-slate-500">No API keys yet.</li>}
+        {keys.length === 0 && <li className="py-3 text-sm text-slate-600 dark:text-slate-500">No API keys yet.</li>}
         {keys.map((k) => (
           <li key={k.id} className="py-3 flex items-center justify-between gap-3">
             <div className="min-w-0">
-              <div className="text-sm text-white truncate">{k.name}</div>
-              <div className="text-xs font-mono text-slate-500">
+              <div className="text-sm text-slate-950 dark:text-white truncate">{k.name}</div>
+              <div className="text-xs font-mono text-slate-600 dark:text-slate-500">
                 {k.prefix}… · {k.lastUsedAt ? `last used ${new Date(k.lastUsedAt).toLocaleString()}` : "never used"}
               </div>
             </div>
             <button
               type="button"
-              className="p-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10"
+              className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-red-700 dark:hover:text-red-400 hover:bg-red-500/10"
               aria-label={`Revoke ${k.name}`}
               onClick={() => {
                 if (confirm(`Revoke "${k.name}"? Apps using it will stop working.`)) revoke.mutate(k.id);
@@ -100,8 +100,8 @@ export default function ApiKeysPanel() {
       </ul>
 
       <details className="mt-4 group">
-        <summary className="text-xs font-mono text-emerald-400 cursor-pointer">Quick start · cURL</summary>
-        <pre className="mt-3 p-4 rounded-xl bg-black/50 border border-white/10 text-[11px] leading-relaxed text-slate-300 overflow-x-auto">{`# Send a WhatsApp message (1 message from your allowance)
+        <summary className="text-xs font-mono text-emerald-700 dark:text-emerald-400 cursor-pointer">Quick start · cURL</summary>
+        <pre className="mt-3 p-4 rounded-xl bg-slate-200/50 dark:bg-black/50 border border-slate-900/10 dark:border-white/10 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300 overflow-x-auto">{`# Send a WhatsApp message (1 message from your allowance)
 curl -X POST ${origin}/api/v1/messages \\
   -H "Authorization: Bearer zf_live_YOUR_KEY" \\
   -H "Content-Type: application/json" \\

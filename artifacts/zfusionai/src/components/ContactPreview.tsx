@@ -6,7 +6,7 @@ export default function ContactPreview() {
   return (
     <section id="contact" className="relative py-24 md:py-32 bg-card/30 scroll-mt-24">
       <div className="container mx-auto px-6 md:px-12 text-center relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Let's talk business</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-950 dark:text-white">Let's talk business</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
           Ready to scale your business with custom engineering? Our team is standing by to discuss your next big move.
         </p>

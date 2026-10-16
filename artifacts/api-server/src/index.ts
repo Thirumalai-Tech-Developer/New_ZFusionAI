@@ -11,6 +11,7 @@ import publicRoutes from "./routes/public";
 import v1Routes from "./routes/v1";
 import webhookRoutes from "./routes/webhooks";
 import type { AppEnv } from "./types";
+import localeRoutes from "./routes/locale";
 
 /**
  * ZFusionAI API — Cloudflare Worker.
@@ -21,12 +22,14 @@ import type { AppEnv } from "./types";
 const app = new Hono<AppEnv>().basePath("/api");
 
 app.use("*", async (c, next) => {
+  if (/^\/api\/(auth|account)(\/|$)/.test(c.req.path)) c.header("Cache-Control", "private, no-store");
   c.set("db", createDb(c.env.DB));
   c.set("config", getConfig(c.env));
   await next();
 });
 
 app.get("/healthz", (c) => c.json({ status: "ok" }));
+app.route("/locale", localeRoutes);
 
 // No cookies on these: API keys, Meta signatures and the public widget.
 app.route("/v1", v1Routes);

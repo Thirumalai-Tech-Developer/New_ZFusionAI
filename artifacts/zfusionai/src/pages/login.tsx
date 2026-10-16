@@ -5,6 +5,7 @@ import SeoHead from "@/components/SeoHead";
 import Navbar from "@/components/Navbar";
 import { useAuth, useAuthProviders } from "@/hooks/use-auth";
 import { oauthUrl } from "@/lib/api";
+import AccountLogin from "@/components/AccountLogin";
 
 const ERROR_MESSAGES: Record<string, string> = {
   access_denied: "Sign-in was cancelled.",
@@ -14,6 +15,7 @@ const ERROR_MESSAGES: Record<string, string> = {
     "An account with this email already exists. Sign in with the provider you used first.",
   google_not_configured: "Google sign-in isn't configured on this server yet.",
   github_not_configured: "GitHub sign-in isn't configured on this server yet.",
+  password_account_exists: "This email has a password account. Use the email and password form below.",
 };
 
 function GoogleIcon() {
@@ -44,17 +46,17 @@ export default function LoginPage() {
   const errorCode = params.get("error");
 
   useEffect(() => {
-    if (!isLoading && user) navigate(next.startsWith("/") ? next : "/dashboard");
+    if (!isLoading && user) navigate(/^\/(?![\/\\])/.test(next) ? next : "/dashboard");
   }, [isLoading, user, next, navigate]);
 
   const buttonBase =
     "w-full inline-flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed";
 
   return (
-    <div className="relative min-h-screen bg-[#030c07] text-white overflow-x-clip">
+    <div className="relative min-h-screen bg-slate-50 dark:bg-[#030c07] text-slate-950 dark:text-white overflow-x-clip">
       <SeoHead
         title="Sign in | Free trial with 1,000 messages | ZFusionAI"
-        description="Sign in with Google or GitHub to start your ZFusionAI free trial: 1,000 messages for AI agents, web app chat and WhatsApp automation. No credit card required."
+        description="Create an account and sign in to activate 1,000 free messages for AI agents, web app chat and WhatsApp automation. Your workspace is saved securely. No credit card required."
         path="/login"
         noindex
       />
@@ -63,26 +65,26 @@ export default function LoginPage() {
 
       <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-32 pb-20 grid lg:grid-cols-2 gap-12 items-center max-w-6xl">
         <section className="space-y-6 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 font-mono text-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>FREE TRIAL · 1,000 MESSAGES · NO CARD</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight leading-tight">
-            AI agents for your <span className="text-cyan-300">API</span>, <span className="text-emerald-300">web app</span> and <span className="text-[#25D366]">WhatsApp</span>.
+            AI agents for your <span className="text-cyan-700 dark:text-cyan-300">API</span>, <span className="text-emerald-700 dark:text-emerald-300">web app</span> and <span className="text-emerald-700 dark:text-[#25D366]">WhatsApp</span>.
           </h1>
-          <p className="text-slate-300 leading-relaxed">
+          <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
             Build an AI agent once and use it everywhere: call it from your code (OpenAI-compatible),
-            embed it in your website, or let it answer WhatsApp customers 24/7. Every new account gets
-            <strong className="text-white"> 1,000 free messages</strong> shared across all three.
+            embed it in your website, or let it answer WhatsApp customers 24/7. Sign in and register a unique phone number to activate
+            <strong className="text-slate-950 dark:text-white"> 1,000 free messages</strong> shared across all three.
           </p>
-          <ul className="space-y-3 text-sm text-slate-300">
+          <ul className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
             {[
               "Agentic AI: agents with webhook tools, REST + OpenAI-compatible API",
               "Web App: one-line AI chat widget for any website",
               "WhatsApp: AI auto-replies on the official Cloud API",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-emerald-700 dark:text-emerald-400 shrink-0" />
                 <span>{item}</span>
               </li>
             ))}
@@ -91,55 +93,48 @@ export default function LoginPage() {
 
         <section
           aria-label="Sign in"
-          className="w-full max-w-md mx-auto p-6 sm:p-8 rounded-2xl bg-slate-900/70 backdrop-blur-xl border border-emerald-500/25 shadow-2xl"
+          className="w-full max-w-md mx-auto p-6 sm:p-8 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 backdrop-blur-xl border border-emerald-500/25 shadow-2xl"
         >
           <div className="flex items-center gap-3 mb-6">
             <img src="/brand/logo_compressed.png" alt="" className="w-10 h-10 object-contain" />
             <div>
               <h2 className="text-xl font-display font-bold">Sign in to ZFusionAI</h2>
-              <p className="text-xs text-slate-400">New here? Signing in creates your trial account.</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400">Sign in, then activate your trial with a unique phone number.</p>
             </div>
           </div>
 
           {errorCode && (
-            <div role="alert" className="mb-5 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-sm text-red-300">
+            <div role="alert" className="mb-5 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-sm text-red-700 dark:text-red-300">
               {ERROR_MESSAGES[errorCode] ?? "Sign-in failed. Please try again."}
             </div>
           )}
 
-          <div className="space-y-3">
+          <AccountLogin next={next} />
+          {providers?.google && <div className="space-y-3 mt-6 pt-6 border-t border-border">
             <a
-              href={providers?.google === false ? undefined : oauthUrl("google", next)}
-              aria-disabled={providers?.google === false}
-              className={`${buttonBase} bg-white text-slate-900 hover:bg-slate-100 ${providers?.google === false ? "opacity-40 pointer-events-none" : ""}`}
+              href={oauthUrl("google", next)}
+              className={`${buttonBase} bg-white text-slate-900 hover:bg-slate-100`}
             >
               <GoogleIcon />
               Continue with Google
             </a>
-            <a
-              href={providers?.github === false ? undefined : oauthUrl("github", next)}
-              aria-disabled={providers?.github === false}
-              className={`${buttonBase} bg-slate-800 text-white border border-white/10 hover:bg-slate-700 ${providers?.github === false ? "opacity-40 pointer-events-none" : ""}`}
-            >
-              <GitHubIcon />
-              Continue with GitHub
-            </a>
-          </div>
 
-          <div className="mt-6 flex items-start gap-2 text-xs text-slate-400">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+          </div>}
+
+          <div className="mt-6 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <ShieldCheck className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
             <p>
-              We only read your name, email and avatar. By continuing you agree to our{" "}
-              <Link href="/terms" className="text-emerald-400 hover:underline">Terms</Link> and{" "}
-              <Link href="/privacy" className="text-emerald-400 hover:underline">Privacy Policy</Link>.
+              Your account keeps your agents, settings and message usage together. See our{" "}
+              <Link href="/terms" className="text-emerald-700 dark:text-emerald-400 hover:underline">Terms</Link> and{" "}
+              <Link href="/privacy" className="text-emerald-700 dark:text-emerald-400 hover:underline">Privacy Policy</Link>.
             </p>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-white/10 flex items-center gap-2 text-xs text-slate-400">
-            <MessageSquare className="w-4 h-4 text-[#25D366]" />
+          <div className="mt-6 pt-6 border-t border-slate-900/10 dark:border-white/10 flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
+            <MessageSquare className="w-4 h-4 text-emerald-700 dark:text-[#25D366]" />
             <span>
               Need a hand?{" "}
-              <Link href="/contact" className="text-emerald-400 hover:underline">
+              <Link href="/contact" className="text-emerald-700 dark:text-emerald-400 hover:underline">
                 Talk to an engineer
               </Link>
             </span>

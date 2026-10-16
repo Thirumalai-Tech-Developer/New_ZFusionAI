@@ -8,10 +8,11 @@ export function toPublicUser(user: User) {
     name: user.name,
     avatarUrl: user.avatarUrl,
     plan: user.plan,
+    trialActivated: user.plan !== "trial" || Boolean(user.trialActivatedAt),
     usage: {
       used: user.messagesUsed,
-      limit: user.messageLimit,
-      remaining: Math.max(0, user.messageLimit - user.messagesUsed),
+      limit: user.plan === "trial" && !user.trialActivatedAt ? 0 : user.messageLimit,
+      remaining: user.plan === "trial" && !user.trialActivatedAt ? 0 : Math.max(0, user.messageLimit - user.messagesUsed),
     },
     createdAt: user.createdAt,
   };

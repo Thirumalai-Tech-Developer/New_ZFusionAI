@@ -49,7 +49,7 @@ export default function MessagesPanel({ connected }: { connected: boolean }) {
         <button
           type="button"
           onClick={() => refetch()}
-          className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5"
+          className="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/5"
           aria-label="Refresh messages"
         >
           <RefreshCw className={`w-4 h-4 ${isFetching ? "animate-spin" : ""}`} />
@@ -70,7 +70,7 @@ export default function MessagesPanel({ connected }: { connected: boolean }) {
             aria-selected={channel === value}
             onClick={() => setChannel(value)}
             className={`px-3 py-1 rounded-full text-xs border ${
-              channel === value ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-200" : "border-white/10 text-slate-400 hover:bg-white/5"
+              channel === value ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-200" : "border-slate-900/10 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-900/5 dark:hover:bg-white/5"
             }`}
           >
             {label}
@@ -101,32 +101,32 @@ export default function MessagesPanel({ connected }: { connected: boolean }) {
           {send.isPending ? "Sending…" : "Send"}
         </button>
       </form>
-      <p className="mt-2 text-[11px] text-slate-500">
+      <p className="mt-2 text-[11px] text-slate-600 dark:text-slate-500">
         Meta only allows free-form text within 24 hours of the customer's last message. Use templates (via the API) to start new conversations.
       </p>
 
       <ul className="mt-5 divide-y divide-white/5 max-h-96 overflow-y-auto">
-        {messages.length === 0 && <li className="py-6 text-sm text-slate-500 text-center">No messages yet.</li>}
+        {messages.length === 0 && <li className="py-6 text-sm text-slate-600 dark:text-slate-500 text-center">No messages yet.</li>}
         {messages.map((m) => (
           <li key={m.id} className="py-3 flex items-start gap-3">
             <div
               className={`mt-0.5 w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
-                m.direction === "inbound" ? "bg-cyan-500/15 text-cyan-300" : "bg-emerald-500/15 text-emerald-300"
+                m.direction === "inbound" ? "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300" : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
               }`}
             >
               {m.direction === "inbound" ? <ArrowDownLeft className="w-3.5 h-3.5" /> : <ArrowUpRight className="w-3.5 h-3.5" />}
             </div>
             <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-x-2 text-xs text-slate-400">
-                <span className="font-mono text-slate-300">
+              <div className="flex flex-wrap items-center gap-x-2 text-xs text-slate-600 dark:text-slate-400">
+                <span className="font-mono text-slate-700 dark:text-slate-300">
                   {m.channel === "whatsapp" ? `+${m.peer}` : m.channel === "web" ? "web visitor" : "API"}
                 </span>
                 <span>· {m.source.replace("_", "-")}</span>
                 <span>· {new Date(m.createdAt).toLocaleString()}</span>
-                {m.status === "failed" && <span className="text-red-400">· failed</span>}
+                {m.status === "failed" && <span className="text-red-700 dark:text-red-400">· failed</span>}
               </div>
               <p className="text-sm text-slate-100 break-words whitespace-pre-wrap">{m.body}</p>
-              {m.error && <p className="text-xs text-red-400 mt-1">{m.error}</p>}
+              {m.error && <p className="text-xs text-red-700 dark:text-red-400 mt-1">{m.error}</p>}
             </div>
           </li>
         ))}
