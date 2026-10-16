@@ -6,7 +6,10 @@ main = "src/index.ts"
 compatibility_date = "2026-09-01"
 workers_dev = true
 
-routes = [{ pattern = "zfusionai.com", custom_domain = true }]
+routes = [
+  { pattern = "zfusionai.com", custom_domain = true },
+  { pattern = "www.zfusionai.com", custom_domain = true }
+]
 
 [observability]
 enabled = true
@@ -52,6 +55,7 @@ simple = { limit = 30, period = 60 }
 [vars]
 ENVIRONMENT = "production"
 APP_URL = "https://zfusionai.com"
+EXTRA_ALLOWED_ORIGINS = "https://www.zfusionai.com"
 AI_MODEL = "gpt-4o-mini"
 
 # Secrets (production): set with `wrangler secret put <NAME>`:
