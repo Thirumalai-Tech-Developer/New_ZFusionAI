@@ -5,7 +5,10 @@ import Footer from "@/components/Footer";
 import TerminalScaffold from "@/components/fields/fullstack/TerminalScaffold";
 import ProceduralCalculator from "@/components/pricing/ProceduralCalculator";
 import { Terminal, Cpu, Database, Cloud, MessageSquare, ArrowRight, CheckCircle2, Shield } from "lucide-react";
+import { Link } from "wouter";
 import { generateWhatsAppLink } from "@/lib/whatsappEngine";
+import TrialSection from "@/components/TrialSection";
+import { trialSchema, webFaqs, webSteps } from "@/seo/content";
 
 export default function FullStackWebPage() {
   const freeBlueprintLink = generateWhatsAppLink({
@@ -22,7 +25,7 @@ export default function FullStackWebPage() {
     scopeSummary: "High-Frequency Full Stack Custom Web Platform Scoping",
   });
 
-  const schemaData = {
+  const baseSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -88,6 +91,19 @@ export default function FullStackWebPage() {
     ],
   };
 
+  const schemaData = [
+    baseSchema,
+    ...trialSchema({
+      path: "/services/full-stack-web",
+      name: "ZFusionAI Web App AI Chat Widget",
+      description:
+        "Add an AI agent chat widget to any website or web app with one script tag. Free trial with 1,000 messages.",
+      category: "WebApplication",
+      steps: webSteps,
+      faqs: webFaqs,
+    }),
+  ];
+
   return (
     <div className="relative min-h-screen bg-[#06070a] text-[#f8fafc] selection:bg-[#3b82f6]/30 cyber-grid-bg overflow-x-hidden" data-field="fullstack">
       <SeoHead
@@ -120,7 +136,7 @@ export default function FullStackWebPage() {
               [AUTHORITATIVE DEFINITION & ARCHITECTURE]
             </div>
             <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
-              <strong>Full Stack Web Development at ZFusionAI</strong> is an avant-garde software engineering practice combining React 19, TypeScript 5.9, Express 5 microservices, and edge-replicated PostgreSQL databases. Engineered specifically for microsecond TTFB and strict zero-defect type contracts, our platforms scale seamlessly under extreme traffic surges. Every engineering inquiry includes a <strong>complimentary system architecture blueprint and Docker boilerplate</strong> accessible via WhatsApp.
+              <strong>Full Stack Web Development at ZFusionAI</strong> is an avant-garde software engineering practice combining React 19, TypeScript 5.9, Express 5 microservices, and edge-replicated PostgreSQL databases. Engineered specifically for microsecond TTFB and strict zero-defect type contracts, our platforms scale seamlessly under extreme traffic surges. Every engineering inquiry includes a <strong>complimentary system architecture blueprint</strong> via WhatsApp. To add AI to an existing web app, embed the ZFusionAI chat widget with one script tag. It is <strong>free for the first 1,000 messages</strong>.
             </p>
           </div>
 
@@ -143,6 +159,13 @@ export default function FullStackWebPage() {
               <span>Review System Metrics</span>
               <ArrowRight className="w-4 h-4" />
             </a>
+            <Link
+              href="/login?next=/dashboard%23tab-web"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-200 font-semibold border border-emerald-500/30 transition-all"
+            >
+              <span>Add AI Chat to Your Web App (Free)</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
 
@@ -194,6 +217,15 @@ export default function FullStackWebPage() {
             </div>
           </div>
         </section>
+
+        <TrialSection
+          id="web-trial"
+          heading="Add an AI agent to your web app, free"
+          intro="One script tag puts your AI agent on any website: React, Next.js, WordPress, Shopify or plain HTML."
+          steps={webSteps}
+          faqs={webFaqs}
+          faqHeading="Web app AI chat FAQ"
+        />
 
         {/* Procedural Pricing Section */}
         <ProceduralCalculator />

@@ -1,0 +1,14 @@
+{
+  "name": "ZFusionAI",
+  "short_name": "ZFusionAI",
+  "description": "WhatsApp AI automation API, AI agents and web development in Dubai, UAE.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#030c07",
+  "theme_color": "#030c07",
+  "icons": [
+    { "src": "/brand/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "/brand/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }
+  ]
+}

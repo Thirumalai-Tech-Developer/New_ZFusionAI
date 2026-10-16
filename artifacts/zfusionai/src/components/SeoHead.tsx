@@ -1,10 +1,16 @@
 import { Helmet } from "react-helmet-async";
-import { seoServiceLinks } from "@/pages/services";
-
-const SITE_URL = "https://zfusionai.com";
-const SITE_NAME = "ZFusionAI";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/brand/logo_compressed.png`;
-const PHONE_NUMBER = "+971 54 202 6653";
+import {
+  aliasRoutes,
+  DEFAULT_OG_IMAGE,
+  landingDescription,
+  LOGO_URL,
+  PHONE_NUMBER,
+  seoServiceLinks,
+  SITE_NAME,
+  SITE_URL,
+  staticRoutes,
+  SUPPORT_EMAIL,
+} from "@/seo/routes";
 
 export interface SeoHeadProps {
   title: string;
@@ -14,20 +20,23 @@ export interface SeoHeadProps {
   image?: string;
   type?: "website" | "article";
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Private/app pages: keep out of search indexes. */
+  noindex?: boolean;
 }
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["Organization", "ProfessionalService"],
+  "@id": `${SITE_URL}/#organization`,
   name: "ZFusionAI",
   alternateName: "ZFusionAI Dubai",
   description:
     "Next-Gen AI Agents, WhatsApp Web API Cloud Middleware & High-Frequency Web Development in Dubai, UAE.",
   url: SITE_URL,
   telephone: PHONE_NUMBER,
-  email: "support@zfusionai.com",
+  email: SUPPORT_EMAIL,
   image: DEFAULT_OG_IMAGE,
-  logo: DEFAULT_OG_IMAGE,
+  logo: LOGO_URL,
   priceRange: "Free Tier Available / AED 0+",
   currenciesAccepted: "AED, USD, EUR",
   paymentAccepted: "Credit Card, Wire Transfer, Crypto",
@@ -70,11 +79,43 @@ const localBusinessSchema = {
       closes: "23:59",
     },
   ],
+  knowsAbout: [
+    "WhatsApp Business Cloud API",
+    "WhatsApp AI chatbots",
+    "AI agents",
+    "Large language models",
+    "Full-stack web development",
+    "Mobile app development",
+  ],
+  makesOffer: {
+    "@type": "Offer",
+    name: "WhatsApp AI Automation API free trial (1,000 messages)",
+    price: "0",
+    priceCurrency: "AED",
+    url: `${SITE_URL}/services/whatsapp-api`,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: PHONE_NUMBER,
+    contactType: "sales",
+    availableLanguage: ["English", "Arabic"],
+    areaServed: "AE",
+  },
   sameAs: [
     "https://github.com/Thirumalai-Tech-Developer/New_ZFusionAI",
     "https://www.linkedin.com/company/zfusionai",
     "https://www.instagram.com/zfusionai",
   ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE_NAME,
+  inLanguage: "en-AE",
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export default function SeoHead({
@@ -85,18 +126,23 @@ export default function SeoHead({
   image = DEFAULT_OG_IMAGE,
   type = "website",
   schema,
+  noindex = false,
 }: SeoHeadProps) {
   const matchedSeoPage = seoServiceLinks.find((item) => item.slug === path);
+  // routes.ts is the source of truth so client tags match the prerendered HTML.
+  const routeMeta = staticRoutes.find((r) => r.path === path);
 
   const finalTitle = matchedSeoPage
     ? `${matchedSeoPage.label} | ${SITE_NAME}`
-    : title;
+    : routeMeta?.title ?? title;
 
   const finalDescription = matchedSeoPage
-    ? `${matchedSeoPage.label}. Custom AI agents, WhatsApp Cloud API middleware, and high-frequency web development for UAE businesses. Free tier available.`
-    : description;
+    ? landingDescription(matchedSeoPage.label, matchedSeoPage.category)
+    : routeMeta?.description ?? description;
 
-  const url = `${SITE_URL}${path}`;
+  // Alias URLs consolidate onto their dedicated page.
+  const canonicalPath = aliasRoutes[path] ?? path;
+  const url = `${SITE_URL}${canonicalPath === "/" ? "/" : canonicalPath}`;
 
   // Generate BreadcrumbList Schema for GEO
   const breadcrumbSchema = {
@@ -122,11 +168,28 @@ export default function SeoHead({
     ],
   };
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: finalTitle,
+    description: finalDescription,
+    inLanguage: "en-AE",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#organization` },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "[aria-label='AEO Definition Block'] p"],
+    },
+  };
+
+  const baseSchemas = [localBusinessSchema, websiteSchema, webPageSchema, breadcrumbSchema];
   const schemaArray = Array.isArray(schema)
-    ? [localBusinessSchema, breadcrumbSchema, ...schema]
+    ? [...baseSchemas, ...schema]
     : schema
-    ? [localBusinessSchema, breadcrumbSchema, schema]
-    : [localBusinessSchema, breadcrumbSchema];
+    ? [...baseSchemas, schema]
+    : baseSchemas;
 
   return (
     <Helmet prioritizeSeoTags>
@@ -139,10 +202,19 @@ export default function SeoHead({
       )}
 
       <meta name="author" content={SITE_NAME} />
-      <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+      <meta
+        name="robots"
+        content={
+          noindex
+            ? "noindex,nofollow"
+            : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+        }
+      />
 
-      {/* Canonical */}
+      {/* Canonical + language targeting */}
       <link rel="canonical" href={url} />
+      {!noindex && <link rel="alternate" hrefLang="en-ae" href={url} />}
+      {!noindex && <link rel="alternate" hrefLang="x-default" href={url} />}
 
       {/* Open Graph */}
       <meta property="og:site_name" content={SITE_NAME} />
@@ -151,6 +223,9 @@ export default function SeoHead({
       <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={`${SITE_NAME}: WhatsApp AI Automation API, AI agents and web development in Dubai`} />
       <meta property="og:locale" content="en_AE" />
 
       {/* Twitter */}

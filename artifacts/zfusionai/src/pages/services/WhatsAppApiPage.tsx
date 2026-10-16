@@ -6,16 +6,11 @@ import LiquidGlassCanvas from "@/components/fields/whatsapp/LiquidGlassCanvas";
 import InteractiveChatMock from "@/components/fields/whatsapp/InteractiveChatMock";
 import ProceduralCalculator from "@/components/pricing/ProceduralCalculator";
 import { MessageSquare, Zap, Shield, CheckCircle2, ArrowRight, Sparkles, Terminal } from "lucide-react";
+import { Link } from "wouter";
 import { generateWhatsAppLink } from "@/lib/whatsappEngine";
+import { trialSteps, whatsappFaqs } from "@/seo/content";
 
 export default function WhatsAppApiPage() {
-  const freeTierLink = generateWhatsAppLink({
-    service: "whatsapp-api",
-    type: "free_tier_claim",
-    tier: "FREE",
-    scopeSummary: "Claiming Free 1,000 WhatsApp Cloud API Messages Developer Sandbox",
-  });
-
   const enterpriseLink = generateWhatsAppLink({
     service: "whatsapp-api",
     type: "whatsapp_api_demo",
@@ -29,62 +24,61 @@ export default function WhatsAppApiPage() {
       {
         "@type": "SoftwareApplication",
         "@id": "https://zfusionai.com/services/whatsapp-api/#software",
-        "name": "ZFusionAI WhatsApp Web API Cloud Middleware",
+        "name": "ZFusionAI WhatsApp AI Automation API",
         "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Cloud-Native, Edge Middleware",
+        "applicationSubCategory": "WhatsApp Business API, AI Chatbot",
+        "operatingSystem": "Web, Cloud",
+        "url": "https://zfusionai.com/services/whatsapp-api",
+        "description":
+          "AI auto-replies, REST API and webhooks for the official WhatsApp Business Cloud API. Free trial includes 1,000 messages.",
+        "featureList": [
+          "AI auto-replies via any OpenAI-compatible model",
+          "REST API with API keys for text and template messages",
+          "Meta webhook verification with SHA-256 signature checks",
+          "Message logs and usage dashboard",
+          "Google and GitHub sign-in",
+        ],
+        "provider": { "@id": "https://zfusionai.com/#organization" },
         "offers": [
           {
             "@type": "Offer",
-            "name": "Developer Sandbox Free Tier",
+            "name": "Free Trial: 1,000 WhatsApp messages",
             "price": "0",
             "priceCurrency": "AED",
-            "description": "1,000 free monthly WhatsApp messages, webhook sandbox, and full API documentation access.",
+            "description":
+              "1,000 free outbound WhatsApp messages including AI auto-replies, API access and webhooks. No credit card required.",
             "availability": "https://schema.org/InStock",
+            "url": "https://zfusionai.com/login",
           },
           {
             "@type": "Offer",
-            "name": "Enterprise WhatsApp Cloud Middleware",
-            "price": "Custom",
+            "name": "Production WhatsApp AI Automation",
             "priceCurrency": "AED",
-            "description": "High-throughput asynchronous webhook architecture with CRM synchronization.",
+            "description": "Custom message volumes, CRM synchronization and dedicated support.",
+            "url": "https://zfusionai.com/contact",
           },
         ],
       },
       {
-        "@type": "Service",
-        "@id": "https://zfusionai.com/services/whatsapp-api/#service",
-        "name": "WhatsApp Cloud API Integration & Chatbot Architecture",
-        "provider": {
-          "@type": "Organization",
-          "name": "ZFusionAI",
-          "url": "https://zfusionai.com",
-          "telephone": "+971 54 202 6653",
-          "email": "support@zfusionai.com",
-        },
-        "serviceType": "Messaging Middleware and Automation",
-        "areaServed": "Global",
+        "@type": "HowTo",
+        "@id": "https://zfusionai.com/services/whatsapp-api/#howto",
+        "name": "How to start the ZFusionAI WhatsApp AI automation free trial",
+        "totalTime": "PT10M",
+        "step": trialSteps.map((step, i) => ({
+          "@type": "HowToStep",
+          "position": i + 1,
+          "name": step.title,
+          "text": step.text,
+        })),
       },
       {
         "@type": "FAQPage",
         "@id": "https://zfusionai.com/services/whatsapp-api/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Does ZFusionAI offer a free tier for WhatsApp Web API integration?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. ZFusionAI provides an unrestricted Developer Sandbox tier that includes 1,000 free messages per month, complete webhook testing tools, and direct API documentation with zero platform markups.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "How does ZFusionAI eliminate third-party markup fees on WhatsApp messages?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "ZFusionAI connects your systems directly to Meta's official WhatsApp Business Cloud API. You pay Meta's wholesale per-conversation rates directly without recurring software markups charged by conventional SaaS vendors.",
-            },
-          },
-        ],
+        "mainEntity": whatsappFaqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+        })),
       },
     ],
   };
@@ -92,8 +86,16 @@ export default function WhatsAppApiPage() {
   return (
     <div className="relative min-h-screen bg-[#030c07] text-[#f0fdf4] selection:bg-[#25d366]/30 overflow-x-hidden" data-field="whatsapp">
       <SeoHead
-        title="WhatsApp Web API Integration | 0ms Middleware | ZFusionAI"
-        description="Connect directly to Meta's WhatsApp Cloud API with sub-10ms async webhooks. Claim 1,000 free monthly messages. No third-party markups."
+        title="WhatsApp AI Automation API: Free Trial with 1,000 Messages | ZFusionAI"
+        description="AI auto-replies and a REST API for the official WhatsApp Business Cloud API. Start free with 1,000 messages: sign in with Google or GitHub, no credit card."
+        keywords={[
+          "WhatsApp API free trial",
+          "WhatsApp AI chatbot",
+          "WhatsApp Business API Dubai",
+          "WhatsApp Cloud API integration",
+          "WhatsApp automation UAE",
+          "AI auto reply WhatsApp",
+        ]}
         path="/services/whatsapp-api"
         schema={schemaData}
       />
@@ -122,20 +124,18 @@ export default function WhatsAppApiPage() {
               [AUTHORITATIVE DEFINITION & ARCHITECTURE]
             </div>
             <p className="text-sm md:text-base text-slate-200 leading-relaxed">
-              <strong>The ZFusionAI WhatsApp Web API Integration</strong> is an ultra-low latency middleware layer connecting enterprise platforms directly to Meta’s official WhatsApp Cloud API. Engineered with asynchronous event-driven webhooks, it guarantees 99.99% uptime, zero SaaS per-message markups, and bidirectional CRM synchronization. Developers can activate the permanent <strong>1,000-message free sandbox tier</strong> without credit cards or long-term contracts.
+              <strong>The ZFusionAI WhatsApp Web API Integration</strong> is an ultra-low latency middleware layer connecting enterprise platforms directly to Meta’s official WhatsApp Cloud API. Engineered with asynchronous event-driven webhooks, it guarantees 99.99% uptime, zero SaaS per-message markups, and bidirectional CRM synchronization. It adds <strong>AI auto-replies</strong> powered by any OpenAI-compatible model and a simple REST API. Every new account starts with a <strong>free trial of 1,000 WhatsApp messages</strong>: sign in with Google or GitHub, no credit card or contract.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={freeTierLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/login?next=/dashboard"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#25D366] hover:bg-[#1faa4e] text-white font-bold text-base shadow-[0_0_30px_rgba(37,211,102,0.4)] transition-all hover:scale-105"
             >
               <MessageSquare className="w-5 h-5 fill-current" />
-              <span>Claim Free Sandbox on WhatsApp</span>
-            </a>
+              <span>Start Free Trial · 1,000 Messages</span>
+            </Link>
             <a
               href={enterpriseLink}
               target="_blank"
@@ -181,7 +181,7 @@ export default function WhatsAppApiPage() {
               </div>
               <h3 className="text-lg font-bold text-white">02 // Zero Data Interception</h3>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Customer conversations flow securely into your private PostgreSQL or CRM instance. ZFusionAI never monetizes or stores your message contents.
+                Meta access tokens are encrypted at rest (AES-256-GCM) and webhooks are signature-verified. Message logs are visible only to your account, and ZFusionAI never sells or monetizes your conversations.
               </p>
             </div>
 
@@ -194,6 +194,54 @@ export default function WhatsAppApiPage() {
                 You settle conversation charges directly with Meta at official wholesale prices, saving 60-80% compared to legacy WhatsApp aggregators.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* Free trial: HowTo + FAQ (AEO answer blocks mirrored in JSON-LD) */}
+        <section className="container mx-auto px-6 md:px-12 py-16" aria-labelledby="trial-heading">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 id="trial-heading" className="text-3xl md:text-4xl font-display font-extrabold text-white">
+              Start the free trial: 1,000 WhatsApp messages
+            </h2>
+            <p className="text-slate-400 text-sm mt-3">
+              Go from sign-in to AI-powered WhatsApp replies in about ten minutes.
+            </p>
+          </div>
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trialSteps.map((step, i) => (
+              <li key={step.title} className="p-6 rounded-2xl liquid-glass border border-emerald-500/20 text-left space-y-2">
+                <div className="text-xs font-mono text-emerald-400">STEP {String(i + 1).padStart(2, "0")}</div>
+                <h3 className="text-base font-bold text-white">{step.title}</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-10 text-center">
+            <Link
+              href="/login?next=/dashboard"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#25D366] hover:bg-[#1faa4e] text-white font-bold transition-all"
+            >
+              <Sparkles className="w-5 h-5" />
+              <span>Create free account</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-6 md:px-12 py-16 max-w-4xl" aria-labelledby="wa-faq-heading">
+          <h2 id="wa-faq-heading" className="text-3xl md:text-4xl font-display font-extrabold text-white text-center mb-10">
+            WhatsApp AI automation FAQ
+          </h2>
+          <div className="space-y-4">
+            {whatsappFaqs.map((faq) => (
+              <details key={faq.q} className="group p-5 rounded-2xl liquid-glass border border-emerald-500/20 text-left">
+                <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-semibold text-white">
+                  <h3 className="text-base">{faq.q}</h3>
+                  <span className="text-emerald-400 transition-transform group-open:rotate-45 text-xl leading-none">+</span>
+                </summary>
+                <p className="mt-3 text-sm text-slate-300 leading-relaxed">{faq.a}</p>
+              </details>
+            ))}
           </div>
         </section>
 

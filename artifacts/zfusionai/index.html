@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en-AE" class="dark">
   <head>
-    <!-- Core -->
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-
-    <!-- Primary SEO -->
-    <title>
-      ZFusionAI | Next-Gen AI Agents, WhatsApp API & High-Frequency Web Development
-    </title>
-
-    <meta
-      name="description"
-      content="ZFusionAI (zfusionai.com) architects bespoke autonomous AI agents, enterprise WhatsApp Cloud API middleware, and sub-50ms full-stack web platforms with a permanent free tier."
-    />
-
-    <meta
-      name="keywords"
-      content="WhatsApp Web API, WhatsApp Business Cloud API, AI Agents, Autonomous AI, Agentic Workflows, Full Stack Web Development, React 19, TypeScript, ZFusionAI, Dubai AI, AI middleware"
-    />
-
-    <meta name="author" content="ZFusionAI" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#030c07" />
+    <meta name="color-scheme" content="dark" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="author" content="ZFusionAI" />
+    <meta name="application-name" content="ZFusionAI" />
 
-    <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+    <!--
+      Per-route SEO tags (title, description, canonical, Open Graph, Twitter,
+      robots) are injected here at build time by seo-prerender.ts and then
+      managed client-side by <SeoHead />.
+    -->
+    <!--seo-head-->
+
+    <!-- GEO -->
+    <meta name="geo.region" content="AE-DU" />
+    <meta name="geo.placename" content="Dubai, United Arab Emirates" />
+    <meta name="geo.position" content="25.2048;55.2708" />
+    <meta name="ICBM" content="25.2048, 55.2708" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -36,143 +30,56 @@
       rel="stylesheet"
     />
 
-    <!-- PRIMARY CANONICAL -->
-    <link rel="canonical" href="https://zfusionai.com/" />
+    <!-- Icons & PWA -->
+    <link rel="icon" type="image/png" href="/brand/logo_compressed.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/brand/icon-192.png" />
+    <link rel="apple-touch-icon" href="/brand/icon-192.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- CORE PAGES -->
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/services" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/services/whatsapp-api" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/services/agentic-ai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/services/full-stack-web" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/contact" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/privacy" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.com/terms" />
+    <!-- AI / LLM discovery (GEO) -->
+    <link rel="alternate" type="text/markdown" title="LLM summary" href="/llms.txt" />
 
-    <!-- WEB DEVELOPMENT ROUTES -->
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/web-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/website-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/web-design-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/website-redesign-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/ecommerce-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/landing-page-design-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/small-business-website-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/startup-website-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/restaurant-website-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/real-estate-website-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/clinic-website-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/responsive-web-design-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/premium-website-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/fast-website-dubai" />
-
-    <!-- AI ROUTES -->
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/ai-company-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/ai-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/ai-automation-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/chatbot-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/whatsapp-chatbot-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/lead-automation-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/crm-automation-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/workflow-automation-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/gpt-integration-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/openai-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/voicebot-dubai" />
-
-    <!-- MOBILE APP ROUTES -->
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/mobile-app-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/android-app-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/ios-app-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/flutter-development-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/react-native-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/food-delivery-app-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/booking-app-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/marketplace-app-dubai" />
-
-    <!-- SOFTWARE ROUTES -->
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/custom-software-dubai" />
-    <link rel="alternate" hreflang="en-ae" href="https://zfusionai.info/react-development-dubai" />
-
-    <!-- DEFAULT -->
-    <link rel="alternate" hreflang="x-default" href="https://zfusionai.info/" />
-
-    <!-- PREFETCH IMPORTANT ROUTES -->
-    <link rel="prefetch" href="/services" />
-    <link rel="prefetch" href="/industries" />
-    <link rel="prefetch" href="/contact" />
-    <link rel="prefetch" href="/web-development-dubai" />
-    <link rel="prefetch" href="/ai-company-dubai" />
-    <link rel="prefetch" href="/mobile-app-development-dubai" />
-    <link rel="prefetch" href="/website-development-dubai" />
-    <link rel="prefetch" href="/ecommerce-development-dubai" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
-
-    <!-- Performance -->
-    <link rel="dns-prefetch" href="/zfusionai.info" />
     <link rel="preload" as="image" href="/brand/logo_compressed.png" />
-    <link rel="preload" as="image" href="/brand/wordmark_compressed.png" />
 
-    <!-- Open Graph -->
-    <meta
-      property="og:title"
-      content="ZFusionAI | AI & Software Solutions in Dubai"
-    />
-    <meta
-      property="og:description"
-      content="Custom AI systems, websites, mobile apps and automation solutions for Dubai businesses."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://zfusionai.info/" />
-    <meta property="og:site_name" content="ZFusionAI" />
-    <meta property="og:image" content="https://zfusionai.info/brand/logo.webp" />
-    <meta property="og:locale" content="en_AE" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="ZFusionAI | AI & Software Solutions in Dubai"
-    />
-    <meta
-      name="twitter:description"
-      content="AI, websites, apps and automation systems built for UAE business growth."
-    />
-    <meta name="twitter:image" content="https://zfusionai.info/logo.png" />
-
-    <!-- Business Structured Data -->
-    <script type="application/ld+json">
+    <!-- Organization structured data (static copy for non-JS crawlers) -->
+    <script type="application/ld+json" data-seo-static>
       {
-        "@context":"https://schema.org",
-        "@type":"Organization",
-        "name":"ZFusionAI",
-        "url":"https://zfusionai.com",
-        "logo":"https://zfusionai.com/brand/logo_compressed.png",
-        "description":"Next-Gen AI Agents, WhatsApp Web API Cloud Middleware & High-Frequency Web Development in Dubai, UAE.",
-        "telephone":"+971 54 202 6653",
-        "email":"support@zfusionai.com",
-        "areaServed":"UAE",
-        "sameAs":[
+        "@context": "https://schema.org",
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://zfusionai.com/#organization",
+        "name": "ZFusionAI",
+        "url": "https://zfusionai.com/",
+        "logo": "https://zfusionai.com/brand/icon-512.png",
+        "image": "https://zfusionai.com/brand/og-image.png",
+        "description": "Dubai, UAE company building WhatsApp AI automation on the official Cloud API (free trial with 1,000 messages), autonomous AI agents and full-stack web platforms.",
+        "telephone": "+971 54 202 6653",
+        "email": "support@zfusionai.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Downtown Dubai",
+          "addressLocality": "Dubai",
+          "addressRegion": "Dubai",
+          "addressCountry": "AE"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 25.2048, "longitude": 55.2708 },
+        "areaServed": ["AE", "GCC", "Worldwide"],
+        "sameAs": [
           "https://github.com/Thirumalai-Tech-Developer/New_ZFusionAI",
           "https://www.linkedin.com/company/zfusionai",
           "https://www.instagram.com/zfusionai"
         ],
-        "contactPoint":{
-          "@type":"ContactPoint",
-          "telephone":"+971 54 202 6653",
-          "contactType":"technical support",
-          "availableLanguage":["English","Arabic"]
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+971 54 202 6653",
+          "contactType": "sales",
+          "availableLanguage": ["English", "Arabic"]
         }
       }
     </script>
-
   </head>
 
   <body>
-    <!-- Main App -->
-     <div id="root"></div>
+    <div id="root"><!--seo-body--></div>
     <script type="module" src="/src/main.tsx"></script>
-
   </body>
 </html>

@@ -6,16 +6,12 @@ import NeuralCanvas from "@/components/fields/agentic/NeuralCanvas";
 import WorkflowOrchestrator from "@/components/fields/agentic/WorkflowOrchestrator";
 import ProceduralCalculator from "@/components/pricing/ProceduralCalculator";
 import { Cpu, Database, GitMerge, RefreshCw, MessageSquare, ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "wouter";
 import { generateWhatsAppLink } from "@/lib/whatsappEngine";
+import TrialSection from "@/components/TrialSection";
+import { agenticFaqs, agenticSteps, trialSchema } from "@/seo/content";
 
 export default function AgenticAiPage() {
-  const freeAgentLink = generateWhatsAppLink({
-    service: "agentic-ai",
-    type: "free_tier_claim",
-    tier: "FREE",
-    scopeSummary: "Deploying 1 Free Autonomous AI Agent Sandbox Node",
-  });
-
   const enterpriseLink = generateWhatsAppLink({
     service: "agentic-ai",
     type: "agentic_workflow_scoping",
@@ -23,71 +19,26 @@ export default function AgenticAiPage() {
     scopeSummary: "Enterprise Multi-Agent Swarm & Tool Calling Architecture",
   });
 
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://zfusionai.com/services/agentic-ai/#software",
-        "name": "ZFusionAI Autonomous Agent Swarm Engine",
-        "applicationCategory": "ArtificialIntelligenceApplication",
-        "operatingSystem": "Cloud, Private VPC",
-        "offers": [
-          {
-            "@type": "Offer",
-            "name": "Free Autonomous Agent Sandbox",
-            "price": "0",
-            "priceCurrency": "AED",
-            "description": "1 single-node autonomous agent workflow, vector memory pipeline up to 500 documents, and WhatsApp interface.",
-            "availability": "https://schema.org/InStock",
-          },
-          {
-            "@type": "Offer",
-            "name": "Enterprise Multi-Agent Swarm System",
-            "price": "Custom",
-            "priceCurrency": "AED",
-            "description": "Hierarchical multi-agent networks with sandboxed tool execution, self-correction, and private VPC deployment.",
-          },
-        ],
-      },
-      {
-        "@type": "Service",
-        "@id": "https://zfusionai.com/services/agentic-ai/#service",
-        "name": "Autonomous AI Agentic Engineering & Workflow Swarms",
-        "provider": {
-          "@type": "Organization",
-          "name": "ZFusionAI",
-          "url": "https://zfusionai.com",
-          "telephone": "+971 54 202 6653",
-          "email": "support@zfusionai.com",
-        },
-        "serviceType": "Artificial Intelligence Engineering",
-        "areaServed": "Global",
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://zfusionai.com/services/agentic-ai/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is an AI Agentic Build and how is it different from a ChatGPT wrapper?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Unlike simple chatbots that generate text replies, ZFusionAI Agentic Systems operate autonomously. They can query internal SQL databases, call REST APIs, analyze results, and auto-correct errors without human intervention.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "Can I test an autonomous AI agent for free before committing?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. ZFusionAI provides 1 free autonomous agent node with private vector memory and WhatsApp chat integration so enterprise teams can benchmark accuracy before scaling.",
-            },
-          },
-        ],
-      },
-    ],
-  };
+  const schemaData = [
+    ...trialSchema({
+      path: "/services/agentic-ai",
+      name: "ZFusionAI AI Agents API",
+      description:
+        "Build AI agents with instructions and webhook tools, then run them through a REST API or an OpenAI-compatible endpoint. Free trial with 1,000 messages.",
+      category: "DeveloperApplication",
+      steps: agenticSteps,
+      faqs: agenticFaqs,
+    }),
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://zfusionai.com/services/agentic-ai/#service",
+      name: "Autonomous AI Agent Development",
+      provider: { "@id": "https://zfusionai.com/#organization" },
+      serviceType: "Artificial Intelligence Engineering",
+      areaServed: ["AE", "Worldwide"],
+    },
+  ];
 
   return (
     <div className="relative min-h-screen bg-[#020206] text-[#fdf4ff] selection:bg-[#00f2fe]/30 overflow-x-hidden" data-field="agentic">
@@ -122,20 +73,18 @@ export default function AgenticAiPage() {
               [AUTHORITATIVE DEFINITION & ARCHITECTURE]
             </div>
             <p className="text-sm md:text-base text-slate-200 leading-relaxed">
-              <strong>An AI Agentic Build by ZFusionAI</strong> is an autonomous cognitive software architecture capable of multi-step reasoning, real-time tool calling, and self-correcting error recovery. Rather than passive text prediction, these agent networks interact with private vector stores, execute transactional database queries, and trigger external API workflows across enterprise environments. ZFusionAI provisions a <strong>permanent free single-agent sandbox</strong> with instant WhatsApp onboarding.
+              <strong>An AI Agentic Build by ZFusionAI</strong> is an autonomous cognitive software architecture capable of multi-step reasoning, real-time tool calling, and self-correcting error recovery. Rather than passive text prediction, these agent networks interact with private vector stores, execute transactional database queries, and trigger external API workflows across enterprise environments. You can build and run your own agents on the ZFusionAI platform through a REST API or an <strong>OpenAI-compatible endpoint</strong>. New accounts get a <strong>free trial of 1,000 messages</strong>, shared with the web widget and WhatsApp.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={freeAgentLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/login?next=/dashboard%23tab-agents"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold text-base shadow-[0_0_30px_rgba(0,242,254,0.4)] transition-all hover:scale-105"
             >
-              <MessageSquare className="w-5 h-5 fill-current" />
-              <span>Deploy Free Agent on WhatsApp</span>
-            </a>
+              <Sparkles className="w-5 h-5" />
+              <span>Build a Free AI Agent · 1,000 Messages</span>
+            </Link>
             <a
               href={enterpriseLink}
               target="_blank"
@@ -206,6 +155,16 @@ export default function AgenticAiPage() {
             </div>
           </div>
         </section>
+
+        <TrialSection
+          id="agent-trial"
+          heading="Start free: build and run your own AI agent"
+          intro="Create an agent, give it tools, and call it from your code in minutes. Works with any OpenAI SDK."
+          steps={agenticSteps}
+          faqs={agenticFaqs}
+          faqHeading="AI agents FAQ"
+          accent="cyan"
+        />
 
         {/* Procedural Pricing Section */}
         <ProceduralCalculator />

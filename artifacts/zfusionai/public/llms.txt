@@ -1,0 +1,33 @@
+# ZFusionAI
+
+> ZFusionAI (https://zfusionai.com) is a software and AI company in Downtown Dubai, United Arab Emirates. It offers three products: AI agents with an OpenAI-compatible API, an AI chat widget for web apps, and WhatsApp AI automation on Meta's official WhatsApp Business Cloud API. Every new account gets a free trial of 1,000 messages, shared across all three products, with no credit card. ZFusionAI also builds custom full-stack web and mobile applications for businesses in the UAE, the GCC and worldwide.
+
+Key facts:
+
+- Free trial: 1,000 messages shared across AI agents, the web widget and WhatsApp. Sign in with Google or GitHub at https://zfusionai.com/login.
+- One message = one AI agent API run, one web widget reply, or one outbound WhatsApp message. Inbound messages and dashboard test runs are free, and failed sends are refunded.
+- Agentic AI: agents have instructions plus HTTPS webhook tools (OpenAI function calling, up to 5 tool steps per run). Tool calls are signed with an HMAC-SHA256 `X-ZFusion-Signature` header.
+- OpenAI-compatible: `POST https://zfusionai.com/api/v1/chat/completions` with `model: "agent:<id>"` or `"default"`, authenticated with `Authorization: Bearer zf_live_...`. `GET /api/v1/models` lists the available agents.
+- Other endpoints: `POST /api/v1/agents/{id}/runs`, `POST /api/v1/messages` (WhatsApp text or template), `POST /api/v1/ai/reply`, `GET /api/v1/usage`.
+- Web App widget: `<script src="https://zfusionai.com/widget.js" data-agent="pub_..." async></script>`. It works on any website, renders in a Shadow DOM, and can be restricted to allowed origins.
+- WhatsApp: uses the official Cloud API (not unofficial WhatsApp Web automation). Meta conversation fees are paid directly to Meta with no markup.
+- Infrastructure: runs on Cloudflare Workers with a D1 database; Meta access tokens are encrypted with AES-256-GCM.
+- Contact: WhatsApp/phone +971 54 202 6653, email support@zfusionai.com. Languages: English, Arabic.
+
+## Products
+
+- [AI Agents API](https://zfusionai.com/services/agentic-ai): build agents with tools; REST and OpenAI-compatible API; free trial.
+- [Web App AI Chat & Full-Stack Development](https://zfusionai.com/services/full-stack-web): one-line AI chat widget for any web app; custom React/TypeScript/Node.js development.
+- [WhatsApp AI Automation](https://zfusionai.com/services/whatsapp-api): AI auto-replies, REST API, webhooks and message logs for WhatsApp Business.
+- [All services](https://zfusionai.com/services): web design, ecommerce, mobile apps (Flutter, React Native), CRM and workflow automation, GPT integration.
+
+## Company
+
+- [About ZFusionAI](https://zfusionai.com/about)
+- [Industries served](https://zfusionai.com/industries): real estate, healthcare, retail, logistics, hospitality, finance, education, automotive, construction, travel.
+- [Contact](https://zfusionai.com/contact)
+
+## Legal
+
+- [Privacy Policy](https://zfusionai.com/privacy)
+- [Terms & Conditions](https://zfusionai.com/terms)

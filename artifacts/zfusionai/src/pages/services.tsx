@@ -3,51 +3,13 @@ import { useEffect } from "react";
 import SeoHead from "@/components/SeoHead";
 import PageLayout from "@/components/PageLayout";
 import { Brain, Globe, Smartphone, Workflow, Cloud, Headset, CheckCircle2, ArrowRight, MessageSquare } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
+import { seoServiceLinks } from "@/seo/routes";
 import { Button } from "@/components/ui/button";
 import ProceduralCalculator from "@/components/pricing/ProceduralCalculator";
 import { generateWhatsAppLink } from "@/lib/whatsappEngine";
 
-const seoServiceLinks = [
-  { slug: "/web-development-dubai", label: "Web Development Company in Dubai" },
-  { slug: "/website-development-dubai", label: "Website Development Dubai for Businesses" },
-  { slug: "/web-design-dubai", label: "Web Design Dubai" },
-  { slug: "/website-redesign-dubai", label: "Website Redesign Dubai" },
-  { slug: "/ecommerce-development-dubai", label: "Ecommerce Website Development Dubai" },
-  { slug: "/landing-page-design-dubai", label: "Landing Page Design Dubai" },
-  { slug: "/small-business-website-dubai", label: "Small Business Website Dubai" },
-  { slug: "/startup-website-dubai", label: "Startup Website Dubai" },
-  { slug: "/restaurant-website-dubai", label: "Restaurant Website Dubai" },
-  { slug: "/real-estate-website-dubai", label: "Real Estate Website Development Dubai" },
-  { slug: "/clinic-website-dubai", label: "Clinic Website Development Dubai" },
-  { slug: "/responsive-web-design-dubai", label: "Responsive Web Design Dubai" },
-  { slug: "/premium-website-dubai", label: "Premium Website Dubai" },
-  { slug: "/fast-website-dubai", label: "Fast Website Development Dubai" },
 
-  { slug: "/ai-company-dubai", label: "AI Company in Dubai" },
-  { slug: "/ai-development-dubai", label: "AI Development Dubai" },
-  { slug: "/ai-automation-dubai", label: "AI Automation Solutions Dubai" },
-  { slug: "/chatbot-development-dubai", label: "AI Chatbot Development Dubai" },
-  { slug: "/whatsapp-chatbot-dubai", label: "WhatsApp Chatbot Dubai" },
-  { slug: "/lead-automation-dubai", label: "Lead Automation Dubai" },
-  { slug: "/crm-automation-dubai", label: "CRM Automation Dubai" },
-  { slug: "/workflow-automation-dubai", label: "Workflow Automation Dubai" },
-  { slug: "/gpt-integration-dubai", label: "GPT Integration Dubai" },
-  { slug: "/openai-development-dubai", label: "OpenAI Development Dubai" },
-  { slug: "/voicebot-dubai", label: "AI Voice Bot Dubai" },
-
-  { slug: "/mobile-app-development-dubai", label: "Mobile App Development Dubai" },
-  { slug: "/android-app-development-dubai", label: "Android App Development Dubai" },
-  { slug: "/ios-app-development-dubai", label: "iOS App Development Dubai" },
-  { slug: "/flutter-development-dubai", label: "Flutter App Development Dubai" },
-  { slug: "/react-native-dubai", label: "React Native Development Dubai" },
-  { slug: "/food-delivery-app-dubai", label: "Food Delivery App Dubai" },
-  { slug: "/booking-app-dubai", label: "Booking App Dubai" },
-  { slug: "/marketplace-app-dubai", label: "Marketplace App Dubai" },
-
-  { slug: "/custom-software-dubai", label: "Custom Software Development Dubai" },
-  { slug: "/react-development-dubai", label: "React Development Company Dubai" }
-];
 
 
 
@@ -157,6 +119,7 @@ const servicesDetails = [
 ];
 
 export default function ServicesPage() {
+  const [location] = useLocation();
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
@@ -191,7 +154,7 @@ export default function ServicesPage() {
           "business automation UAE",
           "cloud deployment Dubai",
         ]}
-        path="/services"
+        path={location}
         schema={{
           "@context": "https://schema.org",
           "@type": "ItemList",
