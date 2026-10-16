@@ -6,8 +6,7 @@ main = "src/index.ts"
 compatibility_date = "2026-09-01"
 workers_dev = true
 
-# Uncomment after adding the domain to Cloudflare:
-# routes = [{ pattern = "zfusionai.com", custom_domain = true }]
+routes = [{ pattern = "zfusionai.com", custom_domain = true }]
 
 [observability]
 enabled = true
