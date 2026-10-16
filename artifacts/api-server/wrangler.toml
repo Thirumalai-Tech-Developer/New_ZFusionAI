@@ -1,6 +1,7 @@
 #:schema ../../node_modules/wrangler/config-schema.json
 # ZFusionAI — Cloudflare Worker serving /api/* and the React site.
 name = "zfusionai"
+account_id = "bc5d4bd7c1ad8cf1dafb38cc84da3529"
 main = "src/index.ts"
 compatibility_date = "2026-09-01"
 workers_dev = true
@@ -21,12 +22,11 @@ not_found_handling = "single-page-application"
 html_handling = "drop-trailing-slash"
 run_worker_first = ["/api/*"]
 
-# Create with:  pnpm --filter @workspace/api-server exec wrangler d1 create zfusionai
-# then paste the database_id below.
+# Project database; the Worker receives it through the DB binding.
 [[d1_databases]]
 binding = "DB"
 database_name = "zfusionai"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "14de3691-6a53-41f1-bdaf-f1d8ed25fad4"
 migrations_dir = "../../lib/db/migrations"
 
 # Workers Rate Limiting (period must be 10 or 60 seconds).
