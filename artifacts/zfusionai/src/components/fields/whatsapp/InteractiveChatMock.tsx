@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Send, CheckCheck, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
-import { generateWhatsAppLink } from "@/lib/whatsappEngine";
+import { Link } from "wouter";
 
 interface ChatMessage {
   id: string;
@@ -22,14 +22,14 @@ export default function InteractiveChatMock() {
     {
       id: "2",
       sender: "user",
-      text: "Can I test the Free Tier with 1,000 WhatsApp events?",
+      text: "Can I test the AI automation with 1,000 free WhatsApp messages?",
       time: "12:01",
       status: "read",
     },
     {
       id: "3",
       sender: "bot",
-      text: "✅ Yes! The Free Developer Sandbox includes 1,000 monthly events, test webhooks, and zero platform markups. Click below to activate on your actual WhatsApp.",
+      text: "✅ Yes! Every new account gets a free trial of 1,000 WhatsApp messages with AI auto-replies, webhooks and API access — no credit card. Click below to activate on your actual WhatsApp.",
       time: "12:01",
       status: "read",
     },
@@ -66,13 +66,6 @@ export default function InteractiveChatMock() {
       setIsProcessing(false);
     }, 450);
   };
-
-  const freeTierLink = generateWhatsAppLink({
-    service: "whatsapp-api",
-    type: "free_tier_claim",
-    tier: "FREE",
-    scopeSummary: "Activating 1,000 Free WhatsApp API Events Sandbox",
-  });
 
   return (
     <div className="relative w-full max-w-4xl mx-auto my-12 rounded-3xl liquid-glass p-6 md:p-8 shadow-2xl">
@@ -162,8 +155,8 @@ export default function InteractiveChatMock() {
 
           {/* Webhook Stream Mock */}
           <div className="p-4 rounded-xl bg-slate-950/80 border border-emerald-500/20 font-mono text-[11px] text-slate-400 space-y-1.5">
-            <div className="text-emerald-400 font-bold">POST /api/v1/whatsapp/webhook HTTP/1.1</div>
-            <div>Host: api.zfusionai.com</div>
+            <div className="text-emerald-400 font-bold">POST /api/webhooks/whatsapp/:id HTTP/1.1</div>
+            <div>Host: zfusionai.com</div>
             <div>X-Hub-Signature-256: sha256=d6a9...8e1b (Verified)</div>
             <div className="text-emerald-300">HTTP 200 OK — Handled in 8.4ms</div>
           </div>
@@ -172,19 +165,17 @@ export default function InteractiveChatMock() {
           <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono font-bold text-emerald-400">
-                DEVELOPER SANDBOX (FREE)
+                AI AUTOMATION TRIAL (FREE)
               </span>
-              <span className="text-[11px] text-slate-400 font-mono">1,000 msgs/mo</span>
+              <span className="text-[11px] text-slate-400 font-mono">1,000 msgs free trial</span>
             </div>
-            <a
-              href={freeTierLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/login?next=/dashboard"
               className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm transition-all shadow-lg shadow-emerald-500/20"
             >
-              <span>Test on Your Own WhatsApp Now</span>
+              <span>Start Free Trial on Your WhatsApp</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -15,30 +15,31 @@ import ContactPage from "@/pages/contact";
 import TermsPage from "@/pages/terms";
 import PrivacyPage from "@/pages/privacy";
 import FloatingActions from "@/components/FloatingActions";
+import LoginPage from "@/pages/login";
+import DashboardPage from "@/pages/dashboard";
+import { ApiError } from "@/lib/api";
 
 import WhatsAppApiPage from "@/pages/services/WhatsAppApiPage";
 import AgenticAiPage from "@/pages/services/AgenticAiPage";
 import FullStackWebPage from "@/pages/services/FullStackWebPage";
 
-import { seoServiceLinks } from "@/pages/services";
+import { aliasRoutes, seoServiceLinks } from "@/seo/routes";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // Don't retry client errors such as 401/404; retry transient failures twice.
+      retry: (count, err) =>
+        !(err instanceof ApiError && err.status < 500) && count < 2,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
-// Filter out paths that now have dedicated avant-garde service pages
-const dedicatedSlugs = new Set([
-  "/services/whatsapp-api",
-  "/services/agentic-ai",
-  "/services/full-stack-web",
-  "/whatsapp-chatbot-dubai",
-  "/whatsapp-automation-dubai",
-  "/ai-company-dubai",
-  "/ai-development-dubai",
-  "/web-development-dubai",
-]);
-
+// Slugs with a dedicated page are routed explicitly below.
 const legacySeoRoutes = seoServiceLinks
   .map((item) => item.slug)
-  .filter((slug) => !dedicatedSlugs.has(slug));
+  .filter((slug) => !(slug in aliasRoutes));
 
 function Router() {
   return (
@@ -67,6 +68,11 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/terms" component={TermsPage} />
       <Route path="/privacy" component={PrivacyPage} />
+
+      {/* Account */}
+      <Route path="/login" component={LoginPage} />
+      <Route path="/signup" component={LoginPage} />
+      <Route path="/dashboard" component={DashboardPage} />
 
       {/* Remaining SEO Landing Routes */}
       {legacySeoRoutes.map((path) => (

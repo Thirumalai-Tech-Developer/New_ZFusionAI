@@ -15,7 +15,7 @@ const MODULES: Record<
 > = {
   whatsapp: {
     title: "WhatsApp Web API Architecture",
-    freeTierPerk: "1,000 Free Messages/mo + Developer Sandbox Instance",
+    freeTierPerk: "1,000 Free Trial Messages + AI Auto-Reply Agent",
     options: [
       {
         id: "webhook_engine",
@@ -45,7 +45,7 @@ const MODULES: Record<
   },
   agentic: {
     title: "AI Agentic Autonomous Systems",
-    freeTierPerk: "1 Free Autonomous Agent Node + Vector Memory (500 docs)",
+    freeTierPerk: "1,000 Free Trial Messages for AI Agents (API + OpenAI-compatible)",
     options: [
       {
         id: "vector_rag",
@@ -75,7 +75,7 @@ const MODULES: Record<
   },
   fullstack: {
     title: "Full Stack High-Frequency Web",
-    freeTierPerk: "Complete System Blueprint Spec + Docker & Vite Boilerplate",
+    freeTierPerk: "Free System Blueprint + 1,000 Free AI Chat Widget Messages",
     options: [
       {
         id: "edge_distribution",

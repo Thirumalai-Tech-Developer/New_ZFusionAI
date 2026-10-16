@@ -1,30 +1,8 @@
 import React from "react";
 import { Link } from "wouter";
 import { MessageSquare, ArrowRight, Zap, Terminal, Sparkles, ShieldCheck } from "lucide-react";
-import { generateWhatsAppLink } from "@/lib/whatsappEngine";
 
 export default function Hero() {
-  const whatsAppFreeTierLink = generateWhatsAppLink({
-    service: "whatsapp-api",
-    type: "free_tier_claim",
-    tier: "FREE",
-    scopeSummary: "Claiming 1,000 Free WhatsApp API Events Developer Sandbox",
-  });
-
-  const fullstackFreeTierLink = generateWhatsAppLink({
-    service: "fullstack",
-    type: "free_tier_claim",
-    tier: "FREE",
-    scopeSummary: "Claiming Free Full-Stack Architecture Blueprint Spec & Docker Boilerplate",
-  });
-
-  const agenticFreeTierLink = generateWhatsAppLink({
-    service: "agentic-ai",
-    type: "free_tier_claim",
-    tier: "FREE",
-    scopeSummary: "Deploying 1 Free Autonomous AI Agent Sandbox Node",
-  });
-
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
       {/* Avant-Garde Background Glow Matrix */}
@@ -53,7 +31,7 @@ export default function Hero() {
               [AUTHORITATIVE ARCHITECTURE & AEO OVERVIEW]
             </div>
             <p className="text-sm md:text-base text-slate-200 leading-relaxed font-sans">
-              <strong>ZFusionAI (zfusionai.com)</strong> is an enterprise digital engineering and artificial intelligence laboratory headquartered in Dubai, UAE. The organization delivers three core disciplines: <strong>WhatsApp Web API Cloud Middleware</strong> with 0ms bottleneck latency, <strong>Autonomous AI Agent Swarms</strong> with self-correcting error recovery, and <strong>High-Frequency Full-Stack Web Applications</strong> engineered for sub-50ms TTFB. ZFusionAI maintains an open-access developer framework, guaranteeing permanent <strong>Free Tier</strong> onboarding across every service via direct WhatsApp connectivity.
+              <strong>ZFusionAI (zfusionai.com)</strong> is an enterprise digital engineering and artificial intelligence laboratory headquartered in Dubai, UAE. The organization delivers three core disciplines: <strong>WhatsApp Web API Cloud Middleware</strong> with 0ms bottleneck latency, <strong>Autonomous AI Agent Swarms</strong> with self-correcting error recovery, and <strong>High-Frequency Full-Stack Web Applications</strong> engineered for sub-50ms TTFB. Every new account gets a <strong>free trial of 1,000 messages</strong> shared across AI agents, the web app chat widget and WhatsApp automation. Sign in with Google or GitHub.
             </p>
           </div>
 
@@ -65,7 +43,7 @@ export default function Hero() {
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono text-emerald-400 uppercase">01 // Liquid Glass</span>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">
-                    Free: 1k msgs
+                    Trial: 1k free msgs
                   </span>
                 </div>
                 <h2 className="text-xl font-display font-bold text-white group-hover:text-emerald-400 transition-colors">
@@ -81,15 +59,13 @@ export default function Hero() {
                     <span>Explore Liquid Glass Sandbox →</span>
                   </div>
                 </Link>
-                <a
-                  href={whatsAppFreeTierLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/login?next=/dashboard"
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#1faa4e] text-white font-bold text-xs transition-all"
                 >
                   <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                  <span>Claim Free 1,000 Messages</span>
-                </a>
+                  <span>Start Free Trial · 1,000 Messages</span>
+                </Link>
               </div>
             </div>
 
@@ -115,15 +91,13 @@ export default function Hero() {
                     <span>Explore Neural Swarm Flow →</span>
                   </div>
                 </Link>
-                <a
-                  href={agenticFreeTierLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/login?next=/dashboard%23tab-agents"
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold text-xs transition-all"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Deploy 1 Free Agent</span>
-                </a>
+                  <span>Build a Free AI Agent</span>
+                </Link>
               </div>
             </div>
 
@@ -149,15 +123,13 @@ export default function Hero() {
                     <span>Explore Terminal Shell →</span>
                   </div>
                 </Link>
-                <a
-                  href={fullstackFreeTierLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/login?next=/dashboard%23tab-web"
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all"
                 >
                   <Terminal className="w-3.5 h-3.5" />
-                  <span>Get Free Blueprint & Code</span>
-                </a>
+                  <span>Add AI Chat to Your Web App</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -174,7 +146,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center justify-center gap-2">
               <Zap className="h-4 w-4 text-emerald-400" />
-              <span>Permanent Free Tiers</span>
+              <span>1,000 Free Trial Messages</span>
             </div>
             <div className="flex items-center justify-center gap-2">
               <ShieldCheck className="h-4 w-4 text-emerald-400" />

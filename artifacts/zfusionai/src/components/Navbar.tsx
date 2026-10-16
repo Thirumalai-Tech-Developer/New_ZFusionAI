@@ -3,11 +3,15 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight, MessageSquare, Zap } from "lucide-react";
 import { generateWhatsAppLink } from "@/lib/whatsappEngine";
+import { useAuth } from "@/hooks/use-auth";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { user } = useAuth();
+  const accountHref = user ? "/dashboard" : "/login";
+  const accountLabel = user ? "Dashboard" : "Sign in";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,6 +91,16 @@ export default function Navbar() {
 
           {/* WhatsApp Direct CTA */}
           <div className="hidden lg:flex items-center gap-4">
+            <Link href={accountHref}>
+              <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/15 text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-colors cursor-pointer">
+                {user?.avatarUrl ? (
+                  <img src={user.avatarUrl} alt="" className="w-4 h-4 rounded-full" referrerPolicy="no-referrer" />
+                ) : (
+                  <Zap className="w-3.5 h-3.5 text-emerald-400" />
+                )}
+                {user ? accountLabel : "Start free trial"}
+              </span>
+            </Link>
             <a
               href={whatsAppLink}
               target="_blank"
@@ -131,6 +145,16 @@ export default function Navbar() {
                 </div>
               </Link>
             ))}
+
+            <Link href={accountHref}>
+              <div
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-white/15 text-white font-semibold text-sm"
+              >
+                <Zap className="w-4 h-4 text-emerald-400" />
+                <span>{user ? accountLabel : "Start free trial · 1,000 messages"}</span>
+              </div>
+            </Link>
 
             <a
               href={whatsAppLink}
