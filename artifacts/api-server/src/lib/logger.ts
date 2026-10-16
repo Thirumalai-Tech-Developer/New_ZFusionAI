@@ -1,20 +1,14 @@
-import pino from "pino";
+/** Structured JSON logs; visible in `wrangler tail` and Workers Logs. */
+function log(level: "info" | "warn" | "error", data: Record<string, unknown>, msg: string) {
+  const entry: Record<string, unknown> = { level, msg, ...data };
+  if (data["err"] instanceof Error) {
+    entry["err"] = { message: data["err"].message, stack: data["err"].stack };
+  }
+  console[level === "info" ? "log" : level](JSON.stringify(entry));
+}
 
-const isProduction = process.env.NODE_ENV === "production";
-
-export const logger = pino({
-  level: process.env.LOG_LEVEL ?? "info",
-  redact: [
-    "req.headers.authorization",
-    "req.headers.cookie",
-    "res.headers['set-cookie']",
-  ],
-  ...(isProduction
-    ? {}
-    : {
-        transport: {
-          target: "pino-pretty",
-          options: { colorize: true },
-        },
-      }),
-});
+export const logger = {
+  info: (data: Record<string, unknown>, msg: string) => log("info", data, msg),
+  warn: (data: Record<string, unknown>, msg: string) => log("warn", data, msg),
+  error: (data: Record<string, unknown>, msg: string) => log("error", data, msg),
+};

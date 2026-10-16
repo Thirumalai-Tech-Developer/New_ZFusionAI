@@ -1,16 +1,11 @@
-import { drizzle } from "drizzle-orm/node-postgres";
-import pg from "pg";
+import { drizzle, type AnyD1Database } from "drizzle-orm/d1";
 import * as schema from "./schema";
 
-const { Pool } = pg;
-
-if (!process.env.DATABASE_URL) {
-  throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?",
-  );
+/** Creates a Drizzle client for a Cloudflare D1 binding (e.g. `env.DB`). */
+export function createDb(d1: AnyD1Database) {
+  return drizzle(d1, { schema });
 }
 
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-export const db = drizzle(pool, { schema });
+export type Db = ReturnType<typeof createDb>;
 
 export * from "./schema";

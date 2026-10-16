@@ -1,0 +1,62 @@
+#:schema ../../node_modules/wrangler/config-schema.json
+# ZFusionAI — Cloudflare Worker serving /api/* and the React site.
+name = "zfusionai"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+# Uncomment after adding the domain to Cloudflare:
+# routes = [{ pattern = "zfusionai.com", custom_domain = true }]
+
+[observability]
+enabled = true
+
+# React build (artifacts/zfusionai). The SEO prerender writes one index.html per
+# route, so /services → /services/index.html; unknown paths fall back to the SPA.
+[assets]
+directory = "../zfusionai/dist/public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+# Serve /services/index.html at /services (matches canonical URLs, no redirect).
+html_handling = "drop-trailing-slash"
+run_worker_first = ["/api/*"]
+
+# Create with:  pnpm --filter @workspace/api-server exec wrangler d1 create zfusionai
+# then paste the database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "zfusionai"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "../../lib/db/migrations"
+
+# Workers Rate Limiting (period must be 10 or 60 seconds).
+[[ratelimits]]
+name = "AUTH_LIMITER"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }
+
+[[ratelimits]]
+name = "API_LIMITER"
+namespace_id = "1002"
+simple = { limit = 120, period = 60 }
+
+[[ratelimits]]
+name = "PUBLIC_LIMITER"
+namespace_id = "1003"
+simple = { limit = 20, period = 60 }
+
+[[ratelimits]]
+name = "AI_TEST_LIMITER"
+namespace_id = "1004"
+simple = { limit = 30, period = 60 }
+
+[vars]
+ENVIRONMENT = "production"
+APP_URL = "https://zfusionai.com"
+AI_MODEL = "gpt-4o-mini"
+
+# Secrets (production): set with `wrangler secret put <NAME>`:
+#   AI_GATEWAY_URL, AI_GATEWAY_API_KEY, SESSION_SECRET,
+#   GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+# Local dev reads them from artifacts/api-server/.env (see .env.example).
+
