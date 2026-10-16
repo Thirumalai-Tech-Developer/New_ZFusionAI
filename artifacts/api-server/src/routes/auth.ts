@@ -197,6 +197,15 @@ auth.post("/logout", async (c) => {
 auth.get("/:provider", rateLimit("AUTH_LIMITER", "auth"), async (c) => {
   const provider = c.req.param("provider");
   const { config } = c.var;
+
+  // The OAuth callback always targets APP_URL, so the state cookie must be set
+  // on that host too (e.g. send www.zfusionai.com to zfusionai.com first).
+  const here = new URL(c.req.url);
+  const appOrigin = new URL(config.appUrl).origin;
+  if (here.origin !== appOrigin) {
+    return c.redirect(`${appOrigin}${here.pathname}${here.search}`, 302);
+  }
+
   if (!isProvider(provider)) throw new HttpError(404, "Unknown provider.");
   if (!isConfigured(config, provider)) return c.redirect(`/login?error=${provider}_not_configured`);
 
