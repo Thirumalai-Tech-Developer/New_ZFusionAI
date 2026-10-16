@@ -109,8 +109,7 @@ export default function LoginPage() {
             </div>
           )}
 
-          <AccountLogin next={next} />
-          {providers?.google && <div className="space-y-3 mt-6 pt-6 border-t border-border">
+          {providers?.google && <div className="space-y-3 mb-6 pb-6 border-b border-border">
             <a
               href={oauthUrl("google", next)}
               className={`${buttonBase} bg-white text-slate-900 hover:bg-slate-100`}
@@ -120,6 +119,8 @@ export default function LoginPage() {
             </a>
 
           </div>}
+
+          <AccountLogin next={next} />
 
           <div className="mt-6 flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
             <ShieldCheck className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
