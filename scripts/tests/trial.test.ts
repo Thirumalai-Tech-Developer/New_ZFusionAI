@@ -2,6 +2,18 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { trialPhone } from "../../artifacts/api-server/src/lib/trial";
 import { currencyForCountry } from "../../artifacts/api-server/src/routes/locale";
+import { verifiedGoogleProfile } from "../../artifacts/api-server/src/routes/auth";
+
+test("Google login requires verified email ownership", () => {
+  const identity = { sub: "google-subject", email: "Customer@Example.com", name: "Customer" };
+  assert.throws(() => verifiedGoogleProfile(identity));
+  assert.throws(() => verifiedGoogleProfile({ ...identity, email_verified: false }));
+  assert.throws(() => verifiedGoogleProfile({ ...identity, email: undefined, email_verified: true }));
+  const profile = verifiedGoogleProfile({ ...identity, email_verified: true });
+  assert.equal(profile.email, "customer@example.com");
+  assert.equal(profile.providerAccountId, "google-subject");
+  assert.equal(profile.emailVerified, true);
+});
 
 test("phone variants resolve to one international identity", () => {
   assert.equal(trialPhone("+971 50 123 4567"), "+971501234567");

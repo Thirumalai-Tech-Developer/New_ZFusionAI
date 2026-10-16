@@ -14,6 +14,7 @@ const ERROR_MESSAGES: Record<string, string> = {
   email_unverified:
     "An account with this email already exists. Sign in with the provider you used first.",
   google_not_configured: "Google sign-in isn't configured on this server yet.",
+  google_email_unverified: "Use a Google account with a verified email address.",
   github_not_configured: "GitHub sign-in isn't configured on this server yet.",
   password_account_exists: "This email has a password account. Use the email and password form below.",
 };

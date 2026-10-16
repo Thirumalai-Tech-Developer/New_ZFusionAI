@@ -26,6 +26,21 @@ type Profile = {
 
 const STATE_COOKIE = "zf_oauth";
 
+export function verifiedGoogleProfile(p: {
+  sub: string; email?: string; email_verified?: boolean; name?: string; picture?: string;
+}): Profile {
+  if (!p.sub || !p.email || p.email_verified !== true) {
+    throw new HttpError(403, "Use a Google account with a verified email address.", "google_email_unverified");
+  }
+  return {
+    providerAccountId: p.sub,
+    email: p.email.toLowerCase(),
+    emailVerified: true,
+    name: p.name ?? null,
+    avatarUrl: p.picture ?? null,
+  };
+}
+
 const providers: Record<
   Provider,
   {
@@ -53,14 +68,7 @@ const providers: Record<
         name?: string;
         picture?: string;
       };
-      if (!p.email) throw new Error("Google account has no email");
-      return {
-        providerAccountId: p.sub,
-        email: p.email.toLowerCase(),
-        emailVerified: Boolean(p.email_verified),
-        name: p.name ?? null,
-        avatarUrl: p.picture ?? null,
-      };
+      return verifiedGoogleProfile(p);
     },
   },
   github: {
